@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">TheRetosVirtuales</string>
+    <string name="has_olvidado_tu_contrasena">¿Has olvidado tu contraseña?</string>
+    <string name="crear_cuenta">Crear cuenta.</string>
+    <string name="iniciar_sesion_con_google">Iniciar sesión con Google.</string>
+    <string name="iniciar_sesi_n">Iniciar sesión.</string>
+    <string name="contrasena">Contraseña</string>
+    <string name="correo_electronico">Correo electrónico</string>
+</resources>

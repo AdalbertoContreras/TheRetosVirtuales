@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_inicio">
+
+    <fragment
+        android:id="@+id/nav_inicio"
+        android:name="com.thereto.theretosvirtuales.ui.inicio.InicioFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" >
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_ingreso_premios"
+        android:name="com.thereto.theretosvirtuales.ui.premios.PremiosFragment"
+        android:label="@string/menu_gallery"
+        tools:layout="@layout/fragment_premios" />
+
+    <fragment
+        android:id="@+id/nav_premios"
+        android:name="com.thereto.theretosvirtuales.ui.como_jugar.ComoJugarFragment"
+        android:label="@string/menu_slideshow"
+        tools:layout="@layout/fragment_como_jugar" />
+
+    <fragment
+        android:id="@+id/nav_como_jugar"
+        android:name="com.thereto.theretosvirtuales.ui.como_jugar.ComoJugarFragment"
+        android:label="@string/menu_slideshow"
+        tools:layout="@layout/fragment_como_jugar" />
+
+    <fragment
+        android:id="@+id/nav_quienes_somos"
+        android:name="com.thereto.theretosvirtuales.ui.como_jugar.ComoJugarFragment"
+        android:label="@string/menu_slideshow"
+        tools:layout="@layout/fragment_como_jugar" />
+
+    <fragment
+        android:id="@+id/nav_etickets"
+        android:name="com.thereto.theretosvirtuales.ui.como_jugar.ComoJugarFragment"
+        android:label="@string/menu_slideshow"
+        tools:layout="@layout/fragment_como_jugar" />
+
+    <fragment
+        android:id="@+id/nav_contactanos"
+        android:name="com.thereto.theretosvirtuales.ui.como_jugar.ComoJugarFragment"
+        android:label="Contáctanos"
+        tools:layout="@layout/fragment_como_jugar" />
+</navigation>

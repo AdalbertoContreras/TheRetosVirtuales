@@ -29,13 +29,6 @@ public class Home extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityHomeBinding binding;
     private ImageView amburguesaImageView;
-    private ImageView logoImageView;
-    private Button ingresoButton;
-    private Button premiosButton;
-    private Button comoJugarButton;
-    private Button quienesSomosButton;
-    private Button eTicketsButton;
-    private Button contactanosButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,56 +52,49 @@ public class Home extends AppCompatActivity {
         amburguesaImageView.setOnClickListener(v -> {
             drawer.openDrawer(GravityCompat.START);
         });
-        ingresoButton = findViewById(R.id.ingresoButton);
-        premiosButton = findViewById(R.id.premiosButton);
-        comoJugarButton = findViewById(R.id.comoJugarButton);
-        quienesSomosButton = findViewById(R.id.quienesSomosButton);
-        eTicketsButton = findViewById(R.id.eTicketsButton);
-        contactanosButton = findViewById(R.id.contactanosButton);
-        logoImageView = findViewById(R.id.logoImageView);
-        ingresoButton.setOnClickListener(v -> {
+        binding.ingresoButton.setOnClickListener(v -> {
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.nav_host_fragment_content_home, new LoginFragment())
                     .addToBackStack(null)
                     .commit();
             drawer.closeDrawer(GravityCompat.START);
         });
-        premiosButton.setOnClickListener(v -> {
+        binding.premiosButton.setOnClickListener(v -> {
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.nav_host_fragment_content_home, new PremiosFragment())
                     .addToBackStack(null)
                     .commit();
             drawer.closeDrawer(GravityCompat.START);
         });
-        comoJugarButton.setOnClickListener(v -> {
+        binding.comoJugarButton.setOnClickListener(v -> {
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.nav_host_fragment_content_home, new ComoJugarFragment())
                     .addToBackStack(null)
                     .commit();
             drawer.closeDrawer(GravityCompat.START);
         });
-        quienesSomosButton.setOnClickListener(v -> {
+        binding.quienesSomosButton.setOnClickListener(v -> {
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.nav_host_fragment_content_home, new QuienesSomosFragment())
                     .addToBackStack(null)
                     .commit();
             drawer.closeDrawer(GravityCompat.START);
         });
-        eTicketsButton.setOnClickListener(v -> {
+        binding.eTicketsButton.setOnClickListener(v -> {
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.nav_host_fragment_content_home, new ETicketsFragment())
                     .addToBackStack(null)
                     .commit();
             drawer.closeDrawer(GravityCompat.START);
         });
-        contactanosButton.setOnClickListener(v -> {
+        binding.contactanosButton.setOnClickListener(v -> {
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.nav_host_fragment_content_home, new ContactanosFragment())
                     .addToBackStack(null)
                     .commit();
             drawer.closeDrawer(GravityCompat.START);
         });
-        logoImageView.setOnClickListener(v -> {
+        binding.logoImageView.setOnClickListener(v -> {
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.nav_host_fragment_content_home, new InicioFragment())
                     .addToBackStack(null)

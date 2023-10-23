@@ -9,98 +9,222 @@
     android:background="@color/white">
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:src="@drawable/logo"/>
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="12dp">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Tipo de documento"/>
-        <Spinner
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:text="Tipo de documento"/>
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:hint="@string/numero_de_documento" />
-        </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:hint="@string/nombre_y_apellido_del_participante" />
-        </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:hint="@string/correo_electronico_del_participante" />
-        </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:hint="@string/n_mero_de_celular" />
-        </com.google.android.material.textfield.TextInputLayout>
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:hint="@string/fecha_de_nacimiento_del_participante" />
-        </com.google.android.material.textfield.TextInputLayout>
-        <CheckBox
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/estoy_de_acuerdo_con_la_politica_de_tratamiento_de_datos"/>
-        <CheckBox
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/certifico_que_el_origen_de_mis_fondos_provienen_de_acciones_legales_acorde_con_la_ley"/>
-        <CheckBox
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/autorizo_el_envio_de_publicidad_por_los_diferentes_medios"/>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/iniciarSesionButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/crear_cuenta"/>
+        android:src="@drawable/ingreso_registro_image"/>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"/>
-    </androidx.appcompat.widget.LinearLayoutCompat>
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="12dp">
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/shadowInput">
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/input_height"
+                        android:fontFamily="@font/montserrat_bold_font"
+                        android:textSize="@dimen/textMd"
+                        android:gravity="center"
+                        style="@style/InputLogin"
+                        android:hint="@string/tipo_de_documento" />
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/shadowInput">
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/input_height"
+                        android:fontFamily="@font/montserrat_bold_font"
+                        android:textSize="@dimen/textMd"
+                        android:gravity="center"
+                        style="@style/InputLogin"
+                        android:hint="@string/numero_de_documento" />
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/shadowInput">
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/input_height"
+                        android:fontFamily="@font/montserrat_bold_font"
+                        android:textSize="@dimen/textMd"
+                        android:gravity="center"
+                        style="@style/InputLogin"
+                        android:hint="@string/nombre_y_apellido_del_participante" />
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/shadowInput">
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/input_height"
+                        android:fontFamily="@font/montserrat_bold_font"
+                        android:textSize="@dimen/textMd"
+                        android:gravity="center"
+                        style="@style/InputLogin"
+                        android:hint="@string/correo_electronico_del_participante"/>
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/shadowInput">
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/input_height"
+                        android:fontFamily="@font/montserrat_bold_font"
+                        android:textSize="@dimen/textMd"
+                        android:gravity="center"
+                        style="@style/InputLogin"
+                        android:hint="@string/n_mero_de_celular" />
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/shadowInput">
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/input_height"
+                        android:fontFamily="@font/montserrat_bold_font"
+                        android:textSize="@dimen/textMd"
+                        android:gravity="center"
+                        style="@style/InputLogin"
+                        android:hint="@string/fecha_de_nacimiento_del_participante"/>
+                </androidx.cardview.widget.CardView>
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="24dp"
+                    android:orientation="vertical">
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/shadowInput">
+                            <androidx.appcompat.widget.LinearLayoutCompat
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center">
+                                <CheckBox
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="4dp"
+                                    style="@style/CustomCheckBoxStyle"/>
+                            </androidx.appcompat.widget.LinearLayoutCompat>
+                        </androidx.cardview.widget.CardView>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/label"
+                            android:fontFamily="@font/montserrat_bold_font"
+                            android:textSize="@dimen/textSm"
+                            android:layout_marginStart="12dp"
+                            android:text="@string/estoy_de_acuerdo_con_la_politica_de_tratamiento_de_datos"/>
+
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/shadowInput">
+                            <androidx.appcompat.widget.LinearLayoutCompat
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center">
+                                <CheckBox
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="4dp"
+                                    style="@style/CustomCheckBoxStyle"/>
+                            </androidx.appcompat.widget.LinearLayoutCompat>
+                        </androidx.cardview.widget.CardView>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/label"
+                            android:fontFamily="@font/montserrat_bold_font"
+                            android:textSize="@dimen/textSm"
+                            android:layout_marginStart="12dp"
+                            android:text="@string/certifico_que_el_origen_de_mis_fondos_provienen_de_acciones_legales_acorde_con_la_ley"/>
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            style="@style/shadowInput">
+                            <androidx.appcompat.widget.LinearLayoutCompat
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:gravity="center">
+                                <CheckBox
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="4dp"
+                                    style="@style/CustomCheckBoxStyle"/>
+                            </androidx.appcompat.widget.LinearLayoutCompat>
+                        </androidx.cardview.widget.CardView>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/label"
+                            android:fontFamily="@font/montserrat_bold_font"
+                            android:textSize="@dimen/textSm"
+                            android:layout_marginStart="12dp"
+                            android:text="@string/autorizo_el_envio_de_publicidad_por_los_diferentes_medios"/>
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/iniciarSesionButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/CrearCuentaButton"
+                        android:fontFamily="@font/montserrat_bold_font"
+                        android:textSize="@dimen/textXl"
+                        android:text="@string/crear_cuenta"/>
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="end">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/label"
+                            android:fontFamily="@font/montserrat_bold_font"
+                            android:textSize="@dimen/textMd"
+                            android:text="@string/ya_estas_registrado"/>
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                </androidx.appcompat.widget.LinearLayoutCompat>
+
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </ScrollView>
 
 
 </androidx.appcompat.widget.LinearLayoutCompat>

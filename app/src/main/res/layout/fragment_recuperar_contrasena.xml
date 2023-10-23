@@ -1,46 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.login.LoginFragment"
     android:orientation="vertical"
     android:background="@color/white">
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:src="@drawable/logo"/>
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="12dp">
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/correo_electronico" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/iniciarSesionButton"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/enviar_nueva_contrasena"/>
+            android:src="@drawable/ingreso_registro_image"/>
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"/>
+            android:orientation="vertical"
+            android:paddingHorizontal="24dp">
+
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="42dp">
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/shadowInput"
+                    android:padding="0dp"
+                    android:layout_margin="0dp"
+                    app:cardCornerRadius="40dp">
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:layout_width="match_parent"
+                        android:layout_height="90dp"
+                        style="@style/RecuperarContrasenaButton"
+                        android:orientation="vertical"
+                        android:gravity="center">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Recuperar contraseña"
+                            android:fontFamily="@font/grobold_font"
+                            android:textSize="@dimen/textXl"
+                            android:textColor="@color/white"
+                            android:textAlignment="center"/>
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                </androidx.cardview.widget.CardView>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/shadowInput">
+                    <EditText
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/input_height"
+                        style="@style/InputLogin"
+                        android:hint="@string/correo_electronico" />
+                </androidx.cardview.widget.CardView>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="24dp"
+                android:layout_marginTop="20dp">
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/shadowInput"
+                    android:layout_marginTop="32dp">
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/iniciarSesionButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/EnviarNuevaContrasenaButton"
+                        android:text="@string/enviar_nueva_contrasena"/>
+                </androidx.cardview.widget.CardView>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 
-</androidx.appcompat.widget.LinearLayoutCompat>
+</ScrollView>

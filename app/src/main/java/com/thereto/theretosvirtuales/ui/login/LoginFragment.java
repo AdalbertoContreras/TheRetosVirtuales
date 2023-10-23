@@ -4,13 +4,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 
+import com.thereto.theretosvirtuales.R;
 import com.thereto.theretosvirtuales.databinding.FragmentLoginBinding;
+import com.thereto.theretosvirtuales.ui.recuperar_contrasena.RecuperarContrasenaFragment;
+import com.thereto.theretosvirtuales.ui.registrar.RegistrarFragment;
 
 public class LoginFragment extends Fragment {
 
@@ -21,7 +22,18 @@ public class LoginFragment extends Fragment {
 
         binding = FragmentLoginBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-
+        binding.crearCuentaButton.setOnClickListener(v -> {
+            getActivity().getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.nav_host_fragment_content_home, new RegistrarFragment())
+                    .addToBackStack(null)
+                    .commit();
+        });
+        binding.contrasenaOlvidadaTextView.setOnClickListener( v -> {
+            getActivity().getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.nav_host_fragment_content_home, new RecuperarContrasenaFragment())
+                    .addToBackStack(null)
+                    .commit();
+        });
         return root;
     }
 

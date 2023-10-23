@@ -6,8 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    android:layout_gravity="end"
-    tools:openDrawer="start">
+    tools:openDrawer="left">
 
     <include
         android:id="@+id/app_bar_home"
@@ -17,71 +16,230 @@
 
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
-        android:layout_width="200dp"
+        android:layout_width="@dimen/navigation_view_width"
         android:layout_height="match_parent"
-        android:layout_gravity="center_horizontal"
+        android:layout_gravity="left"
+        android:background="@color/white"
         android:fitsSystemWindows="true" >
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="60dp"
-            android:paddingVertical="12dp">
+            android:paddingTop="12dp">
+
 
             <LinearLayout
+                android:id="@+id/linearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <Button
-                    android:id="@+id/ingresoButton"
+                <androidx.cardview.widget.CardView
+                    style="@style/shadowInputSinMargin"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Ingreso/Registro" />
+                    android:layout_height="wrap_content">
 
-                <Button
-                    android:id="@+id/premiosButton"
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/ingresoButton"
+                        style="@style/IngresoRegistroButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/input_height"
+                        android:gravity="center">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/grobold"
+                            android:textSize="20sp"
+                            android:text="Ingreso/Registro"
+                            android:textAlignment="center"
+                            android:textColor="@color/white" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    style="@style/shadowInputSinMargin"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Premios" />
+                    android:layout_height="wrap_content">
 
-                <Button
-                    android:id="@+id/comoJugarButton"
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/premiosButton"
+                        style="@style/PremiosButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/input_height"
+                        android:gravity="center">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="20sp"
+                            android:fontFamily="@font/grobold"
+                            android:text="Premios"
+                            android:textAlignment="center"
+                            android:textColor="@color/white" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    style="@style/shadowInputSinMargin"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="¿Como jugar?" />
+                    android:layout_height="wrap_content">
 
-                <Button
-                    android:id="@+id/quienesSomosButton"
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/comoJugarButton"
+                        style="@style/ComoJugarButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/input_height"
+                        android:gravity="center">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/grobold"
+                            android:textSize="20sp"
+                            android:text="¿Como jugar?"
+                            android:textAlignment="center"
+                            android:textColor="@color/white" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    style="@style/shadowInputSinMargin"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="¿Quiénes somos?" />
+                    android:layout_height="wrap_content">
 
-                <Button
-                    android:id="@+id/eTicketsButton"
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/quienesSomosButton"
+                        style="@style/QuienesSomosButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/input_height"
+                        android:gravity="center">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/grobold"
+                            android:textSize="20sp"
+                            android:text="¿Quiénes somos?"
+                            android:textAlignment="center"
+                            android:textColor="@color/white" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    style="@style/shadowInputSinMargin"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="eTickects" />
+                    android:layout_height="wrap_content">
 
-                <Button
-                    android:id="@+id/contactanosButton"
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/eTicketsButton"
+                        style="@style/ETicketsButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/input_height"
+                        android:gravity="center">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/grobold"
+                            android:textSize="20sp"
+                            android:text="eTickects"
+                            android:textAlignment="center"
+                            android:textColor="@color/white" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    style="@style/shadowInputSinMargin"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Contáctatnos" />
+                    android:layout_height="wrap_content">
 
-                <!-- Agrega más botones según sea necesario -->
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/contactanosButton"
+                        style="@style/Contactanos"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/input_height"
+                        android:gravity="center">
 
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/grobold"
+                            android:textSize="20sp"
+                            android:text="Contáctatnos"
+                            android:textAlignment="center"
+                            android:textColor="@color/white" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    style="@style/shadowInputSinMargin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/miCuentaButton"
+                        style="@style/MiCuentaButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/input_height"
+                        android:gravity="center">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/grobold"
+                            android:textSize="20sp"
+                            android:text="Mi cuenta"
+                            android:textAlignment="center"
+                            android:textColor="@color/white" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    style="@style/shadowInputSinMargin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/salirButton"
+                        style="@style/SalirButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/input_height"
+                        android:gravity="center">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/grobold"
+                            android:textSize="20sp"
+                            android:text="Salir"
+                            android:textAlignment="center"
+                            android:textColor="@color/white" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                </androidx.cardview.widget.CardView>
             </LinearLayout>
 
-            <ImageView
-                android:id="@+id/logoImageView"
-                android:layout_width="0dp"
-                android:layout_height="60dp"
-                android:src="@drawable/logo"
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent">
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardElevation="10dp"
+                    android:layout_marginTop="22dp"
+                    style="shadowInput">
+                    <ImageView
+                        android:id="@+id/logoImageView"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:src="@drawable/logo"/>
+                </androidx.cardview.widget.CardView>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </com.google.android.material.navigation.NavigationView>

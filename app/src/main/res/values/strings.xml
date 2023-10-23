@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">TheRetosVirtuales</string>
     <string name="has_olvidado_tu_contrasena">¿Has olvidado tu contraseña?</string>
-    <string name="crear_cuenta">Crear cuenta.</string>
+    <string name="crear_cuenta">Crear Cuenta</string>
     <string name="iniciar_sesion_con_google">Iniciar sesión con Google.</string>
-    <string name="iniciar_sesion">Iniciar sesión.</string>
+    <string name="iniciar_sesion">Iniciar Sesión</string>
     <string name="contrasena">Contraseña</string>
     <string name="correo_electronico">Correo electrónico</string>
     <string name="title_activity_home">Home</string>
@@ -26,4 +26,8 @@
     <string name="autorizo_el_envio_de_publicidad_por_los_diferentes_medios">Autorizo el envío de publicidad por los diferentes medios.</string>
     <string name="certifico_que_el_origen_de_mis_fondos_provienen_de_acciones_legales_acorde_con_la_ley">Certifico que el origen de mis fondos provienen de acciones legales acorde con la ley.</string>
     <string name="estoy_de_acuerdo_con_la_politica_de_tratamiento_de_datos">Estoy de acuerdo con la política de tratamiento de datos.</string>
+    <string name="ya_estas_registrado">¿Ya estas registrado?</string>
+    <string name="tipo_de_documento">Tipo de documento</string>
+    <string name="crear_una_cuenta">Crear una Cuenta</string>
+    <string name="the_retos_instagram_url">Crear una Cuenta</string>
 </resources>

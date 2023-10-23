@@ -35,6 +35,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
                         <EditText
+                            android:id="@+id/correoElectronicoEditText"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/input_login_height"
                             android:hint="@string/correo_electronico"
@@ -49,6 +50,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
                         <EditText
+                            android:id="@+id/contrasenaEditText"
                             android:layout_width="match_parent"
                             android:layout_height="@dimen/input_login_height"
                             android:hint="@string/contrasena"

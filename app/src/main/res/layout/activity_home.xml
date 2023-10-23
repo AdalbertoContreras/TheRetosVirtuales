@@ -24,7 +24,6 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="60dp"
             android:paddingTop="12dp">
 
 
@@ -35,6 +34,29 @@
                 android:orientation="vertical"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
+                <androidx.cardview.widget.CardView
+                    style="@style/shadowInputSinMargin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.appcompat.widget.LinearLayoutCompat
+                        android:id="@+id/usuarioButton"
+                        style="@style/IngresoRegistroButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/input_height"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/userTextView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/grobold"
+                            android:textSize="20sp"
+                            android:text="Ingreso/Registro"
+                            android:textAlignment="center"
+                            android:textColor="@color/white" />
+                    </androidx.appcompat.widget.LinearLayoutCompat>
+                </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
                     style="@style/shadowInputSinMargin"

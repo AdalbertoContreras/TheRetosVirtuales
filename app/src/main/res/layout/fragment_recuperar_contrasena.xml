@@ -61,6 +61,7 @@
                     android:layout_height="wrap_content"
                     style="@style/shadowInput">
                     <EditText
+                        android:id="@+id/correoElectronicoEditText"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/input_height"
                         style="@style/InputLogin"
@@ -80,7 +81,7 @@
                     style="@style/shadowInput"
                     android:layout_marginTop="32dp">
                     <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/iniciarSesionButton"
+                        android:id="@+id/recuperarContrasenaButton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         style="@style/EnviarNuevaContrasenaButton"

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "715367146048",
+    "project_id": "theretos-c7974",
+    "storage_bucket": "theretos-c7974.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:715367146048:android:5adfe85d21bdcf8e4175a5",
+        "android_client_info": {
+          "package_name": "com.theretos.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "715367146048-ffado5aojj4qsef4sq2r3m8ie88rcrj4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1CbxIV4qUsDC0PDpz-uQGFeKzkilFbro"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "715367146048-ffado5aojj4qsef4sq2r3m8ie88rcrj4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

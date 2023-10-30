@@ -7,17 +7,19 @@
     tools:context=".ui.login.LoginFragment"
     android:orientation="vertical"
     android:background="@color/white">
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ingreso_registro_image"/>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ingreso_registro_image"/>
             <androidx.appcompat.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -27,7 +29,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@style/shadowInput">
-                    <EditText
+                    <Spinner
+                        android:id="@+id/documentoSpinner"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/input_height"
                         android:fontFamily="@font/montserrat_bold_font"
@@ -41,10 +44,12 @@
                     android:layout_height="wrap_content"
                     style="@style/shadowInput">
                     <EditText
+                        android:id="@+id/numeroDocumentoEditText"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/input_height"
                         android:fontFamily="@font/montserrat_bold_font"
                         android:textSize="@dimen/textMd"
+                        android:inputType="numberSigned"
                         android:gravity="center"
                         style="@style/InputLogin"
                         android:hint="@string/numero_de_documento" />
@@ -54,10 +59,12 @@
                     android:layout_height="wrap_content"
                     style="@style/shadowInput">
                     <EditText
+                        android:id="@+id/nombresEditText"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/input_height"
                         android:fontFamily="@font/montserrat_bold_font"
                         android:textSize="@dimen/textMd"
+                        android:inputType="text"
                         android:gravity="center"
                         style="@style/InputLogin"
                         android:hint="@string/nombre_y_apellido_del_participante" />
@@ -67,10 +74,12 @@
                     android:layout_height="wrap_content"
                     style="@style/shadowInput">
                     <EditText
+                        android:id="@+id/correoElectronicoEditText"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/input_height"
                         android:fontFamily="@font/montserrat_bold_font"
                         android:textSize="@dimen/textMd"
+                        android:inputType="textEmailAddress"
                         android:gravity="center"
                         style="@style/InputLogin"
                         android:hint="@string/correo_electronico_del_participante"/>
@@ -80,11 +89,43 @@
                     android:layout_height="wrap_content"
                     style="@style/shadowInput">
                     <EditText
+                        android:id="@+id/contrasenaEditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/input_height"
+                        android:fontFamily="@font/montserrat_bold_font"
+                        android:textSize="@dimen/textMd"
+                        android:inputType="textPassword"
+                        android:gravity="center"
+                        style="@style/InputLogin"
+                        android:hint="@string/contrasena"/>
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/shadowInput">
+                    <EditText
+                        android:id="@+id/verificarContrasenaEditTest"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/input_height"
+                        android:fontFamily="@font/montserrat_bold_font"
+                        android:textSize="@dimen/textMd"
+                        android:inputType="textPassword"
+                        android:gravity="center"
+                        style="@style/InputLogin"
+                        android:hint="Verifique su contrasena"/>
+                </androidx.cardview.widget.CardView>
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    style="@style/shadowInput">
+                    <EditText
+                        android:id="@+id/numeroCelularEditText"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/input_height"
                         android:fontFamily="@font/montserrat_bold_font"
                         android:textSize="@dimen/textMd"
                         android:gravity="center"
+                        android:inputType="phone"
                         style="@style/InputLogin"
                         android:hint="@string/n_mero_de_celular" />
                 </androidx.cardview.widget.CardView>
@@ -93,10 +134,14 @@
                     android:layout_height="wrap_content"
                     style="@style/shadowInput">
                     <EditText
+                        android:focusable="false"
+                        android:editable="false"
+                        android:id="@+id/fechaNacimientoEditText"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/input_height"
                         android:fontFamily="@font/montserrat_bold_font"
                         android:textSize="@dimen/textMd"
+                        android:inputType="none"
                         android:gravity="center"
                         style="@style/InputLogin"
                         android:hint="@string/fecha_de_nacimiento_del_participante"/>
@@ -120,6 +165,7 @@
                                 android:layout_height="match_parent"
                                 android:gravity="center">
                                 <CheckBox
+                                    android:id="@+id/estoyDeAcuerdoCheckBox"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="4dp"
@@ -150,6 +196,7 @@
                                 android:layout_height="match_parent"
                                 android:gravity="center">
                                 <CheckBox
+                                    android:id="@+id/certificoCheckBox"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="4dp"
@@ -179,6 +226,7 @@
                                 android:layout_height="match_parent"
                                 android:gravity="center">
                                 <CheckBox
+                                    android:id="@+id/autorizoCeckBox"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="4dp"
@@ -200,7 +248,7 @@
                         android:layout_height="wrap_content"/>
 
                     <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/recuperarContrasenaButton"
+                        android:id="@+id/crearCuentaButton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         style="@style/CrearCuentaButton"

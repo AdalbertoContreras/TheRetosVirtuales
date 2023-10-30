@@ -86,22 +86,22 @@
                     android:id="@+id/tictockImageView"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:src="@drawable/icono_amburguesa"/>
+                    android:src="@drawable/tiktok_icon"/>
                 <ImageView
                     android:id="@+id/instagramImageView"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:src="@drawable/icono_amburguesa"/>
+                    android:src="@drawable/instagram_icon"/>
                 <ImageView
                     android:id="@+id/facebookImageView"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:src="@drawable/icono_amburguesa"/>
+                    android:src="@drawable/facebook_icon"/>
                 <ImageView
                     android:id="@+id/youtubeImageView"
                     android:layout_width="20dp"
                     android:layout_height="20dp"
-                    android:src="@drawable/icono_amburguesa"/>
+                    android:src="@drawable/youtube_icon"/>
             </androidx.appcompat.widget.LinearLayoutCompat>
         </androidx.constraintlayout.widget.ConstraintLayout>
 

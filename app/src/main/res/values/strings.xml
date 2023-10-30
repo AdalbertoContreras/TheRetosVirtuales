@@ -1,4 +1,9 @@
 <resources>
+    <string-array name="tipos_de_documento">
+        <item>Cédula</item>
+        <item>Tarjeta de Identidad</item>
+        <item>Pasaporte</item>
+    </string-array>
     <string name="app_name">TheRetosVirtuales</string>
     <string name="has_olvidado_tu_contrasena">¿Has olvidado tu contraseña?</string>
     <string name="crear_cuenta">Crear Cuenta</string>

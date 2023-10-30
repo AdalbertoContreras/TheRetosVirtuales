@@ -6,18 +6,15 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebChromeClient;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 
 import com.thereto.model.Game;
 import com.thereto.theretosvirtuales.databinding.FragmentHomeBinding;
 
-import java.lang.reflect.Array;
+import java.util.Objects;
 
 public class InicioFragment extends Fragment {
 
@@ -42,7 +39,7 @@ public class InicioFragment extends Fragment {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         imprimirLista();
-        binding.listaContenerLayout.setOnTouchListener(new View.OnTouchListener() {
+        Objects.requireNonNull(binding.listaContenerLayout).setOnTouchListener(new View.OnTouchListener() {
 
             @Override
             public boolean onTouch(View v, MotionEvent event) {
@@ -92,22 +89,22 @@ public class InicioFragment extends Fragment {
         if (juegosEnVista.length == 3) {
             if (juegosEnVista[0] != null) {
                 binding.gameOneLayout.setVisibility(View.VISIBLE);
-                binding.nameGameThree.setText(juegosEnVista[0].title);
-                binding.ticketGameThree.setText(juegosEnVista[0].tickect + " eTickets");
-                binding.dateGameThree.setText(juegosEnVista[0].date);
+                binding.nameGameOne.setText(juegosEnVista[0].name_challeng);
+                binding.ticketGameOne.setText(juegosEnVista[0].accumulated_tickets + " eTickets");
+                binding.dateGameOne.setText(juegosEnVista[0].date_limit);
             } else {
                 binding.gameOneLayout.setVisibility(View.INVISIBLE);
             }
 
-            binding.nameGameTwo.setText(juegosEnVista[1].title);
-            binding.ticketGameTwo.setText(juegosEnVista[1].tickect + " eTickets");
-            binding.dateGameTwo.setText(juegosEnVista[1].date);
+            binding.nameGameTwo.setText(juegosEnVista[1].name_challeng);
+            binding.ticketGameTwo.setText(juegosEnVista[1].accumulated_tickets + " eTickets");
+            binding.dateGameTwo.setText(juegosEnVista[1].date_limit);
 
             if (juegosEnVista[2] != null) {
                 binding.gameThreeLayout.setVisibility(View.VISIBLE);
-                binding.nameGameThree.setText(juegosEnVista[2].title);
-                binding.ticketGameThree.setText(juegosEnVista[2].tickect + " eTickets");
-                binding.dateGameThree.setText(juegosEnVista[2].date);
+                binding.nameGameThree.setText(juegosEnVista[2].name_challeng);
+                binding.ticketGameThree.setText(juegosEnVista[2].accumulated_tickets + " eTickets");
+                binding.dateGameThree.setText(juegosEnVista[2].date_limit);
             } else {
                 binding.gameThreeLayout.setVisibility(View.INVISIBLE);
             }

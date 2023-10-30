@@ -1,13 +1,19 @@
 package com.thereto.model;
 
 public class Game {
-    public String title = "";
-    public int tickect = 0;
-    public String date = "";
+    public String name_challeng = "";
+    public int accumulated_tickets = 0;
+    public String date_limit = "";
+    public String date_creation = "";
+    public String description = "";
+
+    public Game() {
+
+    }
 
     public Game(String title, int tickect, String date) {
-        this.title = title;
-        this.tickect = tickect;
-        this.date = date;
+        this.name_challeng = title;
+        this.accumulated_tickets = tickect;
+        this.date_limit = date;
     }
 }

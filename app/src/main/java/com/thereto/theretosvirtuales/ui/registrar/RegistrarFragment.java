@@ -15,6 +15,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -125,21 +127,21 @@ public class RegistrarFragment extends Fragment {
                 Toast.makeText(requireContext(), "Acepte las codiciones para el registro.", Toast.LENGTH_SHORT).show();
                 return;
             }
-            Player newUser = new Player();
-            newUser.cellNumber = binding.numeroCelularEditText.getText().toString();
-            newUser.documentNumber = binding.numeroCelularEditText.getText().toString();
-            newUser.nombres = binding.nombresEditText.getText().toString();
-            newUser.documentType = documentoSelecionado;
-            newUser.birthdate = binding.fechaNacimientoEditText.getText().toString();
-            newUser.countryOfPlay = 1;
-            newUser.dataTreatmentPolicy = true;
-            newUser.direccion = "";
-            newUser.displayName = "";
-            newUser.email = binding.correoElectronicoEditText.getText().toString();
-            newUser.isOfLegalAge = true;
-            newUser.nickname = "";
-            newUser.patchProfilePicture = "";
-            newUser.receiveAdvertising = false;
+            Player newPlayer = new Player();
+            newPlayer.cellNumber = binding.numeroCelularEditText.getText().toString();
+            newPlayer.documentNumber = binding.numeroCelularEditText.getText().toString();
+            newPlayer.nombres = binding.nombresEditText.getText().toString();
+            newPlayer.documentType = documentoSelecionado;
+            newPlayer.birthdate = binding.fechaNacimientoEditText.getText().toString();
+            newPlayer.countryOfPlay = 1;
+            newPlayer.dataTreatmentPolicy = true;
+            newPlayer.direccion = "";
+            newPlayer.displayName = "";
+            newPlayer.email = binding.correoElectronicoEditText.getText().toString();
+            newPlayer.isOfLegalAge = true;
+            newPlayer.nickname = "";
+            newPlayer.patchProfilePicture = "";
+            newPlayer.receiveAdvertising = false;
             Calendar calendar = Calendar.getInstance();
             int year = calendar.get(Calendar.YEAR);
             int month = calendar.get(Calendar.MONTH);
@@ -147,18 +149,42 @@ public class RegistrarFragment extends Fragment {
             int hora = calendar.get(Calendar.HOUR_OF_DAY);
             int minuto = calendar.get(Calendar.MINUTE);
             int segundo = calendar.get(Calendar.SECOND);
-            newUser.registrationDate = year + "/" + (month + 1) + "/" + day;
-            newUser.registrationTime = hora + ":" + minuto + ":" + segundo;
-            newUser.sourceOfMyMoney = true;
-            newUser.surname = binding.numeroCelularEditText.getText().toString();
+            newPlayer.registrationDate = year + "/" + (month + 1) + "/" + day;
+            newPlayer.registrationTime = hora + ":" + minuto + ":" + segundo;
+            newPlayer.sourceOfMyMoney = true;
+            newPlayer.surname = binding.numeroCelularEditText.getText().toString();
             FirebaseFirestore db = FirebaseFirestore.getInstance();
             CollectionReference collectionReference = db.collection("player");
-            collectionReference.add(newUser)
+            collectionReference.add(newPlayer)
                     .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                         @Override
                         public void onSuccess(DocumentReference documentReference) {
                             // Documento agregado con éxito, puedes obtener su ID si es necesario
                             String documentId = documentReference.getId();
+                            FirebaseAuth mAuth = FirebaseAuth.getInstance();
+
+                            // Registra un usuario con su correo electrónico y contraseña
+                            mAuth.createUserWithEmailAndPassword(newPlayer.email, binding.contrasenaEditText.getText().toString())
+                                    .addOnCompleteListener(task -> {
+                                        if (task.isSuccessful()) {
+                                            // Registro exitoso, ahora puedes guardar los datos adicionales en Firestore
+                                            FirebaseUser user = mAuth.getCurrentUser();
+                                            String userId = user.getUid();
+                                            DocumentReference docRef = db.collection("player").document(documentId);
+                                            Map<String, Object> updates = new HashMap<>();
+                                            updates.put("uid", userId);
+                                            docRef.set(updates)
+                                            .addOnSuccessListener(aVoid -> {
+                                                // Los datos se actualizaron con éxito
+                                            })
+                                            .addOnFailureListener(e -> {
+                                                // Error al actualizar los datos
+                                            });
+                                        } else {
+                                            // El registro falló, maneja el error
+                                            Exception exception = task.getException();
+                                        }
+                                    });
                             Toast.makeText(requireContext(), "Usuario registrado en el sistema.", Toast.LENGTH_SHORT).show();
                         }
                     })

@@ -1,85 +1,148 @@
 package com.thereto.theretosvirtuales.ui.inicio;
 
+import android.annotation.SuppressLint;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.LayerDrawable;
+import android.graphics.drawable.PictureDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebChromeClient;
+import android.webkit.WebSettings;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.caverock.androidsvg.SVG;
+import com.caverock.androidsvg.SVGParseException;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.thereto.model.Game;
+import com.thereto.theretosvirtuales.R;
 import com.thereto.theretosvirtuales.databinding.FragmentHomeBinding;
+import com.thereto.theretosvirtuales.ui.eTickets.ETicketsFragment;
+import com.thereto.theretosvirtuales.ui.ver_reto.VerRetoFragment;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class InicioFragment extends Fragment {
-
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
     private FragmentHomeBinding binding;
     private View mCustomView;
-    private Game[] contenido = {
-            new Game("CUERDAS O SABANAS", 1, "Sep/30/2023"),
-            new Game("BALL BOX", 1, "Sep/30/2023"),
-            new Game("CANASTA REVES", 1, "Sep/30/2023"),
-            new Game("JUEGO 1", 1, "Sep/30/2023"),
-            new Game("JUEGO 2", 1, "Sep/30/2023"),
-            new Game("JUEGO 3", 1, "Sep/30/2023"),
-    };
+    private List<Game> contenido = new ArrayList<>();
 
     private Game[] juegosEnVista = {};
     private float x1, x2;
     static final int MIN_DISTANCE = 20;
     private int pos = 0;
+    @SuppressLint("ClickableViewAccessibility")
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-        imprimirLista();
-        Objects.requireNonNull(binding.listaContenerLayout).setOnTouchListener(new View.OnTouchListener() {
-
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                switch (event.getAction()) {
-                    case MotionEvent.ACTION_DOWN:
-                        x1 = event.getX();
-                        return true;
-                    case MotionEvent.ACTION_UP:
-                        x2 = event.getX();
-                        float deltaX = x2 - x1;
+        mostrarVideo();
+        binding.jugarGameOne.setOnClickListener(v -> {
+            verJuego(juegosEnVista[0]);
+        });
+        binding.jugarGameTwo.setOnClickListener(v -> {
+            verJuego(juegosEnVista[1]);
+        });
+        binding.jugarGameThree.setOnClickListener(v -> {
+            verJuego(juegosEnVista[2]);
+        });
+        Objects.requireNonNull(binding.listaContenerLayout).setOnTouchListener((v, event) -> {
+            switch (event.getAction()) {
+                case MotionEvent.ACTION_DOWN:
+                    x1 = event.getX();
+                    return true;
+                case MotionEvent.ACTION_UP:
+                    x2 = event.getX();
+                    float deltaX = x2 - x1;
+                    if (deltaX > 20 || deltaX < -20) {
                         if (x2 < x1) {
-                            if ((pos + 1) < contenido.length) {
+                            if ((pos + 1) < contenido.size()) {
                                 pos ++;
-                                imprimirLista();
-                                //Toast.makeText(requireContext(), contenido[pos], Toast.LENGTH_SHORT).show();
                             }
                         } else {
                             if (pos > 0) {
                                 pos --;
-                                imprimirLista();
-                                //Toast.makeText(requireContext(), contenido[pos], Toast.LENGTH_SHORT).show();
                             }
                         }
+                        imprimirLista();
                         return true;
-                }
-                return false;
+                    }
             }
+            return false;
         });
+        consultarJuegos();
         return root;
+    }
+
+    private void mostrarVideo() {
+        WebSettings webSettings = binding.webView.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+
+        // URL del video de YouTube
+        String videoId = "kWiiMoafKME";
+
+        // Cargar el video de YouTube en el WebView
+        binding.webView.loadData("<iframe width=\"100%\" height=\"100%\" src=\"https://www.youtube.com/embed/" + videoId + "\" frameborder=\"0\" allowfullscreen></iframe>", "text/html", "utf-8");
+    }
+
+    private void consultarJuegos() {
+        Query consultaMayor = db.collection("challenges_virtual");
+
+        consultaMayor.get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        if (queryDocumentSnapshots != null && !queryDocumentSnapshots.isEmpty()) {
+                            contenido = new ArrayList<>();
+
+                            for (QueryDocumentSnapshot document : queryDocumentSnapshots) {
+                                // Convierte cada documento en un objeto Ticket
+                                Game ticket = new Game();
+
+                                ticket.id = document.getId();
+                                ticket.accumulated_tickets = document.getLong("accumulated_tickets").intValue();
+                                ticket.date_creation = document.getString("date_creation");
+                                ticket.date_limit = document.getString("date_limit");
+                                ticket.description = document.getString("description");
+                                ticket.name_challeng = document.getString("name_challeng");
+                                ticket.background = document.getString("background");
+                                ticket.icon = document.getString("icon");
+
+                                contenido.add(ticket);
+                            }
+                            imprimirLista();
+                            // Ahora, "tickets" es una lista que contiene los documentos
+                            // Puedes acceder a los datos de los tickets usando esta lista
+                        } else {
+                            // No se encontraron documentos
+                        }
+                    }
+                });
     }
 
     private void imprimirLista() {
         if (pos == 0) {
-            juegosEnVista = new Game[]{null, contenido[0], contenido[1]};
+            juegosEnVista = new Game[]{null, contenido.get(0), contenido.get(1)};
         } else {
-            if (pos + 1 < contenido.length) {
-                juegosEnVista = new Game[]{contenido[pos - 1], contenido[pos], contenido[pos + 1]};
+            if (pos + 1 < contenido.size()) {
+                juegosEnVista = new Game[]{contenido.get(pos - 1), contenido.get(pos), contenido.get(pos + 1)};
             }
-            if (pos + 1 == contenido.length) {
-                juegosEnVista = new Game[]{contenido[pos - 1], contenido[pos], null};
+            if (pos + 1 == contenido.size()) {
+                juegosEnVista = new Game[]{contenido.get(pos - 1), contenido.get(pos), null};
             }
         }
         imprimirJuegosEnVista();
@@ -90,25 +153,67 @@ public class InicioFragment extends Fragment {
             if (juegosEnVista[0] != null) {
                 binding.gameOneLayout.setVisibility(View.VISIBLE);
                 binding.nameGameOne.setText(juegosEnVista[0].name_challeng);
-                binding.ticketGameOne.setText(juegosEnVista[0].accumulated_tickets + " eTickets");
                 binding.dateGameOne.setText(juegosEnVista[0].date_limit);
+                try {
+                    String svgFondoContent = juegosEnVista[0].background;
+                    String svgIconContent = juegosEnVista[0].icon;
+                    // Convierte el SVG en un Drawable
+                    SVG svgFondo = SVG.getFromString(svgFondoContent);
+                    SVG svgIcon = SVG.getFromString(svgIconContent);
+                    Drawable svgFondoDrawable = new PictureDrawable(svgFondo.renderToPicture());
+                    Drawable svgIconDrawable = new PictureDrawable(svgIcon.renderToPicture());
+
+                    binding.gameOneImageView.setImageDrawable(svgFondoDrawable);
+                    binding.iconOne.setImageDrawable(svgIconDrawable);
+                } catch (SVGParseException svgException){}
             } else {
                 binding.gameOneLayout.setVisibility(View.INVISIBLE);
             }
-
             binding.nameGameTwo.setText(juegosEnVista[1].name_challeng);
-            binding.ticketGameTwo.setText(juegosEnVista[1].accumulated_tickets + " eTickets");
             binding.dateGameTwo.setText(juegosEnVista[1].date_limit);
+            try {
+                String svgFondoContent = juegosEnVista[1].background;
+                String svgIconContent = juegosEnVista[1].icon;
+                // Convierte el SVG en un Drawable
+                SVG svgFondo = SVG.getFromString(svgFondoContent);
+                SVG svgIcon = SVG.getFromString(svgIconContent);
+                Drawable svgFondoDrawable = new PictureDrawable(svgFondo.renderToPicture());
+                Drawable svgIconDrawable = new PictureDrawable(svgIcon.renderToPicture());
 
+                binding.gameTwoImageView.setImageDrawable(svgFondoDrawable);
+                binding.iconTwo.setImageDrawable(svgIconDrawable);
+            } catch (SVGParseException svgException){}
             if (juegosEnVista[2] != null) {
                 binding.gameThreeLayout.setVisibility(View.VISIBLE);
                 binding.nameGameThree.setText(juegosEnVista[2].name_challeng);
-                binding.ticketGameThree.setText(juegosEnVista[2].accumulated_tickets + " eTickets");
                 binding.dateGameThree.setText(juegosEnVista[2].date_limit);
+                try {
+                    String svgFondoContent = juegosEnVista[2].background;
+                    String svgIconContent = juegosEnVista[2].icon;
+                    // Convierte el SVG en un Drawable
+                    SVG svgFondo = SVG.getFromString(svgFondoContent);
+                    SVG svgIcon = SVG.getFromString(svgIconContent);
+                    Drawable svgFondoDrawable = new PictureDrawable(svgFondo.renderToPicture());
+                    Drawable svgIconDrawable = new PictureDrawable(svgIcon.renderToPicture());
+
+                    binding.gameThreeImageView.setImageDrawable(svgFondoDrawable);
+                    binding.iconThree.setImageDrawable(svgIconDrawable);
+                } catch (SVGParseException svgException){}
             } else {
                 binding.gameThreeLayout.setVisibility(View.INVISIBLE);
             }
         }
+    }
+
+    private void verJuego(Game game) {
+        Bundle bundle = new Bundle();
+        bundle.putString("id", game.id);
+        VerRetoFragment verRetoFragment = new VerRetoFragment();
+        verRetoFragment.setArguments(bundle);
+        requireActivity().getSupportFragmentManager().beginTransaction()
+                .replace(R.id.nav_host_fragment_content_home, verRetoFragment)
+                .addToBackStack(null)
+                .commit();
     }
 
     @Override

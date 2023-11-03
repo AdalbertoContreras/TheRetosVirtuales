@@ -62,6 +62,9 @@
     <style name="RecuperarContrasenaButton" parent="buttonTheRetos">
         <item name="android:background">@drawable/recuperar_contrasena_button</item>
     </style>
+    <style name="TituloJuegoButton" parent="buttonTheRetos">
+        <item name="android:background">@drawable/titulo_juego_button</item>
+    </style>
     <style name="InputLogin">
         <item name="android:textSize">20sp</item>
         <item name="height">40dp</item>

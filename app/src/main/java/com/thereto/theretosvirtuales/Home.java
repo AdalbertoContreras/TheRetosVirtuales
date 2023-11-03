@@ -1,6 +1,8 @@
 package com.thereto.theretosvirtuales;
 
 import android.app.DownloadManager;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -81,12 +83,26 @@ public class Home extends AppCompatActivity  implements LogoutDialogListener, On
                     .commit();
             drawer.closeDrawer(GravityCompat.START);
         });
-        binding.premiosButton.setOnClickListener(v -> {
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.nav_host_fragment_content_home, new PremiosFragment())
-                    .addToBackStack(null)
-                    .commit();
-            drawer.closeDrawer(GravityCompat.START);
+        binding.premiosButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Define la URL que deseas abrir en el navegador
+                String url = "https://theretos.co/app/tabs/marketPlace/store";
+
+                // Crea un intent con la acción ACTION_VIEW
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                // Establece la URL en el intent
+                intent.setData(Uri.parse(url));
+
+                // Verifica si hay una aplicación que pueda manejar la acción
+                if (intent.resolveActivity(getPackageManager()) != null) {
+                    // Abre el navegador con la URL especificada
+                    startActivity(intent);
+                } else {
+                    // No se encontró ninguna aplicación para manejar la acción
+                    // Puedes mostrar un mensaje de error o manejarlo de otra manera
+                }
+            }
         });
         binding.comoJugarButton.setOnClickListener(v -> {
             getSupportFragmentManager().beginTransaction()
@@ -109,12 +125,26 @@ public class Home extends AppCompatActivity  implements LogoutDialogListener, On
                     .commit();
             drawer.closeDrawer(GravityCompat.START);
         });
-        binding.contactanosButton.setOnClickListener(v -> {
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.nav_host_fragment_content_home, new ContactanosFragment())
-                    .addToBackStack(null)
-                    .commit();
-            drawer.closeDrawer(GravityCompat.START);
+        binding.contactanosButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Define la URL que deseas abrir en el navegador
+                String url = "https://theretos.co/support";
+
+                // Crea un intent con la acción ACTION_VIEW
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                // Establece la URL en el intent
+                intent.setData(Uri.parse(url));
+
+                // Verifica si hay una aplicación que pueda manejar la acción
+                if (intent.resolveActivity(getPackageManager()) != null) {
+                    // Abre el navegador con la URL especificada
+                    startActivity(intent);
+                } else {
+                    // No se encontró ninguna aplicación para manejar la acción
+                    // Puedes mostrar un mensaje de error o manejarlo de otra manera
+                }
+            }
         });
         binding.logoImageView.setOnClickListener(v -> {
             getSupportFragmentManager().beginTransaction()

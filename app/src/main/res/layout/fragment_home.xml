@@ -34,196 +34,229 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/web_view"
         android:gravity="center">
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:padding="12dp"
-            android:background="@drawable/crear_retos_button"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/gameOneLayout"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:orientation="vertical"
             android:layout_weight="10"
-            android:paddingHorizontal="12dp"
-            android:gravity="center_vertical">
+            android:paddingHorizontal="6dp">
             <ImageView
+                android:id="@+id/gameOneImageView"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:src="@drawable/logo"/>
+                android:layout_height="match_parent"/>
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_weight="10"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:padding="12dp"
+                android:paddingHorizontal="12dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/iconOne"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:src="@drawable/logo" />
+
                 <TextView
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/textMd"
-                    android:fontFamily="@font/grobold"
                     android:id="@+id/nameGameOne"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/grobold"
                     android:text="CUERDAS O SABANAS"
                     android:textAlignment="center"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-                <TextView
                     android:textColor="@color/white"
-                    android:textSize="@dimen/textMd"
+                    android:textSize="@dimen/textMd" />
+
+                <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:fontFamily="@font/grobold"
                     android:text="Necesitas"
-                    android:fontFamily="@font/grobold"
-                    android:textAlignment="center"/>
-                <TextView
-                    android:textColor="@color/white"
                     android:textAlignment="center"
-                    android:textSize="@dimen/textMd"
-                    android:fontFamily="@font/grobold"
-                    android:id="@+id/ticketGameOne"
-                    android:text="1 eTICKETS"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-                <TextView
                     android:textColor="@color/white"
-                    android:textAlignment="center"
-                    android:textSize="@dimen/textMd"
-                    android:fontFamily="@font/grobold"
+                    android:textSize="@dimen/textMd" />
+
+                <TextView
                     android:id="@+id/dateGameOne"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-            <androidx.appcompat.widget.LinearLayoutCompat
-                android:id="@+id/jugarGameOne"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:background="@drawable/participar_button"
-                android:gravity="center">
-                <TextView
-                    android:textSize="@dimen/textSm"
-                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="PARTICIPAR"
+                    android:fontFamily="@font/grobold"
+                    android:textAlignment="center"
                     android:textColor="@color/white"
-                    android:fontFamily="@font/grobold"/>
-            </androidx.appcompat.widget.LinearLayoutCompat>>
-        </androidx.appcompat.widget.LinearLayoutCompat>
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:background="@drawable/crear_retos_button"
-            android:padding="12dp"
+                    android:textSize="@dimen/textMd" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/jugarGameOne"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:background="@drawable/participar_button"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/grobold"
+                        android:text="PARTICIPAR"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/textSm" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/gameTwoLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
             android:layout_weight="9"
-            android:gravity="center_vertical">
-
+            android:paddingHorizontal="6dp">
             <ImageView
+                android:id="@+id/gameTwoImageView"
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:src="@drawable/logo"/>
-            <TextView
-                android:textColor="@color/white"
-                android:text="BALL BOX"
-                android:textAlignment="center"
-                android:textSize="@dimen/textLg"
-                android:fontFamily="@font/grobold"
-                android:id="@+id/nameGameTwo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="match_parent"/>
 
-            <TextView
-                android:textColor="@color/white"
-                android:textSize="@dimen/textLg"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Necesitas"
-                android:fontFamily="@font/grobold"
-                android:textAlignment="center"/>
-            <TextView
-                android:textColor="@color/white"
-                android:textSize="@dimen/textLg"
-                android:fontFamily="@font/grobold"
-                android:id="@+id/ticketGameTwo"
-                android:text="1 eTICKETS"
-                android:textAlignment="center"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:textColor="@color/white"
-                android:textAlignment="center"
-                android:textSize="@dimen/textLg"
-                android:id="@+id/dateGameTwo"
-                android:fontFamily="@font/grobold"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
             <androidx.appcompat.widget.LinearLayoutCompat
-                android:id="@+id/jugarGameTwo"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:background="@drawable/participar_button"
-                android:gravity="center">
+                android:layout_height="match_parent"
+                android:layout_weight="9"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:padding="12dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/iconTwo"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:src="@drawable/logo" />
+
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:id="@+id/nameGameTwo"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="PARTICIPAR"
+                    android:fontFamily="@font/grobold"
+                    android:text="BALL BOX"
+                    android:textAlignment="center"
                     android:textColor="@color/white"
-                    android:fontFamily="@font/grobold"/>
+                    android:textSize="@dimen/textLg" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/grobold"
+                    android:text="Necesitas"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/textLg" />
+
+                <TextView
+                    android:id="@+id/dateGameTwo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/grobold"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/textLg" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/jugarGameTwo"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@drawable/participar_button"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/grobold"
+                        android:text="PARTICIPAR"
+                        android:textColor="@color/white" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
             </androidx.appcompat.widget.LinearLayoutCompat>
-        </androidx.appcompat.widget.LinearLayoutCompat>
-        <androidx.appcompat.widget.LinearLayoutCompat
-            android:padding="12dp"
-            android:background="@drawable/crear_retos_button"
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/gameThreeLayout"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:orientation="vertical"
             android:layout_weight="10"
-            android:paddingHorizontal="12dp"
-            android:gravity="center_vertical">
+            android:paddingHorizontal="6dp">
             <ImageView
+                android:id="@+id/gameThreeImageView"
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:src="@drawable/logo"/>
-            <TextView
-                android:textColor="@color/white"
-                android:textAlignment="center"
-                android:text="CANASTA REVES"
-                android:textSize="@dimen/textMd"
-                android:fontFamily="@font/grobold"
-                android:id="@+id/nameGameThree"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-            <TextView
-                android:textColor="@color/white"
-                android:textSize="@dimen/textMd"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Necesitas"
-                android:fontFamily="@font/grobold"
-                android:textAlignment="center"/>
-            <TextView
-                android:textColor="@color/white"
-                android:textAlignment="center"
-                android:textSize="@dimen/textMd"
-                android:fontFamily="@font/grobold"
-                android:id="@+id/ticketGameThree"
-                android:text="1 eTICKETS"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-            <TextView
-                android:textColor="@color/white"
-                android:textSize="@dimen/textMd"
-                android:fontFamily="@font/grobold"
-                android:text="Sep/30/2023"
-                android:textAlignment="center"
-                android:id="@+id/dateGameThree"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="match_parent"/>
             <androidx.appcompat.widget.LinearLayoutCompat
-                android:id="@+id/jugarGameThree"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:background="@drawable/participar_button"
-                android:gravity="center">
+                android:layout_height="200dp"
+                android:layout_weight="10"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:padding="12dp"
+                android:paddingHorizontal="12dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/iconThree"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:src="@drawable/logo" />
+
                 <TextView
-                    android:textSize="@dimen/textSm"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/nameGameThree"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="PARTICIPAR"
+                    android:fontFamily="@font/grobold"
+                    android:text="CANASTA REVES"
+                    android:textAlignment="center"
                     android:textColor="@color/white"
-                    android:fontFamily="@font/grobold"/>
+                    android:textSize="@dimen/textMd" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/grobold"
+                    android:text="Necesitas"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/textMd" />
+
+                <TextView
+                    android:id="@+id/dateGameThree"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/grobold"
+                    android:text="Sep/30/2023"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/textMd" />
+
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/jugarGameThree"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:background="@drawable/participar_button"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/grobold"
+                        android:text="PARTICIPAR"
+                        android:textColor="@color/white"
+                        android:textSize="@dimen/textSm" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
             </androidx.appcompat.widget.LinearLayoutCompat>
-        </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 
     <androidx.appcompat.widget.LinearLayoutCompat
@@ -244,7 +277,7 @@
             android:paddingVertical="12dp"
             android:background="@drawable/crear_retos_button">
             <TextView
-                android:textSize="@dimen/textLg"
+                android:textSize="@dimen/textMd"
                 android:textColor="@color/white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -253,7 +286,7 @@
                 android:textAlignment="center" />
 
             <TextView
-                android:textSize="@dimen/textLg"
+                android:textSize="@dimen/textMd"
                 android:textColor="@color/white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -9,6 +9,7 @@ public class Game {
     public String description = "";
     public String background = "";
     public String icon = "";
+    public String videoguide = "";
 
     public Game() {
 

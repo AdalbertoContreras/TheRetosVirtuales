@@ -27,6 +27,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.thereto.model.Game;
 import com.thereto.theretosvirtuales.R;
 import com.thereto.theretosvirtuales.databinding.FragmentHomeBinding;
+import com.thereto.theretosvirtuales.helpers.Fecha;
 import com.thereto.theretosvirtuales.ui.eTickets.ETicketsFragment;
 import com.thereto.theretosvirtuales.ui.ver_reto.VerRetoFragment;
 
@@ -153,7 +154,7 @@ public class InicioFragment extends Fragment {
             if (juegosEnVista[0] != null) {
                 binding.gameOneLayout.setVisibility(View.VISIBLE);
                 binding.nameGameOne.setText(juegosEnVista[0].name_challeng);
-                binding.dateGameOne.setText(juegosEnVista[0].date_limit);
+                binding.dateGameOne.setText(Fecha.formatearFecha(juegosEnVista[0].date_limit));
                 try {
                     String svgFondoContent = juegosEnVista[0].background;
                     String svgIconContent = juegosEnVista[0].icon;
@@ -170,7 +171,7 @@ public class InicioFragment extends Fragment {
                 binding.gameOneLayout.setVisibility(View.INVISIBLE);
             }
             binding.nameGameTwo.setText(juegosEnVista[1].name_challeng);
-            binding.dateGameTwo.setText(juegosEnVista[1].date_limit);
+            binding.dateGameTwo.setText(Fecha.formatearFecha(juegosEnVista[1].date_limit));
             try {
                 String svgFondoContent = juegosEnVista[1].background;
                 String svgIconContent = juegosEnVista[1].icon;
@@ -186,7 +187,7 @@ public class InicioFragment extends Fragment {
             if (juegosEnVista[2] != null) {
                 binding.gameThreeLayout.setVisibility(View.VISIBLE);
                 binding.nameGameThree.setText(juegosEnVista[2].name_challeng);
-                binding.dateGameThree.setText(juegosEnVista[2].date_limit);
+                binding.dateGameThree.setText(Fecha.formatearFecha(juegosEnVista[2].date_limit));
                 try {
                     String svgFondoContent = juegosEnVista[2].background;
                     String svgIconContent = juegosEnVista[2].icon;

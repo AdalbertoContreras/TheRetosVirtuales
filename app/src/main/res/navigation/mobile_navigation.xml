@@ -31,6 +31,11 @@
         tools:layout="@layout/fragment_como_jugar" />
 
     <fragment
+        android:id="@+id/instrucciones"
+        android:name="com.thereto.theretosvirtuales.ui.instrucciones.InstruccionesFragment"
+        android:label="@string/menu_slideshow"
+        tools:layout="@layout/fragment_instrucciones" />
+    <fragment
         android:id="@+id/nav_quienes_somos"
         android:name="com.thereto.theretosvirtuales.ui.como_jugar.ComoJugarFragment"
         android:label="@string/menu_slideshow"

@@ -48,6 +48,9 @@ public class VerRetoFragment extends Fragment {
                         game.description = documentSnapshot.getString("description");
                         game.name_challeng = documentSnapshot.getString("name_challeng");
                         game.videoguide = documentSnapshot.getString("videoguide");
+                        game.tickets = documentSnapshot.getLong("tickets").intValue();
+                        binding.ticketsTextView.setText(game.tickets + "");
+                        binding.acumulatedTicketsTextView.setText(game.accumulated_tickets + "");
                         binding.descripcionTextView.setText(game.description);
                         binding.tituloJuegoTextView.setText(game.name_challeng);
                         mostrarVideo();

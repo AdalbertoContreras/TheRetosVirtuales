@@ -10,6 +10,7 @@ public class Game {
     public String background = "";
     public String icon = "";
     public String videoguide = "";
+    public int tickets = 0;
 
     public Game() {
 

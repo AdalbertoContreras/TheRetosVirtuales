@@ -9,13 +9,54 @@
     tools:context=".ui.inicio.InicioFragment"
     android:background="@color/white">
 
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/linearLayoutCompat4"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <ImageView
+            android:id="@+id/ingresoRegistroButtonHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ingreso_registro_button_header"
+            android:visibility="gone"
+            android:layout_weight="1"/>
+        <ImageView
+            android:id="@+id/premiosButtonHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/premios_button_heaader"
+            android:layout_weight="1"/>
+        <ImageView
+            android:id="@+id/comoParticiparButtonHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/como_participar_button_header"
+            android:layout_weight="1"/>
+        <ImageView
+            android:id="@+id/quienesSomosButtonHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/quienes_somos_button_header"
+            android:layout_weight="1"/>
+        <ImageView
+            android:id="@+id/eTicketsButtonHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/eticket_button_header"
+            android:layout_weight="1"/>
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
     <ImageView
         android:id="@+id/imageView4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:src="@drawable/participa_image"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat4" />
 
     <WebView
         android:id="@+id/web_view"
@@ -29,6 +70,7 @@
         android:id="@+id/listaContenerLayout"
         android:layout_width="match_parent"
         android:layout_height="260dp"
+        android:visibility="invisible"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -74,14 +116,6 @@
                     android:textColor="@color/white"
                     android:textSize="@dimen/textMd" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/grobold"
-                    android:text="Necesitas"
-                    android:textAlignment="center"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/textMd" />
 
                 <TextView
                     android:id="@+id/dateGameOne"
@@ -148,14 +182,6 @@
                     android:textColor="@color/white"
                     android:textSize="@dimen/textLg" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/grobold"
-                    android:text="Necesitas"
-                    android:textAlignment="center"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/textLg" />
 
                 <TextView
                     android:id="@+id/dateGameTwo"
@@ -221,14 +247,6 @@
                     android:textColor="@color/white"
                     android:textSize="@dimen/textMd" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/grobold"
-                    android:text="Necesitas"
-                    android:textAlignment="center"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/textMd" />
 
                 <TextView
                     android:id="@+id/dateGameThree"
@@ -286,6 +304,7 @@
                 android:textAlignment="center" />
 
             <TextView
+                android:id="@+id/crearRetoButton"
                 android:textSize="@dimen/textMd"
                 android:textColor="@color/white"
                 android:layout_width="match_parent"

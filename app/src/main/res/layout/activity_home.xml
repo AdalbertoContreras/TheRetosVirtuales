@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:openDrawer="left">
+    tools:openDrawer="right">
 
     <include
         android:id="@+id/app_bar_home"
@@ -18,7 +18,7 @@
         android:id="@+id/nav_view"
         android:layout_width="@dimen/navigation_view_width"
         android:layout_height="match_parent"
-        android:layout_gravity="left"
+        android:layout_gravity="right"
         android:background="@color/white"
         android:fitsSystemWindows="true" >
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -34,29 +34,23 @@
                 android:orientation="vertical"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
-                <androidx.cardview.widget.CardView
-                    style="@style/shadowInputSinMargin"
+                <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/usuarioButton"
+                    android:background="@drawable/nombre_usuario_fondo"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="@dimen/input_height"
+                    android:gravity="center">
 
-                    <androidx.appcompat.widget.LinearLayoutCompat
-                        android:id="@+id/usuarioButton"
-                        style="@style/IngresoRegistroButton"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/input_height"
-                        android:gravity="center">
-
-                        <TextView
-                            android:id="@+id/userTextView"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/grobold"
-                            android:textSize="20sp"
-                            android:text="Ingreso/Registro"
-                            android:textAlignment="center"
-                            android:textColor="@color/white" />
-                    </androidx.appcompat.widget.LinearLayoutCompat>
-                </androidx.cardview.widget.CardView>
+                <TextView
+                    android:id="@+id/userTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/grobold"
+                    android:textSize="20sp"
+                    android:text="Adalberto contreras"
+                    android:textAlignment="center"
+                    android:textColor="@color/white" />
+                </androidx.appcompat.widget.LinearLayoutCompat>
 
                 <androidx.cardview.widget.CardView
                     style="@style/shadowInputSinMargin"
@@ -88,19 +82,10 @@
 
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:id="@+id/premiosButton"
-                        style="@style/PremiosButton"
+                        android:background="@drawable/premios_button"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/input_height"
                         android:gravity="center">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:textSize="20sp"
-                            android:fontFamily="@font/grobold"
-                            android:text="Premios"
-                            android:textAlignment="center"
-                            android:textColor="@color/white" />
                     </androidx.appcompat.widget.LinearLayoutCompat>
                 </androidx.cardview.widget.CardView>
 
@@ -111,19 +96,10 @@
 
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:id="@+id/comoJugarButton"
-                        style="@style/ComoJugarButton"
+                        android:background="@drawable/como_participar_button"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/input_height"
                         android:gravity="center">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/grobold"
-                            android:textSize="20sp"
-                            android:text="¿Como jugar?"
-                            android:textAlignment="center"
-                            android:textColor="@color/white" />
                     </androidx.appcompat.widget.LinearLayoutCompat>
                 </androidx.cardview.widget.CardView>
 
@@ -157,19 +133,10 @@
 
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:id="@+id/eTicketsButton"
-                        style="@style/ETicketsButton"
+                        android:background="@drawable/e_tickets_button"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/input_height"
                         android:gravity="center">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/grobold"
-                            android:textSize="20sp"
-                            android:text="eTickects"
-                            android:textAlignment="center"
-                            android:textColor="@color/white" />
                     </androidx.appcompat.widget.LinearLayoutCompat>
                 </androidx.cardview.widget.CardView>
 
@@ -180,19 +147,10 @@
 
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:id="@+id/contactanosButton"
-                        style="@style/Contactanos"
+                        android:background="@drawable/contactanos_button"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/input_height"
                         android:gravity="center">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/grobold"
-                            android:textSize="20sp"
-                            android:text="Contáctatnos"
-                            android:textAlignment="center"
-                            android:textColor="@color/white" />
                     </androidx.appcompat.widget.LinearLayoutCompat>
                 </androidx.cardview.widget.CardView>
                 <androidx.cardview.widget.CardView
@@ -202,19 +160,10 @@
 
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:id="@+id/miCuentaButton"
-                        style="@style/MiCuentaButton"
+                        android:background="@drawable/mi_cuenta_button"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/input_height"
                         android:gravity="center">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/grobold"
-                            android:textSize="20sp"
-                            android:text="Mi cuenta"
-                            android:textAlignment="center"
-                            android:textColor="@color/white" />
                     </androidx.appcompat.widget.LinearLayoutCompat>
                 </androidx.cardview.widget.CardView>
                 <androidx.cardview.widget.CardView
@@ -224,7 +173,7 @@
 
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:id="@+id/salirButton"
-                        style="@style/SalirButton"
+                        android:background="@drawable/salir_button"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/input_height"
                         android:gravity="center">

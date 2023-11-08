@@ -72,7 +72,7 @@ public class Home extends AppCompatActivity  implements LogoutDialogListener, On
         NavigationUI.setupWithNavController(navigationView, navController);
         amburguesaImageView = findViewById(R.id.amburguesaImageView);
         amburguesaImageView.setOnClickListener(v -> {
-            drawer.openDrawer(GravityCompat.START);
+            drawer.openDrawer(GravityCompat.END);
         });
         binding.ingresoButton.setOnClickListener(v -> {
             LoginFragment loginFragment = new LoginFragment();
@@ -81,77 +81,44 @@ public class Home extends AppCompatActivity  implements LogoutDialogListener, On
                     .replace(R.id.nav_host_fragment_content_home, loginFragment)
                     .addToBackStack(null)
                     .commit();
-            drawer.closeDrawer(GravityCompat.START);
+            drawer.closeDrawer(GravityCompat.END);
         });
         binding.premiosButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // Define la URL que deseas abrir en el navegador
                 String url = "https://theretos.co/app/tabs/marketPlace/store";
-
-                // Crea un intent con la acción ACTION_VIEW
-                Intent intent = new Intent(Intent.ACTION_VIEW);
-                // Establece la URL en el intent
-                intent.setData(Uri.parse(url));
-
-                // Verifica si hay una aplicación que pueda manejar la acción
-                if (intent.resolveActivity(getPackageManager()) != null) {
-                    // Abre el navegador con la URL especificada
-                    startActivity(intent);
-                } else {
-                    // No se encontró ninguna aplicación para manejar la acción
-                    // Puedes mostrar un mensaje de error o manejarlo de otra manera
-                }
+                navegarPagina(url);
             }
         });
         binding.comoJugarButton.setOnClickListener(v -> {
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.nav_host_fragment_content_home, new ComoJugarFragment())
-                    .addToBackStack(null)
-                    .commit();
-            drawer.closeDrawer(GravityCompat.START);
+            // Define la URL que deseas abrir en el navegador
+            String url = "https://theretos.co/about";
+            navegarPagina(url);
         });
         binding.quienesSomosButton.setOnClickListener(v -> {
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.nav_host_fragment_content_home, new QuienesSomosFragment())
                     .addToBackStack(null)
                     .commit();
-            drawer.closeDrawer(GravityCompat.START);
+            drawer.closeDrawer(GravityCompat.END);
         });
         binding.eTicketsButton.setOnClickListener(v -> {
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.nav_host_fragment_content_home, new ETicketsFragment())
-                    .addToBackStack(null)
-                    .commit();
-            drawer.closeDrawer(GravityCompat.START);
+            // Define la URL que deseas abrir en el navegador
+            String url = "https://theretos.co/app/tabs/marketPlace";
+            navegarPagina(url);
         });
-        binding.contactanosButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Define la URL que deseas abrir en el navegador
-                String url = "https://theretos.co/support";
-
-                // Crea un intent con la acción ACTION_VIEW
-                Intent intent = new Intent(Intent.ACTION_VIEW);
-                // Establece la URL en el intent
-                intent.setData(Uri.parse(url));
-
-                // Verifica si hay una aplicación que pueda manejar la acción
-                if (intent.resolveActivity(getPackageManager()) != null) {
-                    // Abre el navegador con la URL especificada
-                    startActivity(intent);
-                } else {
-                    // No se encontró ninguna aplicación para manejar la acción
-                    // Puedes mostrar un mensaje de error o manejarlo de otra manera
-                }
-            }
+        binding.contactanosButton.setOnClickListener(v -> {
+            // Define la URL que deseas abrir en el navegador
+            String url = "https://theretos.co/support";
+            navegarPagina(url);
         });
         binding.logoImageView.setOnClickListener(v -> {
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.nav_host_fragment_content_home, new InicioFragment())
                     .addToBackStack(null)
                     .commit();
-            drawer.closeDrawer(GravityCompat.START);
+            drawer.closeDrawer(GravityCompat.END);
         });
         binding.salirButton.setOnClickListener(v -> {
             FragmentManager fragmentManager = getSupportFragmentManager(); // Para actividades
@@ -162,6 +129,23 @@ public class Home extends AppCompatActivity  implements LogoutDialogListener, On
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
         consultarJuegos();
+    }
+
+    public void navegarPagina(String url) {
+
+        // Crea un intent con la acción ACTION_VIEW
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        // Establece la URL en el intent
+        intent.setData(Uri.parse(url));
+
+        // Verifica si hay una aplicación que pueda manejar la acción
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            // Abre el navegador con la URL especificada
+            startActivity(intent);
+        } else {
+            // No se encontró ninguna aplicación para manejar la acción
+            // Puedes mostrar un mensaje de error o manejarlo de otra manera
+        }
     }
 
     private void consultarJuegos() {

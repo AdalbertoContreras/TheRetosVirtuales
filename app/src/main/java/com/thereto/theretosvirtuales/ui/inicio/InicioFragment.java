@@ -1,9 +1,11 @@
 package com.thereto.theretosvirtuales.ui.inicio;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
 import android.graphics.drawable.PictureDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -20,6 +22,8 @@ import androidx.fragment.app.Fragment;
 import com.caverock.androidsvg.SVG;
 import com.caverock.androidsvg.SVGParseException;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -28,14 +32,16 @@ import com.thereto.model.Game;
 import com.thereto.theretosvirtuales.R;
 import com.thereto.theretosvirtuales.databinding.FragmentHomeBinding;
 import com.thereto.theretosvirtuales.helpers.Fecha;
+import com.thereto.theretosvirtuales.interfas.OnTaskCompleteListener;
 import com.thereto.theretosvirtuales.ui.eTickets.ETicketsFragment;
+import com.thereto.theretosvirtuales.ui.login.LoginFragment;
 import com.thereto.theretosvirtuales.ui.ver_reto.VerRetoFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class InicioFragment extends Fragment {
+public class InicioFragment extends Fragment implements OnTaskCompleteListener {
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     private FragmentHomeBinding binding;
     private View mCustomView;
@@ -44,6 +50,7 @@ public class InicioFragment extends Fragment {
     private Game[] juegosEnVista = {};
     private float x1, x2;
     static final int MIN_DISTANCE = 20;
+    private FirebaseAuth mAuth;
     private int pos = 0;
     @SuppressLint("ClickableViewAccessibility")
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -60,6 +67,34 @@ public class InicioFragment extends Fragment {
         });
         binding.jugarGameThree.setOnClickListener(v -> {
             verJuego(juegosEnVista[2]);
+        });
+        binding.ingresoRegistroButtonHeader.setOnClickListener(v -> {
+            LoginFragment loginFragment = new LoginFragment();
+            loginFragment.setAutenticarListener(this);
+            getActivity().getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.nav_host_fragment_content_home, loginFragment)
+                    .addToBackStack(null)
+                    .commit();
+        });
+        binding.premiosButtonHeader.setOnClickListener(v -> {
+            // Define la URL que deseas abrir en el navegador
+            String url = "https://theretos.co/app/tabs/marketPlace/store";
+            navegarPagina(url);
+        });
+        binding.comoParticiparButtonHeader.setOnClickListener(v -> {
+            // Define la URL que deseas abrir en el navegador
+            String url = "https://theretos.co/about";
+            navegarPagina(url);
+        });
+        binding.eTicketsButtonHeader.setOnClickListener(v -> {
+            // Define la URL que deseas abrir en el navegador
+            String url = "https://theretos.co/app/tabs/marketPlace";
+            navegarPagina(url);
+        });
+        binding.crearRetoButton.setOnClickListener(v -> {
+            // Define la URL que deseas abrir en el navegador
+            String url = "https://theretos.co/app/tabs/marketPlace";
+            navegarPagina(url);
         });
         Objects.requireNonNull(binding.listaContenerLayout).setOnTouchListener((v, event) -> {
             switch (event.getAction()) {
@@ -86,7 +121,25 @@ public class InicioFragment extends Fragment {
             return false;
         });
         consultarJuegos();
+        updateUi();
         return root;
+    }
+
+    public void navegarPagina(String url) {
+
+        // Crea un intent con la acción ACTION_VIEW
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        // Establece la URL en el intent
+        intent.setData(Uri.parse(url));
+
+        // Verifica si hay una aplicación que pueda manejar la acción
+        if (intent.resolveActivity(getActivity().getPackageManager()) != null) {
+            // Abre el navegador con la URL especificada
+            startActivity(intent);
+        } else {
+            // No se encontró ninguna aplicación para manejar la acción
+            // Puedes mostrar un mensaje de error o manejarlo de otra manera
+        }
     }
 
     private void mostrarVideo() {
@@ -147,6 +200,7 @@ public class InicioFragment extends Fragment {
             }
         }
         imprimirJuegosEnVista();
+        binding.listaContenerLayout.setVisibility(View.VISIBLE);
     }
 
     private void imprimirJuegosEnVista() {
@@ -259,5 +313,20 @@ public class InicioFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         binding = null;
+    }
+
+    public void updateUi() {
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if(currentUser == null){
+            binding.ingresoRegistroButtonHeader.setVisibility(View.VISIBLE);
+        } else {
+            binding.ingresoRegistroButtonHeader.setVisibility(View.GONE);
+        }
+    }
+
+    @Override
+    public void onTaskComplete() {
+        updateUi();
     }
 }

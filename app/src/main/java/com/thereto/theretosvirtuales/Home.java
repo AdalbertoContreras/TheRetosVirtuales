@@ -33,12 +33,8 @@ import com.thereto.theretosvirtuales.databinding.ActivityHomeBinding;
 import com.thereto.theretosvirtuales.dialog.LogoutConfirmationDialogFragment;
 import com.thereto.theretosvirtuales.interfas.LogoutDialogListener;
 import com.thereto.theretosvirtuales.interfas.OnTaskCompleteListener;
-import com.thereto.theretosvirtuales.ui.como_jugar.ComoJugarFragment;
-import com.thereto.theretosvirtuales.ui.contactanos.ContactanosFragment;
-import com.thereto.theretosvirtuales.ui.eTickets.ETicketsFragment;
 import com.thereto.theretosvirtuales.ui.inicio.InicioFragment;
 import com.thereto.theretosvirtuales.ui.login.LoginFragment;
-import com.thereto.theretosvirtuales.ui.premios.PremiosFragment;
 import com.thereto.theretosvirtuales.ui.quienes_somos.QuienesSomosFragment;
 
 import java.util.ArrayList;

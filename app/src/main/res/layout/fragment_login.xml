@@ -78,7 +78,7 @@
                             <androidx.appcompat.widget.AppCompatButton
                                 android:id="@+id/iniciarSesionButton"
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent"
+                                android:layout_height="@dimen/button_height"
                                 style="@style/IniciarSesionButton"
                                 android:textSize="@dimen/textLg"
                                 android:fontFamily="@font/montserrat_bold_font"
@@ -96,7 +96,7 @@
                             <androidx.appcompat.widget.AppCompatButton
                                 android:id="@+id/crearCuentaButton"
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent"
+                                android:layout_height="@dimen/button_height"
                                 android:text="@string/crear_una_cuenta"
                                 android:layout_weight="1"
                                 android:textSize="@dimen/textLg"

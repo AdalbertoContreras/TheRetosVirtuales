@@ -4,17 +4,17 @@
     <item android:right="0dp" android:left="0dp" android:top="0dp" android:bottom="0dp">
         <shape android:shape="rectangle">
             <solid android:color="#FCD30E" />
-            <corners android:bottomRightRadius="8dp" android:topRightRadius="8dp" />
+            <corners android:bottomRightRadius="@dimen/border_radius_value" android:topRightRadius="@dimen/border_radius_value" />
         </shape>
     </item>
     <!-- Borde blanco -->
-    <item android:right="4dp" android:left="4dp" android:top="4dp" android:bottom="4dp">
+    <item android:right="@dimen/border_value" android:left="@dimen/border_value" android:top="@dimen/border_value" android:bottom="@dimen/border_value">
         <shape android:shape="rectangle">
             <gradient
                 android:startColor="#144290"
                 android:endColor="#039DDB"
                 android:angle="0" />
-            <corners android:bottomRightRadius="8dp" android:topRightRadius="8dp" />
+            <corners android:bottomRightRadius="@dimen/border_radius_value" android:topRightRadius="@dimen/border_radius_value" />
         </shape>
     </item>
 </layer-list>

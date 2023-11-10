@@ -250,7 +250,7 @@
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/crearCuentaButton"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="@dimen/input_height"
                         style="@style/CrearCuentaButton"
                         android:fontFamily="@font/montserrat_bold_font"
                         android:textSize="@dimen/textXl"

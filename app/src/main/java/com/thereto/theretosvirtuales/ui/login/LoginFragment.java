@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.thereto.theretosvirtuales.R;
 import com.thereto.theretosvirtuales.databinding.FragmentLoginBinding;
 import com.thereto.theretosvirtuales.interfas.OnTaskCompleteListener;
@@ -68,12 +69,23 @@ public class LoginFragment extends Fragment {
         mAuth.signInWithEmailAndPassword(binding.correoElectronicoEditText.getText().toString(), binding.contrasenaEditText.getText().toString())
         .addOnCompleteListener( getActivity(), task -> {
             if (task.isSuccessful()) {
-                // Sign in success, update UI with the signed-in user's information
-                Log.d("login google", "signInWithEmail:success");
-                Toast.makeText(getContext(), "Bienvenidos a TheRetos", Toast.LENGTH_SHORT).show();
-                if (autenticarListener != null) {
-                    autenticarListener.onTaskComplete();
+                mAuth = FirebaseAuth.getInstance();
+                FirebaseUser currentUser = mAuth.getCurrentUser();
+                if(currentUser == null){
+
+                } else {
+                   if (!currentUser.isEmailVerified()) {
+                       FirebaseAuth.getInstance().signOut();
+                       Toast.makeText(getContext(), "Este correo no se encuentra verificado.", Toast.LENGTH_SHORT).show();
+                   } else {
+                       // Sign in success, update UI with the signed-in user's information
+                       Toast.makeText(getContext(), "Bienvenidos a TheRetos", Toast.LENGTH_SHORT).show();
+                       if (autenticarListener != null) {
+                           autenticarListener.onTaskComplete();
+                       }
+                   }
                 }
+
 
             } else {
                 // If sign in fails, display a message to the user.

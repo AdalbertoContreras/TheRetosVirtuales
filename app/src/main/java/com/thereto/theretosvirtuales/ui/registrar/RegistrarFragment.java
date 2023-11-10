@@ -29,11 +29,15 @@ import com.thereto.theretosvirtuales.databinding.FragmentLoginBinding;
 import com.thereto.theretosvirtuales.databinding.FragmentRegistroBinding;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.OnFailureListener;
+import com.thereto.theretosvirtuales.dialog.DialogCallback;
+import com.thereto.theretosvirtuales.dialog.UsuarioRegistrado;
 
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
+
 public class RegistrarFragment extends Fragment {
 
     private FragmentRegistroBinding binding;
@@ -149,10 +153,32 @@ public class RegistrarFragment extends Fragment {
                                 });
                         collectionReferencePlayer.document(userId).set(newPlayer)
                                 .addOnSuccessListener(aVoid -> {
+                                    mAuth.signOut();
                                     // Éxito
                                     user.sendEmailVerification().addOnCompleteListener(task1 -> {
                                         if (task1.isSuccessful()) {
-                                            Toast.makeText(requireContext(), "Usuario registrado en el sistema, se le ha enviado un correo de verificacion con el correo que se registro.", Toast.LENGTH_SHORT).show();
+                                            new UsuarioRegistrado(getContext(), new DialogCallback() {
+                                                @Override
+                                                public void onPositiveButtonClick() {
+                                                    new UsuarioRegistrado(getContext(), new DialogCallback() {
+                                                        @Override
+                                                        public void onPositiveButtonClick() {
+                                                            requireActivity().onBackPressed();
+                                                        }
+
+                                                        @Override
+                                                        public void onNegativeButtonClick() {
+                                                            requireActivity().onBackPressed();
+                                                        }
+                                                    }).show();
+                                                }
+
+                                                @Override
+                                                public void onNegativeButtonClick() {
+
+                                                }
+                                            }).show();
+
                                         } else {
                                             Toast.makeText(requireContext(), "Usuario registrado en el sistema.", Toast.LENGTH_SHORT).show();
                                         }
@@ -164,7 +190,7 @@ public class RegistrarFragment extends Fragment {
                                     Log.w("Firestore", "Error al crear documento", e);
                                 });
                     } else {
-
+                        Toast.makeText(requireContext(), "Este correo ya se encuentra registrado en TheRetos.", Toast.LENGTH_SHORT).show();
                     }
                 });
     }

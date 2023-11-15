@@ -150,7 +150,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="@drawable/fecha_juego_fondo"
-                    android:gravity="center">
+                    android:gravity="center"
+                    android:paddingVertical="5dp">
 
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:id="@+id/linearLayoutCompat5"
@@ -161,8 +162,7 @@
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         android:paddingLeft="22dp"
-                        android:gravity="center"
-                        android:layout_marginTop="10dp">
+                        android:gravity="center">
 
                         <ImageView
                             android:id="@+id/imageView3"

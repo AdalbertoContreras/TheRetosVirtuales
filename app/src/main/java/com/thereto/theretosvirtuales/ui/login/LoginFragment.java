@@ -78,6 +78,8 @@ public class LoginFragment extends Fragment {
                        FirebaseAuth.getInstance().signOut();
                        Toast.makeText(getContext(), "Este correo no se encuentra verificado.", Toast.LENGTH_SHORT).show();
                    } else {
+                       binding.correoElectronicoEditText.setText("");
+                       binding.contrasenaEditText.setText("");
                        // Sign in success, update UI with the signed-in user's information
                        Toast.makeText(getContext(), "Bienvenidos a TheRetos", Toast.LENGTH_SHORT).show();
                        if (autenticarListener != null) {

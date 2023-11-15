@@ -30,6 +30,7 @@ import com.thereto.theretosvirtuales.databinding.FragmentRegistroBinding;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.thereto.theretosvirtuales.dialog.DialogCallback;
+import com.thereto.theretosvirtuales.dialog.MensajeBienvenida;
 import com.thereto.theretosvirtuales.dialog.UsuarioRegistrado;
 
 import java.util.Calendar;
@@ -160,7 +161,7 @@ public class RegistrarFragment extends Fragment {
                                             new UsuarioRegistrado(getContext(), new DialogCallback() {
                                                 @Override
                                                 public void onPositiveButtonClick() {
-                                                    new UsuarioRegistrado(getContext(), new DialogCallback() {
+                                                    new MensajeBienvenida(getContext(), new DialogCallback() {
                                                         @Override
                                                         public void onPositiveButtonClick() {
                                                             requireActivity().onBackPressed();

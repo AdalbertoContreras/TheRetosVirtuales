@@ -193,6 +193,9 @@ public class Home extends AppCompatActivity  implements LogoutDialogListener, On
             if (user != null) {
                 // Name
                 String name = user.getDisplayName();
+                if (name.isEmpty()) {
+                    name = "---";
+                }
                 binding.userTextView.setText(name);
             }
         } else {

@@ -41,6 +41,7 @@ public class UsuarioRegistrado {
 
         builder.setView(dialogView);
         dialog = builder.create();
+        dialog.setCancelable(false);
         dialog.show();
     }
 }

@@ -5,6 +5,7 @@ dependencies {
     }
 
 android {
+    namespace = "com.thereto.launcher"
     ndkPath "D:/Program Files/unity/2022.3.11f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK"
 
     compileSdkVersion 32
@@ -18,7 +19,7 @@ android {
     defaultConfig {
         minSdkVersion 22
         targetSdkVersion 32
-        applicationId 'com.theretos.virtual.juegocarrera'
+        applicationId 'com.thereto.virtual.juegocarrera'
         ndk {
             abiFilters 'armeabi-v7a'
         }

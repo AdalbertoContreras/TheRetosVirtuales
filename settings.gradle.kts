@@ -16,3 +16,5 @@ dependencyResolutionManagement {
 rootProject.name = "TheRetosVirtuales"
 include(":app")
 include(":app:model")
+include(":unityLibrary")
+include(":launcher")

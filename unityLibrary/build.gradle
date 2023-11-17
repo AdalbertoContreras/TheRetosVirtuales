@@ -7,6 +7,7 @@ dependencies {
 }
 
 android {
+    namespace = "com.thereto.unityLibray"
     ndkPath "D:/Program Files/unity/2022.3.11f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK"
 
     compileSdkVersion 32
@@ -23,8 +24,6 @@ android {
         ndk {
             abiFilters 'armeabi-v7a'
         }
-        versionCode 1
-        versionName '1.0'
         consumerProguardFiles 'proguard-unity.txt'
     }
 

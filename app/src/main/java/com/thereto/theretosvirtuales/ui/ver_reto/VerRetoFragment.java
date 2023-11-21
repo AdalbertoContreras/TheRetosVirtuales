@@ -1,5 +1,6 @@
 package com.thereto.theretosvirtuales.ui.ver_reto;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -74,6 +75,15 @@ public class VerRetoFragment extends Fragment {
     .addOnFailureListener ( e ->{}
             // Ocurrió un error al consultar el documento
     );
+        binding.participarTextView.setOnClickListener(v -> {
+            Intent intent = new Intent(requireContext(), com.unity3d.player.UnityPlayerActivity.class);
+
+            // Puedes pasar datos a la nueva actividad usando putExtra
+            intent.putExtra("clave", "valor");
+
+            // Iniciar la nueva actividad
+            startActivity(intent);
+        });
         return root;
     }
 

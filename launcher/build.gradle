@@ -8,18 +8,16 @@ android {
     namespace = "com.thereto.launcher"
     ndkPath "D:/Program Files/unity/2022.3.11f1/Editor/Data/PlaybackEngines/AndroidPlayer/NDK"
 
-    compileSdkVersion 32
-    buildToolsVersion '32.0.0'
+    compileSdk = 34
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
 
     defaultConfig {
-        minSdkVersion 22
-        targetSdkVersion 32
-        applicationId 'com.thereto.virtual.juegocarrera'
+        minSdk = 25
+        targetSdk = 34
         ndk {
             abiFilters 'armeabi-v7a'
         }

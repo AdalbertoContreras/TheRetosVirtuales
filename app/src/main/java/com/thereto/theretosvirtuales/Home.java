@@ -55,6 +55,7 @@ public class Home extends AppCompatActivity  implements LogoutDialogListener, On
         setContentView(binding.getRoot());
 
 
+
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
         // Passing each menu ID as a set of Ids because each

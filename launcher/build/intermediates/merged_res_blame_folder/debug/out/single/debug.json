@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "com.thereto.launcher-merged_res-4:/mipmap-mdpi_app_icon.png.flat",
+        "source": "com.thereto.launcher-main-6:/mipmap-mdpi/app_icon.png"
+    },
+    {
+        "merged": "com.thereto.launcher-merged_res-4:/mipmap-mdpi_ic_launcher_background.png.flat",
+        "source": "com.thereto.launcher-main-6:/mipmap-mdpi/ic_launcher_background.png"
+    },
+    {
+        "merged": "com.thereto.launcher-merged_res-4:/mipmap-anydpi-v26_app_icon_round.xml.flat",
+        "source": "com.thereto.launcher-main-6:/mipmap-anydpi-v26/app_icon_round.xml"
+    },
+    {
+        "merged": "com.thereto.launcher-merged_res-4:/mipmap-mdpi_ic_launcher_foreground.png.flat",
+        "source": "com.thereto.launcher-main-6:/mipmap-mdpi/ic_launcher_foreground.png"
+    },
+    {
+        "merged": "com.thereto.launcher-merged_res-4:/drawable-xhdpi_app_banner.png.flat",
+        "source": "com.thereto.launcher-main-6:/drawable-xhdpi/app_banner.png"
+    },
+    {
+        "merged": "com.thereto.launcher-merged_res-4:/mipmap-anydpi-v26_app_icon.xml.flat",
+        "source": "com.thereto.launcher-main-6:/mipmap-anydpi-v26/app_icon.xml"
+    }
+]

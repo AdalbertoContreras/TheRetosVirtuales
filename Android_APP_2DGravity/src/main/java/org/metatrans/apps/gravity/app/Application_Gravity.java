@@ -52,6 +52,9 @@ public abstract class Application_Gravity extends Application_2D_Base {
 	public void setNextLevel() {
 		getUserSettings().modeID = ConfigurationUtils_Level.getInstance().getNextConfigID(getUserSettings().modeID);
 		Application_Base.getInstance().storeUserSettings();
+		if (getUserSettings().modeID ==3) {
+			Application_Base.getInstance().getCurrentActivity().onBackPressed();
+		}
 		System.out.println("Next level: " + getUserSettings().modeID);
 	}
 	

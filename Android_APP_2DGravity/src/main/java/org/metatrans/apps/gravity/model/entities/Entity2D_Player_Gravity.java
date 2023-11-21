@@ -18,6 +18,7 @@ import org.metatrans.commons.model.LevelResult_Base;
 
 import android.app.Activity;
 import android.graphics.RectF;
+import android.widget.Toast;
 
 
 public class Entity2D_Player_Gravity extends Entity2D_Player {
@@ -76,7 +77,7 @@ public class Entity2D_Player_Gravity extends Entity2D_Player {
 		super.nextMoment(takts);
 
 		if (levelCompletedCondition()) {
-			
+			//Toast.makeText(Application_2D_Base.getInstance().getBaseContext(), "level completado", Toast.LENGTH_SHORT).show();
 			getGameData().level_completed = true;
 			
 			getGameData().count_stars = 3; //Work around

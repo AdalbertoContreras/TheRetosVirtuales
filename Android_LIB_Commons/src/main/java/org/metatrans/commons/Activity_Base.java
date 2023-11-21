@@ -86,22 +86,20 @@ public abstract class Activity_Base extends Activity {
 	}
 
 
-	/*@Override
+	@Override
 	public void onStart(){
 		
 		super.onStart();
-		
-		((Application_Base)getApplication()).getAnalytics().onActivity_Start(this);
+
 	}
 	
 	
 	@Override
 	public void onStop(){
-		
-		((Application_Base)getApplication()).getAnalytics().onActivity_Stop(this);
+
 		
 		super.onStop();
-	}*/
+	}
 	
 	
 	protected int getBackgroundImageID() {

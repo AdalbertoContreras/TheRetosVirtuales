@@ -222,8 +222,8 @@ public abstract class Activity_Main_Base2D extends Activity_Base_Ads_Banner {
 	public void onBackPressed() {
 		
 		//Application_2D_Base.getInstance().storeGameData();
-		startNewGame();
 		super.onBackPressed();
+
 	}
 	
 	

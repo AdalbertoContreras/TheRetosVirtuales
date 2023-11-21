@@ -1,0 +1,308 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.gravityplay"
+4    android:installLocation="auto" >
+5
+6    <uses-sdk android:minSdkVersion="25" />
+7
+8    <uses-permission android:name="android.permission.INTERNET" />
+8-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:5:5-67
+8-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:5:22-64
+9    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+9-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:6:5-79
+9-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:6:22-76
+10
+11    <uses-feature
+11-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:8:5-85
+12        android:name="android.hardware.camera"
+12-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:8:19-57
+13        android:required="false" />
+13-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:8:58-82
+14    <uses-feature
+14-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:9:5-95
+15        android:name="android.hardware.camera.autofocus"
+15-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:9:19-67
+16        android:required="false" />
+16-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:9:68-92
+17    <uses-feature
+17-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:10:5-87
+18        android:name="android.hardware.location"
+18-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:10:19-59
+19        android:required="false" />
+19-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:10:60-84
+20    <uses-feature
+20-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:11:5-91
+21        android:name="android.hardware.location.gps"
+21-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:11:19-63
+22        android:required="false" />
+22-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:11:64-88
+23    <uses-feature
+23-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:12:5-95
+24        android:name="android.hardware.location.network"
+24-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:12:19-67
+25        android:required="false" />
+25-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:12:68-92
+26    <uses-feature
+26-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:13:5-88
+27        android:name="android.hardware.bluetooth"
+27-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:13:19-60
+28        android:required="false" />
+28-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:13:61-85
+29    <uses-feature
+29-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:14:5-88
+30        android:name="android.hardware.telephony"
+30-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:14:19-60
+31        android:required="false" />
+31-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:14:61-85
+32    <uses-feature
+32-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:15:5-83
+33        android:name="android.hardware.wifi"
+33-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:15:19-55
+34        android:required="false" />
+34-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:15:56-80
+35    <uses-feature
+35-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:16:5-89
+36        android:name="android.hardware.microphone"
+36-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:16:19-61
+37        android:required="false" />
+37-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:16:62-86
+38    <uses-feature
+38-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:17:5-95
+39        android:name="android.hardware.screen.landscape"
+39-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:17:19-67
+40        android:required="false" />
+40-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:17:68-92
+41    <uses-feature
+41-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:18:5-94
+42        android:name="android.hardware.screen.portrait"
+42-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:18:19-66
+43        android:required="false" />
+43-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:18:67-91
+44    <uses-feature
+44-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:20:5-89
+45        android:name="android.hardware.touchscreen"
+45-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:20:19-62
+46        android:required="true" />
+46-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:20:63-86
+47
+48    <supports-screens
+48-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:22:5-26:36
+49        android:anyDensity="true"
+49-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:26:9-34
+50        android:largeScreens="true"
+50-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:24:9-36
+51        android:normalScreens="true"
+51-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:23:9-37
+52        android:smallScreens="true"
+52-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:22:23-50
+53        android:xlargeScreens="true" />
+53-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:25:9-37
+54
+55    <application
+55-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:29:5-158:19
+56        android:name="org.metatrans.apps.gravity.app.Application_2DGravity"
+56-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:35:9-76
+57        android:allowBackup="true"
+57-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:30:9-35
+58        android:icon="@drawable/ic_logo_gravity"
+58-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:32:9-49
+59        android:label="@string/app_gravity_name"
+59-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:33:9-49
+60        android:largeHeap="true"
+60-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:31:9-33
+61        android:theme="@style/AppTheme" >
+61-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:34:9-40
+62        <activity
+62-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:37:9-41:46
+63            android:name="org.metatrans.commons.web.Activity_WebView_StatePreservingImpl_With_VideoPlayer"
+63-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:38:13-107
+64            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode"
+64-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:39:13-122
+65            android:hardwareAccelerated="true"
+65-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:40:13-47
+66            android:theme="@style/AppTheme" />
+66-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:41:13-44
+67        <activity
+67-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:44:9-53:20
+68            android:name="org.metatrans.apps.gravity.main.Activity_Main_Gravity"
+68-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:45:13-81
+69            android:exported="true"
+69-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:49:13-36
+70            android:hardwareAccelerated="true"
+70-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:47:13-47
+71            android:screenOrientation="landscape"
+71-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:46:13-50
+72            android:theme="@style/AppTheme" >
+72-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:48:13-44
+73            <intent-filter>
+73-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:50:13-52:29
+74                <action android:name="android.intent.action.MAIN" />
+74-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:51:17-68
+74-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:51:25-66
+75            </intent-filter>
+76        </activity>
+77        <activity
+77-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:56:9-65:20
+78            android:name="org.metatrans.apps.gravity.main.Activity_Result"
+78-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:57:13-75
+79            android:exported="false"
+79-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:60:13-37
+80            android:icon="@drawable/ic_colours_tube"
+80-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:58:13-53
+81            android:theme="@style/AppTheme" >
+81-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:59:13-44
+82            <intent-filter>
+82-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:61:13-64:29
+83                <category android:name="android.intent.category.DEFAULT" />
+83-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:62:17-76
+83-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:62:27-73
+84                <category android:name="android.intent.category.LAUNCHER" />
+84-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:63:17-77
+84-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:63:27-74
+85            </intent-filter>
+86        </activity>
+87        <activity
+87-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:68:9-77:20
+88            android:name="org.metatrans.apps.gravity.menu.Activity_Menu_Levels"
+88-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:69:13-80
+89            android:exported="false"
+89-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:73:13-37
+90            android:icon="@drawable/ic_rainbow"
+90-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:70:13-48
+91            android:label="@string/levels"
+91-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:71:13-43
+92            android:theme="@style/AppTheme" >
+92-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:72:13-44
+93            <intent-filter>
+93-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:74:13-76:29
+94                <category android:name="android.intent.category.DEFAULT" />
+94-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:62:17-76
+94-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:62:27-73
+95            </intent-filter>
+96        </activity>
+97        <activity
+97-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:80:9-88:20
+98            android:name="org.metatrans.apps.gravity.menu.Activity_Menu_SpaceObjects"
+98-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:81:13-86
+99            android:exported="false"
+99-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:84:13-37
+100            android:label="@string/space_objects"
+100-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:82:13-50
+101            android:theme="@style/AppTheme" >
+101-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:83:13-44
+102            <intent-filter>
+102-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:74:13-76:29
+103                <category android:name="android.intent.category.DEFAULT" />
+103-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:62:17-76
+103-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:62:27-73
+104            </intent-filter>
+105        </activity>
+106        <activity
+106-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:91:9-99:20
+107            android:name="org.metatrans.apps.gravity.menu.Activity_Menu_Main"
+107-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:92:13-78
+108            android:exported="false"
+108-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:95:13-37
+109            android:label="@string/menu_main"
+109-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:93:13-46
+110            android:theme="@style/AppTheme" >
+110-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:94:13-44
+111            <intent-filter>
+111-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:74:13-76:29
+112                <category android:name="android.intent.category.DEFAULT" />
+112-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:62:17-76
+112-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:62:27-73
+113            </intent-filter>
+114        </activity>
+115        <activity
+115-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:102:9-111:20
+116            android:name="org.metatrans.commons.marketing.Activity_Marketing_AppList"
+116-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:103:13-86
+117            android:exported="false"
+117-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:107:13-37
+118            android:icon="@drawable/ic_colours_tube"
+118-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:104:13-53
+119            android:label="@string/label_moregames"
+119-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:105:13-52
+120            android:theme="@style/AppTheme" >
+120-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:106:13-44
+121            <intent-filter>
+121-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:74:13-76:29
+122                <category android:name="android.intent.category.DEFAULT" />
+122-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:62:17-76
+122-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:62:27-73
+123            </intent-filter>
+124        </activity>
+125        <activity
+125-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:114:9-123:20
+126            android:name="org.metatrans.commons.menu.Activity_Menu_Colours_Base"
+126-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:115:13-81
+127            android:exported="false"
+127-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:119:13-37
+128            android:icon="@drawable/ic_rainbow"
+128-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:116:13-48
+129            android:label="@string/menu_colour_scheme"
+129-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:117:13-55
+130            android:theme="@style/AppTheme" >
+130-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:118:13-44
+131            <intent-filter>
+131-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:74:13-76:29
+132                <category android:name="android.intent.category.DEFAULT" />
+132-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:62:17-76
+132-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:62:27-73
+133            </intent-filter>
+134        </activity>
+135        <activity
+135-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:126:9-135:20
+136            android:name="org.metatrans.commons.engagement.achievements.Activity_Achievements_Base"
+136-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:127:13-100
+137            android:exported="false"
+137-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:131:13-37
+138            android:icon="@drawable/ic_achievements"
+138-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:128:13-53
+139            android:label="@string/achievements"
+139-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:129:13-49
+140            android:theme="@style/AppTheme" >
+140-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:130:13-44
+141            <intent-filter>
+141-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:74:13-76:29
+142                <category android:name="android.intent.category.DEFAULT" />
+142-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:62:17-76
+142-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:62:27-73
+143            </intent-filter>
+144        </activity>
+145        <activity
+145-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:138:9-147:20
+146            android:name="org.metatrans.commons.engagement.achievements.Activity_Picture"
+146-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:139:13-90
+147            android:exported="false"
+147-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:143:13-37
+148            android:icon="@drawable/ic_achievements"
+148-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:140:13-53
+149            android:label="@string/achievement"
+149-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:141:13-48
+150            android:theme="@style/AppTheme" >
+150-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:142:13-44
+151            <intent-filter>
+151-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:74:13-76:29
+152                <category android:name="android.intent.category.DEFAULT" />
+152-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:62:17-76
+152-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:62:27-73
+153            </intent-filter>
+154        </activity>
+155        <activity
+155-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:150:9-156:20
+156            android:name="org.metatrans.apps.gravity.loading.Activity_Loading"
+156-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:151:13-79
+157            android:exported="false" >
+157-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:152:13-37
+158            <intent-filter>
+158-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:74:13-76:29
+159                <category android:name="android.intent.category.DEFAULT" />
+159-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:62:17-76
+159-->C:\Users\PC\OneDrive\Documents\GitHub\TheRetosVirtuales\appgravity\src\main\AndroidManifest.xml:62:27-73
+160            </intent-filter>
+161        </activity>
+162    </application>
+163
+164</manifest>

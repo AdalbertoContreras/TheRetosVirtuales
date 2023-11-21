@@ -1,0 +1,20 @@
+R_DEF: Internal format may change without notice
+local
+drawable ic_action_fast_forward
+drawable ic_action_pause
+drawable ic_action_play
+drawable ic_action_settings
+drawable ic_level
+drawable ic_level_v1
+drawable ic_star_pressed
+drawable ic_stars_0
+drawable ic_stars_1
+drawable ic_stars_2
+drawable ic_stars_3
+drawable joystick_full
+drawable joystick_transparent
+id main_frame
+layout main_frame
+string menu_joystick
+string menu_joystick_moveleft
+string menu_joystick_moveright

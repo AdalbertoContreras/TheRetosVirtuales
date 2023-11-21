@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="achievement_increments_change_colours">11</integer>
+    <integer name="achievement_increments_invite_3_friends">1</integer>
+    <integer name="achievement_increments_stop_pieces">1</integer>
+    <integer name="achievement_maxcount_change_colours">1</integer>
+    <integer name="achievement_maxcount_invite_3_friends">3</integer>
+    <integer name="achievement_maxcount_stop_pieces">1</integer>
+    <integer name="achievement_score_change_colours">30</integer>
+    <integer name="achievement_score_invite_3_friends">15</integer>
+    <integer name="achievement_score_stop_pieces">25</integer>
+    <string name="asteroid_blue_1">Blue Asteroids 1</string>
+    <string name="asteroid_blue_2">Blue Asteroids 2</string>
+    <string name="asteroid_gray">Gray Asteroids</string>
+    <string name="asteroid_green">Green Asteroids</string>
+    <string name="space">Space</string>
+    <string name="space_objects">Space Objects</string>
+    <string name="speed">Speed</string>
+</resources>

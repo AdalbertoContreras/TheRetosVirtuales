@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.gravityplay"
+    android:installLocation="auto" >
+
+    <uses-sdk android:minSdkVersion="25" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera.autofocus"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.location"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.location.gps"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.location.network"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.bluetooth"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.wifi"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.microphone"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.screen.landscape"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.screen.portrait"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.touchscreen"
+        android:required="true" />
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:smallScreens="true"
+        android:xlargeScreens="true" />
+
+    <application
+        android:name="org.metatrans.apps.gravity.app.Application_2DGravity"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_logo_gravity"
+        android:label="@string/app_gravity_name"
+        android:largeHeap="true"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name="org.metatrans.commons.web.Activity_WebView_StatePreservingImpl_With_VideoPlayer"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode"
+            android:hardwareAccelerated="true"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name="org.metatrans.apps.gravity.main.Activity_Main_Gravity"
+            android:exported="true"
+            android:hardwareAccelerated="true"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="org.metatrans.apps.gravity.main.Activity_Result"
+            android:exported="false"
+            android:icon="@drawable/ic_colours_tube"
+            android:theme="@style/AppTheme" >
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="org.metatrans.apps.gravity.menu.Activity_Menu_Levels"
+            android:exported="false"
+            android:icon="@drawable/ic_rainbow"
+            android:label="@string/levels"
+            android:theme="@style/AppTheme" >
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="org.metatrans.apps.gravity.menu.Activity_Menu_SpaceObjects"
+            android:exported="false"
+            android:label="@string/space_objects"
+            android:theme="@style/AppTheme" >
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="org.metatrans.apps.gravity.menu.Activity_Menu_Main"
+            android:exported="false"
+            android:label="@string/menu_main"
+            android:theme="@style/AppTheme" >
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="org.metatrans.commons.marketing.Activity_Marketing_AppList"
+            android:exported="false"
+            android:icon="@drawable/ic_colours_tube"
+            android:label="@string/label_moregames"
+            android:theme="@style/AppTheme" >
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="org.metatrans.commons.menu.Activity_Menu_Colours_Base"
+            android:exported="false"
+            android:icon="@drawable/ic_rainbow"
+            android:label="@string/menu_colour_scheme"
+            android:theme="@style/AppTheme" >
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="org.metatrans.commons.engagement.achievements.Activity_Achievements_Base"
+            android:exported="false"
+            android:icon="@drawable/ic_achievements"
+            android:label="@string/achievements"
+            android:theme="@style/AppTheme" >
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="org.metatrans.commons.engagement.achievements.Activity_Picture"
+            android:exported="false"
+            android:icon="@drawable/ic_achievements"
+            android:label="@string/achievement"
+            android:theme="@style/AppTheme" >
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="org.metatrans.apps.gravity.loading.Activity_Loading"
+            android:exported="false" >
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

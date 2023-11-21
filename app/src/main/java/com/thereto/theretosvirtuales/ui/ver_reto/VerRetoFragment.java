@@ -24,6 +24,9 @@ import com.thereto.theretosvirtuales.databinding.FragmentPremiosBinding;
 import com.thereto.theretosvirtuales.ui.inicio.InicioFragment;
 import com.thereto.theretosvirtuales.ui.instrucciones.InstruccionesFragment;
 
+import org.metatrans.apps.gravity.app.Application_Gravity;
+import org.metatrans.apps.gravity.main.Activity_Main_Gravity;
+
 import java.util.ArrayList;
 
 public class VerRetoFragment extends Fragment {
@@ -76,7 +79,13 @@ public class VerRetoFragment extends Fragment {
             // Ocurrió un error al consultar el documento
     );
         binding.participarTextView.setOnClickListener(v -> {
+            Intent intent = new Intent(requireContext(), Activity_Main_Gravity.class);
 
+            // Puedes pasar datos a la nueva actividad usando putExtra
+            intent.putExtra("clave", "valor");
+
+            // Iniciar la nueva actividad
+            startActivity(intent);
         });
         return root;
     }

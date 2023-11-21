@@ -4,11 +4,10 @@ plugins {
 
 android {
     namespace = "com.thereto.model"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         minSdk = 25
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
     }

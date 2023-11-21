@@ -1,0 +1,6 @@
+org.metatrans.commons.ads
+id ads_layout
+id ads_layout_frame
+id ads_view
+layout admob
+layout frame

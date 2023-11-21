@@ -11,8 +11,13 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/Android_APP_2DGravity" />
+            <option value="$PROJECT_DIR$/Android_LIB_Commons" />
+            <option value="$PROJECT_DIR$/Android_LIB_Commons2D" />
+            <option value="$PROJECT_DIR$/Android_LIB_CommonsAds" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/app/model" />
+            <option value="$PROJECT_DIR$/appgravity" />
           </set>
         </option>
       </GradleProjectSettings>

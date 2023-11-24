@@ -81,6 +81,11 @@ public class VerRetoFragment extends Fragment {
                                     intent.putExtra("clave", "valor");
                                     startActivity(intent);
                                     break;
+                                case "juego 3":
+                                    intent = new Intent(requireContext(), com.josejordan.bolas.MainActivity.class);
+                                    intent.putExtra("clave", "valor");
+                                    startActivity(intent);
+                                    break;
                             }
 
                         });

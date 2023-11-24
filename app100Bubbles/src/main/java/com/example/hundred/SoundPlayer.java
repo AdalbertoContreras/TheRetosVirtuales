@@ -48,42 +48,33 @@ public class SoundPlayer {
 
     public void createMediaPlayer(Context context) {
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-
-            soundUp = MediaPlayer.create(context, R.raw.up);
-            soundUpDo1 = MediaPlayer.create(context, R.raw.up_do1);
-            soundUpMi1 = MediaPlayer.create(context, R.raw.up_mi1);
-            soundUpSol1 = MediaPlayer.create(context, R.raw.up_sol1);
-            soundUpSi1 = MediaPlayer.create(context, R.raw.up_si1);
-            soundUpDo2 = MediaPlayer.create(context, R.raw.up_do2);
-            soundDown = MediaPlayer.create(context, R.raw.down);
-            soundCombo = MediaPlayer.create(context, R.raw.combo);
-            soundSwipe = MediaPlayer.create(context, R.raw.swipe);
-            soundGameOver = MediaPlayer.create(context, R.raw.game_over);
-            soundBestScore = MediaPlayer.create(context, R.raw.best_score);
-            soundDont = MediaPlayer.create(context, R.raw.dont);
-            soundSwipePlay = MediaPlayer.create(context, R.raw.swipe_play);
-            soundReset = MediaPlayer.create(context, R.raw.reset);
-            soundCasillero100 = MediaPlayer.create(context, R.raw.champion);
-            soundMenu = MediaPlayer.create(context, R.raw.menu);
-            soundBonusSwap = MediaPlayer.create(context, R.raw.bonus_swap);
-            soundBomb = MediaPlayer.create(context, R.raw.bomb);
-            soundBonusSwipePlay = MediaPlayer.create(context, R.raw.bonus_swipe_play);
-            soundAtajo = MediaPlayer.create(context, R.raw.atajo);
-            soundBubble_1 = MediaPlayer.create(context, R.raw.bubble_1);
-            soundBubble_2 = MediaPlayer.create(context, R.raw.bubble_2);
-            soundBubble_3 = MediaPlayer.create(context, R.raw.bubble_3);
-            soundBubble_4 = MediaPlayer.create(context, R.raw.bubble_4);
-            bonusGetUp = MediaPlayer.create(context, R.raw.bonus_get_up);
-            this.comboBubble = 0;
-            isSoundPlayable = true;
-
-        } else {
-
-            isSoundPlayable = false;
-
-
-        }
+        soundUp = MediaPlayer.create(context, R.raw.up);
+        soundUpDo1 = MediaPlayer.create(context, R.raw.up_do1);
+        soundUpMi1 = MediaPlayer.create(context, R.raw.up_mi1);
+        soundUpSol1 = MediaPlayer.create(context, R.raw.up_sol1);
+        soundUpSi1 = MediaPlayer.create(context, R.raw.up_si1);
+        soundUpDo2 = MediaPlayer.create(context, R.raw.up_do2);
+        soundDown = MediaPlayer.create(context, R.raw.down);
+        soundCombo = MediaPlayer.create(context, R.raw.combo);
+        soundSwipe = MediaPlayer.create(context, R.raw.swipe);
+        soundGameOver = MediaPlayer.create(context, R.raw.game_over);
+        soundBestScore = MediaPlayer.create(context, R.raw.best_score);
+        soundDont = MediaPlayer.create(context, R.raw.dont);
+        soundSwipePlay = MediaPlayer.create(context, R.raw.swipe_play);
+        soundReset = MediaPlayer.create(context, R.raw.reset);
+        soundCasillero100 = MediaPlayer.create(context, R.raw.champion);
+        soundMenu = MediaPlayer.create(context, R.raw.menu);
+        soundBonusSwap = MediaPlayer.create(context, R.raw.bonus_swap);
+        soundBomb = MediaPlayer.create(context, R.raw.bomb);
+        soundBonusSwipePlay = MediaPlayer.create(context, R.raw.bonus_swipe_play);
+        soundAtajo = MediaPlayer.create(context, R.raw.atajo);
+        soundBubble_1 = MediaPlayer.create(context, R.raw.bubble_1);
+        soundBubble_2 = MediaPlayer.create(context, R.raw.bubble_2);
+        soundBubble_3 = MediaPlayer.create(context, R.raw.bubble_3);
+        soundBubble_4 = MediaPlayer.create(context, R.raw.bubble_4);
+        bonusGetUp = MediaPlayer.create(context, R.raw.bonus_get_up);
+        this.comboBubble = 0;
+        isSoundPlayable = true;
 
     }
 

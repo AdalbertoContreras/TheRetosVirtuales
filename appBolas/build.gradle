@@ -4,10 +4,10 @@ plugins {
 }
 
 android {
-    namespace 'com.josejordan.bolas'
     compileSdk 34
 
     defaultConfig {
+        namespace 'com.josejordan.bolas'
         minSdk 25
         targetSdk 34
         versionCode 1

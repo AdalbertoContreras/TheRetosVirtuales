@@ -109,6 +109,10 @@ class MyGameView(context: Context, attrs: AttributeSet) : SurfaceView(context, a
         }
     }
 
+    fun getScore(): Int {
+        return score
+    }
+
     override fun performClick(): Boolean {
         super.performClick()
         return true
@@ -177,7 +181,7 @@ private fun createEnemiesForLevel(level: Level): List<Enemy> {
     }
 
 
-    override fun draw(canvas: Canvas?) {
+    override fun draw(canvas: Canvas) {
         super.draw(canvas)
         canvas?.drawColor(Color.BLACK)
         canvas?.drawCircle(ball.x, ball.y, ball.radius, paint)

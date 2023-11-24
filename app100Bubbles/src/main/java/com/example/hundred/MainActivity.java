@@ -41,6 +41,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
 import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat;
+
+import com.example.hundred.databinding.ActivityMainBinding;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.analytics.FirebaseAnalytics;
@@ -131,7 +133,6 @@ public class MainActivity extends AppCompatActivity implements
     private ImageView imgRotarShinning;
     private ImageView imgResplandorSwipe;
     private ImageView imgShade1;
-    private ImageView imgShade2;
 
     private ImageView imgTutorial;
     private ImageView imgTapTutorial1;
@@ -149,9 +150,7 @@ public class MainActivity extends AppCompatActivity implements
     private TextView txtUserLevel;
     private TextView txtUserNameProfile;
     private TextView txtAreYouSure;
-    private TextView txtYes;
     private TextView txtNo;
-    private TextView txtTutorial;
 
     //Leaderboard Graphics Object
     private RelativeLayout[] rank = new RelativeLayout[4];
@@ -253,57 +252,53 @@ public class MainActivity extends AppCompatActivity implements
     FirebaseFirestore mFirestore;
     FirebaseAuth mAuth;
 
-
+    private ActivityMainBinding activityMainBinding;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        activityMainBinding = ActivityMainBinding.inflate(getLayoutInflater());
 
         gestureDetector = new GestureDetector(this, this);
 
         utilities = new Utilities();
 
+        txtUserLevel = activityMainBinding.userLevel;
+        imgShade1 = activityMainBinding.shadeTop;
+        txtPuntaje = activityMainBinding.puntaje;
+        txtMax = activityMainBinding.max;
+        txtCombo[0] = activityMainBinding.combo;
+        txtCombo[1] = activityMainBinding.combo2;
+        txtCombo[2] = activityMainBinding.combo3;
+        txtCombo[3] = activityMainBinding.combo4;
+        txtComboFijo = activityMainBinding.comboFijo;
+        txtJugadaMayor = activityMainBinding.jugadaMayor;
 
-        imgShade2 = findViewById(R.id.shade_middle);
-        imgShade1 = findViewById(R.id.shade_top);
-        txtPuntaje = findViewById(R.id.puntaje);
-        txtMax = findViewById(R.id.max);
-        txtCombo[0] = findViewById(R.id.combo);
-        txtCombo[1] = findViewById(R.id.combo2);
-        txtCombo[2] = findViewById(R.id.combo3);
-        txtCombo[3] = findViewById(R.id.combo4);
-        txtComboFijo = findViewById(R.id.comboFijo);
-        txtJugadaMayor = findViewById(R.id.jugadaMayor);
+        rlUserInfo = activityMainBinding.userInfo;
+        txtUserNameProfile = activityMainBinding.userNameProfile;
+        txtNewCredits = activityMainBinding.newCredits;
+        txtCredits = activityMainBinding.credits;
 
-        rlUserInfo = findViewById(R.id.userInfo);
-        txtUserNameProfile = findViewById(R.id.userNameProfile);
-        txtNewCredits = findViewById(R.id.newCredits);
-        txtCredits = findViewById(R.id.credits);
-        txtUserLevel = findViewById(R.id.userLevel);
-
-        txtAreYouSure = findViewById(R.id.areyousure);
-        txtYes = findViewById(R.id.yes);
-        txtNo = findViewById(R.id.no);
-        txtTutorial = findViewById(R.id.go_to_100);
-        txtYes.setEnabled(true);
+        txtAreYouSure = activityMainBinding.areyousure;
+        txtNo = activityMainBinding.no;
+        activityMainBinding.yes.setEnabled(true);
         txtNo.setEnabled(true);
 
 
 
-        txtMaxBubbleThis = findViewById(R.id.jugadaMayorBest);
-        txtMaxScoreThis = findViewById(R.id.puntajeBest);
-        txtBestGame = findViewById(R.id.bestGame);
+        txtMaxBubbleThis = activityMainBinding.jugadaMayorBest;
+        txtMaxScoreThis = activityMainBinding.puntajeBest;
+        txtBestGame = activityMainBinding.bestGame;
 
-        imgAnimacionSwipe = findViewById(R.id.BonusImage);
+        imgAnimacionSwipe = activityMainBinding.BonusImage;
 
         //Grafica panel de botones
-        rlButtonMenu = findViewById(R.id.buttonMenu);
-        txtBonusSwipe = findViewById(R.id.bonusSwipe);
-        txtBonusPlus = findViewById(R.id.bonusPlus);
-        txtBonusExchange = findViewById(R.id.bonusExchange);
-        txtRulesButton = findViewById(R.id.rulesButton);
-        imgSound = findViewById(R.id.Sound);
-        imgResetButton = findViewById(R.id.Reset_button);
+        rlButtonMenu = activityMainBinding.buttonMenu;
+        txtBonusSwipe = activityMainBinding.bonusSwipe;
+        txtBonusPlus = activityMainBinding.bonusPlus;
+        txtBonusExchange = activityMainBinding.bonusExchange;
+        txtRulesButton = activityMainBinding.rulesButton;
+        imgSound = activityMainBinding.Sound;
+        imgResetButton = activityMainBinding.ResetButton;
 
 
         txtRulesButton.setOnClickListener(new View.OnClickListener() {
@@ -313,97 +308,97 @@ public class MainActivity extends AppCompatActivity implements
             }
         });
 
-        txtResetButtonGameOver = findViewById(R.id.Reset_button_2);
+        txtResetButtonGameOver = activityMainBinding.ResetButton2;
 
-        imgAnimatedArrow[0] = findViewById(R.id.animatedArrow);
-        imgAnimatedArrow[1] = findViewById(R.id.animatedArrow2);
-        imgAnimatedArrow[2] = findViewById(R.id.animatedArrow3);
-        imgAnimatedArrow[3] = findViewById(R.id.animatedArrow4);
-        imgAnimatePlus = findViewById(R.id.animatePlus);
-        imgAnimatedSing = findViewById(R.id.animateSing);
+        imgAnimatedArrow[0] = activityMainBinding.animatedArrow;
+        imgAnimatedArrow[1] = activityMainBinding.animatedArrow2;
+        imgAnimatedArrow[2] = activityMainBinding.animatedArrow3;
+        imgAnimatedArrow[3] = activityMainBinding.animatedArrow4;
+        imgAnimatePlus = activityMainBinding.animatePlus;
+        imgAnimatedSing = activityMainBinding.animateSing;
 
-        nubesAbajo = findViewById(R.id.nubes);
-        imgNubesAbajoAtras = findViewById(R.id.nubesAbajoAtras);
-        imgNubesSep = findViewById(R.id.nubesSep);
+        nubesAbajo = activityMainBinding.nubes;
+        imgNubesAbajoAtras = activityMainBinding.nubesAbajoAtras;
+        imgNubesSep = activityMainBinding.nubesSep;
 
-        imgSwipeLeftTutorial = findViewById(R.id.SwipeLeft);
-        imgSwipeRightTutorial = findViewById(R.id.SwipeRight);
-        imgSwipeUpTutorial = findViewById(R.id.SwipeUp);
-        imgSwipeDownTutorial = findViewById(R.id.SwipeDown);
-        imgTapTutorial1 = findViewById(R.id.TapIcon1);
+        imgSwipeLeftTutorial = activityMainBinding.SwipeLeft;
+        imgSwipeRightTutorial = activityMainBinding.SwipeRight;
+        imgSwipeUpTutorial = activityMainBinding.SwipeUp;
+        imgSwipeDownTutorial = activityMainBinding.SwipeDown;
+        imgTapTutorial1 = activityMainBinding.TapIcon1;
 
-        imgCasilleroResplandor = findViewById(R.id.CasilleroResplandor);
-        imgCasilleroSeleccionado = findViewById(R.id.CasilleroSeleccionado);
-        imgExplode = findViewById(R.id.explode);
-        imgRotarShinning = findViewById(R.id.rotarShinning);
-        imgResplandorSwipe = findViewById(R.id.ResplandorSwipe);
-        imgTutorial = findViewById(R.id.Tutorial);
+        imgCasilleroResplandor = activityMainBinding.CasilleroResplandor;
+        imgCasilleroSeleccionado = activityMainBinding.CasilleroSeleccionado;
+        imgExplode = activityMainBinding.explode;
+        imgRotarShinning = activityMainBinding.rotarShinning;
+        imgResplandorSwipe = activityMainBinding.ResplandorSwipe;
+        imgTutorial = activityMainBinding.Tutorial;
 
-        imgFondoGameOver = findViewById(R.id.fondoGameOver);
+        imgFondoGameOver = activityMainBinding.fondoGameOver;
         imgFondoGameOver.setAlpha(0f);
-        imgFondoBN = findViewById(R.id.fondo_BN);
+        imgFondoBN = activityMainBinding.fondoBN;
         imgFondoBN.setAlpha(0f);
 
 
-        imgGradientCombo = findViewById(R.id.gradientCombo);
+        imgGradientCombo = activityMainBinding.gradientCombo;
 
-        bonusSwipeAnimacion[0] = findViewById(R.id.BonusImageAnimacion_0);
-        bonusSwipeAnimacion[1] = findViewById(R.id.BonusImageAnimacion_1);
-        bonusSwipeAnimacion[2] = findViewById(R.id.BonusImageAnimacion_2);
-        bonusSwipeAnimacion[3] = findViewById(R.id.BonusImageAnimacion_3);
-        bonusSwipeAnimacion[4] = findViewById(R.id.BonusImageAnimacion_4);
-        imgAnimatedCoin[0] = findViewById(R.id.animated_coin0);
-        imgAnimatedCoin[1] = findViewById(R.id.animated_coin1);
-        imgAnimatedCoin[2] = findViewById(R.id.animated_coin2);
-        imgAnimatedCoin[3] = findViewById(R.id.animated_coin3);
-        imgAnimatedCoin[4] = findViewById(R.id.animated_coin4);
-        imgAnimatedCoin[5] = findViewById(R.id.animated_coin5);
-        imgAnimatedCoin[6] = findViewById(R.id.animated_coin6);
-        imgAnimatedCombo[0] = findViewById(R.id.animated_combo_bubble0);
-        imgAnimatedCombo[1] = findViewById(R.id.animated_combo_bubble1);
-        imgAnimatedCombo[2] = findViewById(R.id.animated_combo_bubble2);
-        imgAnimatedCombo[3] = findViewById(R.id.animated_combo_bubble3);
-        imgAnimatedCombo[4] = findViewById(R.id.animated_combo_bubble4);
-        imgAnimatedCombo[5] = findViewById(R.id.animated_combo_bubble5);
-        imgAnimatedCombo[6] = findViewById(R.id.animated_combo_bubble6);
-        imgAnimatedCombo[7] = findViewById(R.id.animated_combo_bubble7);
-        imgAnimatedCombo[8] = findViewById(R.id.animated_combo_bubble8);
-        imgAnimatedCombo[9] = findViewById(R.id.animated_combo_bubble9);
-        imgAnimatedCombo[10] = findViewById(R.id.animated_combo_bubble10);
-        imgAnimatedCombo[11] = findViewById(R.id.animated_combo_bubble11);
-        imgAnimatedCombo[12] = findViewById(R.id.animated_combo_bubble12);
-        imgAnimatedCombo[13] = findViewById(R.id.animated_combo_bubble13);
-        imgAnimatedCombo[14] = findViewById(R.id.animated_combo_bubble14);
-        imgAnimatedCombo[15] = findViewById(R.id.animated_combo_bubble15);
-        imgBonusPlusAnimacion = findViewById(R.id.BonusPlusAnimacion);
-        txtContinue = findViewById(R.id.Continue_button);
-        btnSwipeZone = findViewById(R.id.swipeZone);
-        btnSwipeAccion1 = findViewById(R.id.swipeAccion1);
-        btnSwipeAccion2 = findViewById(R.id.swipeAccion2);
+        bonusSwipeAnimacion[0] = activityMainBinding.BonusImageAnimacion0;
+        bonusSwipeAnimacion[1] = activityMainBinding.BonusImageAnimacion1;
+        bonusSwipeAnimacion[2] = activityMainBinding.BonusImageAnimacion2;
+        bonusSwipeAnimacion[3] = activityMainBinding.BonusImageAnimacion3;
+        bonusSwipeAnimacion[4] = activityMainBinding.BonusImageAnimacion4;
+        imgAnimatedCoin[0] = activityMainBinding.animatedCoin0;
+        imgAnimatedCoin[1] = activityMainBinding.animatedCoin1;
+        imgAnimatedCoin[2] = activityMainBinding.animatedCoin2;
+        imgAnimatedCoin[3] = activityMainBinding.animatedCoin3;
+        imgAnimatedCoin[4] = activityMainBinding.animatedCoin4;
+        imgAnimatedCoin[5] = activityMainBinding.animatedCoin5;
+        imgAnimatedCoin[6] = activityMainBinding.animatedCoin6;
+        imgAnimatedCombo[0] = activityMainBinding.animatedComboBubble0;
+        imgAnimatedCombo[1] = activityMainBinding.animatedComboBubble1;
+        imgAnimatedCombo[2] = activityMainBinding.animatedComboBubble2;
+        imgAnimatedCombo[3] = activityMainBinding.animatedComboBubble3;
+        imgAnimatedCombo[4] = activityMainBinding.animatedComboBubble4;
+        imgAnimatedCombo[5] = activityMainBinding.animatedComboBubble5;
+        imgAnimatedCombo[6] = activityMainBinding.animatedComboBubble6;
+        imgAnimatedCombo[7] = activityMainBinding.animatedComboBubble7;
+        imgAnimatedCombo[8] = activityMainBinding.animatedComboBubble8;
+        imgAnimatedCombo[9] = activityMainBinding.animatedComboBubble9;
+        imgAnimatedCombo[10] = activityMainBinding.animatedComboBubble10;
+        imgAnimatedCombo[11] = activityMainBinding.animatedComboBubble11;
+        imgAnimatedCombo[12] = activityMainBinding.animatedComboBubble12;
+        imgAnimatedCombo[13] = activityMainBinding.animatedComboBubble13;
+        imgAnimatedCombo[14] = activityMainBinding.animatedComboBubble14;
+        imgAnimatedCombo[15] = activityMainBinding.animatedComboBubble15;
+        imgBonusPlusAnimacion = activityMainBinding.BonusPlusAnimacion;
+        txtContinue = activityMainBinding.ContinueButton;
+        btnSwipeZone = activityMainBinding.swipeZone;
+        btnSwipeAccion1 = activityMainBinding.swipeAccion1;
+        btnSwipeAccion2 = activityMainBinding.swipeAccion2;
 
-        pisoAccion[0] = findViewById(R.id.pisoAccion0);
+        pisoAccion[0] = activityMainBinding.pisoAccion0;
 
 
-        rank[0] = findViewById(R.id.rank0);
-        rank[1] = findViewById(R.id.rank1);
-        rank[2] = findViewById(R.id.rank2);
-        rank[3] = findViewById(R.id.rank3);
-        txtRank[0] = findViewById(R.id.textRank0);
-        txtRank[1] = findViewById(R.id.textRank1);
-        txtRank[2] = findViewById(R.id.textRank2);
-        txtRank[3] = findViewById(R.id.textRank3);
-        txtUserName[0] = findViewById(R.id.textUserName0);
-        txtUserName[1] = findViewById(R.id.textUserName1);
-        txtUserName[2] = findViewById(R.id.textUserName2);
-        txtUserName[3] = findViewById(R.id.textUserName3);
-        txtMaxBubble[0] = findViewById(R.id.textMaxBubble0);
-        txtMaxBubble[1] = findViewById(R.id.textMaxBubble1);
-        txtMaxBubble[2] = findViewById(R.id.textMaxBubble2);
-        txtMaxBubble[3] = findViewById(R.id.textMaxBubble3);
-        txtMaxScore[0] = findViewById(R.id.textMaxScore0);
-        txtMaxScore[1] = findViewById(R.id.textMaxScore1);
-        txtMaxScore[2] = findViewById(R.id.textMaxScore2);
-        txtMaxScore[3] = findViewById(R.id.textMaxScore3);
+        rank[0] = activityMainBinding.rank0;
+        rank[1] = activityMainBinding.rank1;
+        rank[2] = activityMainBinding.rank2;
+        rank[3] = activityMainBinding.rank3;
+        txtRank[0] = activityMainBinding.textRank0;
+        txtRank[1] = activityMainBinding.textRank1;
+        txtRank[2] = activityMainBinding.textRank2;
+        txtRank[3] = activityMainBinding.textRank3;
+        txtUserName[0] = activityMainBinding.textUserName0;
+        txtUserName[1] = activityMainBinding.textUserName1;
+        txtUserName[2] = activityMainBinding.textUserName2;
+        txtUserName[3] = activityMainBinding.textUserName3;
+        txtMaxBubble[0] = activityMainBinding.textMaxBubble0;
+        txtMaxBubble[1] = activityMainBinding.textMaxBubble1;
+        txtMaxBubble[2] = activityMainBinding.textMaxBubble2;
+        txtMaxBubble[3] = activityMainBinding.textMaxBubble3;
+        txtMaxScore[0] = activityMainBinding.textMaxScore0;
+        txtMaxScore[1] = activityMainBinding.textMaxScore1;
+        txtMaxScore[2] = activityMainBinding.textMaxScore2;
+        txtMaxScore[3] = activityMainBinding.textMaxScore3;
 
         // Obtain the FirebaseAnalytics instance.
         mFirebaseAnalytics = FirebaseAnalytics.getInstance(this);
@@ -414,7 +409,7 @@ public class MainActivity extends AppCompatActivity implements
         btnSwipeAccion1.setOnTouchListener(this);
         btnSwipeAccion2.setOnTouchListener(this);
         imgResetButton.setOnTouchListener(this);
-        txtYes.setOnTouchListener(this);
+        activityMainBinding.yes.setOnTouchListener(this);
         txtNo.setOnTouchListener(this);
 
         imgResetButton.setOnClickListener(new View.OnClickListener() {
@@ -424,7 +419,7 @@ public class MainActivity extends AppCompatActivity implements
             }
         });
 
-        txtYes.setOnClickListener(new View.OnClickListener() {
+        activityMainBinding.yes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startNewGame(true);
@@ -453,7 +448,7 @@ public class MainActivity extends AppCompatActivity implements
         rlUserInfo.setAlpha(1f);
         rlUserInfo.bringToFront();
         txtAreYouSure.setAlpha(0f);
-        txtYes.setAlpha(0);
+        activityMainBinding.yes.setAlpha(0);
         txtNo.setAlpha(0);
 
         nubesAbajo.bringToFront();
@@ -463,7 +458,7 @@ public class MainActivity extends AppCompatActivity implements
         txtPuntaje.bringToFront();
         pisoAccion[0].bringToFront();
         txtAreYouSure.bringToFront();
-        txtYes.bringToFront();
+        activityMainBinding.yes.bringToFront();
         txtNo.bringToFront();
 
 
@@ -1040,9 +1035,9 @@ public class MainActivity extends AppCompatActivity implements
         txtCredits.setTypeface(fontDigital);
         txtUserLevel.setTypeface(fontDigital);
         txtAreYouSure.setTypeface(fontDigital);
-        txtYes.setTypeface(fontDigital);
+        activityMainBinding.yes.setTypeface(fontDigital);
         txtNo.setTypeface(fontDigital);
-        txtTutorial.setTypeface(fontDigital);
+        activityMainBinding.goTo100.setTypeface(fontDigital);
         txtCombo[0].setTypeface(fontDigital);
         txtCombo[1].setTypeface(fontDigital);
         txtCombo[2].setTypeface(fontDigital);
@@ -1067,7 +1062,7 @@ public class MainActivity extends AppCompatActivity implements
         for (int i = 0; i < 10; i++) {
             String pObj = "piso" + (i) + "new";
             int resIDmt = getResources().getIdentifier(pObj, "id", getPackageName());
-            piso[i] = findViewById(resIDmt);
+            piso[i] = activityMainBinding.getRoot().findViewById(resIDmt);
         }
     }//Asigna los objetos logicos piso a los objetos graficos.
 
@@ -1076,7 +1071,7 @@ public class MainActivity extends AppCompatActivity implements
         for (int i = 1; i < 71; i++) {
             String cObj = "c" + (i) + "new";
             int resIDmt = getResources().getIdentifier(cObj, "id", getPackageName());
-            casObj[i] = findViewById(resIDmt);
+            casObj[i] = activityMainBinding.getRoot().findViewById(resIDmt);
             casObj[i].setText("");
             casObj[i].setEnabled(false);
         }
@@ -1086,7 +1081,7 @@ public class MainActivity extends AppCompatActivity implements
         for (int i = 8; i <= (2 * NUM_COLUMNAS_BASE); i++) {
             String cObj = "ca" + (i);
             int resIDmt = getResources().getIdentifier(cObj, "id", getPackageName());
-            casObjAccion[i] = findViewById(resIDmt);
+            casObjAccion[i] = activityMainBinding.getRoot().findViewById(resIDmt);
             casObjAccion[i].setOnTouchListener(this);
             casObjAccion[i].bringToFront();
             casObjAccion[i].setText("");
@@ -1096,7 +1091,7 @@ public class MainActivity extends AppCompatActivity implements
         for (int i = 15; i <= (3 * NUM_COLUMNAS_BASE - (NUM_COLUMNAS_BASE - NUM_COLUMNAS)); i++) {
             String cObj = "ca" + (i);
             int resIDmt = getResources().getIdentifier(cObj, "id", getPackageName());
-            casObjAccionbtn[i] = findViewById(resIDmt);
+            casObjAccionbtn[i] = activityMainBinding.getRoot().findViewById(resIDmt);
             casObjAccionbtn[i].setOnTouchListener(this);
             casObjAccionbtn[i].setBackgroundResource(R.drawable.bubble_ok);
             casObjAccionbtn[i].setY(mapPosicion[4]);
@@ -1107,7 +1102,7 @@ public class MainActivity extends AppCompatActivity implements
         for (int i = 22; i <= (4 * NUM_COLUMNAS_BASE - (NUM_COLUMNAS_BASE - NUM_COLUMNAS)); i++) {
             String cObj = "ca" + (i);
             int resIDmt = getResources().getIdentifier(cObj, "id", getPackageName());
-            casObjAccionbtn[i] = findViewById(resIDmt);
+            casObjAccionbtn[i] = activityMainBinding.getRoot().findViewById(resIDmt);
             casObjAccionbtn[i].setOnTouchListener(this);
             casObjAccionbtn[i].setBackgroundResource(R.drawable.bubble_ok);
             casObjAccionbtn[i].bringToFront();
@@ -1190,7 +1185,7 @@ public class MainActivity extends AppCompatActivity implements
         txtMax.setTextSize(utilities.NUM_SIZE);
         txtAreYouSure.setY(mapPosicion[1] - utilities.MODULO_Y / 2);
         txtJugadaMayor.setY(mapPosicion[8] + utilities.MODULO_Y / 3);
-        txtYes.setY(mapPosicion[0] + utilities.MODULO_Y / 2);
+        activityMainBinding.yes.setY(mapPosicion[0] + utilities.MODULO_Y / 2);
         txtNo.setY(mapPosicion[0] + utilities.MODULO_Y / 2);
 
         imgAnimacionSwipe.setX(columnaX[0] - moduloX * 2);
@@ -1230,7 +1225,7 @@ public class MainActivity extends AppCompatActivity implements
         imgNubesAbajoAtras.setY(mapPosicion[3] + utilities.MODULO_Y / 2);
         imgNubesAbajoAtras.setScaleX(-1);
 
-        txtTutorial.setY(mapPosicion[4]);
+        activityMainBinding.goTo100.setY(mapPosicion[4]);
         ubicarLeaderboard();
 
         imgNubesSep.setY(mapPosicion[8] - utilities.MODULO_Y / 2);
@@ -1283,7 +1278,7 @@ public class MainActivity extends AppCompatActivity implements
             txtMaxBubble[i].setAlpha(0f);
             txtMaxScore[i].setAlpha(0f);
         }
-        txtTutorial.setAlpha(0f);
+        activityMainBinding.goTo100.setAlpha(0f);
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -1293,7 +1288,7 @@ public class MainActivity extends AppCompatActivity implements
                     txtMaxBubble[i].setAlpha(0f);
                     txtMaxScore[i].setAlpha(0f);
                 }
-                txtTutorial.setAlpha(0f);
+                activityMainBinding.goTo100.setAlpha(0f);
             }
         }, ANIMATION_VELOCITY);
     }
@@ -1371,7 +1366,7 @@ public class MainActivity extends AppCompatActivity implements
         for (int i = 1; i < 71; i++) {
             String cObj = "c" + (i) + "new";
             int resIDmt = getResources().getIdentifier(cObj, "id", getPackageName());
-            casObj[i] = findViewById(resIDmt);
+            casObj[i] = activityMainBinding.getRoot().findViewById(resIDmt);
             casObj[i].setTypeface(fontDigital);
             casObj[i].setTextSize(utilities.NUM_SIZE);
             if ((i - 1) == NUM_COLUMNAS || (i - 1) == NUM_COLUMNAS + NUM_COLUMNAS_BASE || (i - 1) == NUM_COLUMNAS + NUM_COLUMNAS_BASE * 2 || (i - 1) == NUM_COLUMNAS + NUM_COLUMNAS_BASE * 3 || (i - 1) == NUM_COLUMNAS + NUM_COLUMNAS_BASE * 4 || (i - 1) == NUM_COLUMNAS + NUM_COLUMNAS_BASE * 5 || (i - 1) == NUM_COLUMNAS + NUM_COLUMNAS_BASE * 6 || (i - 1) == NUM_COLUMNAS + NUM_COLUMNAS_BASE * 7 || (i - 1) == NUM_COLUMNAS + NUM_COLUMNAS_BASE * 8 || (i - 1) == NUM_COLUMNAS + NUM_COLUMNAS_BASE * 9) {
@@ -1393,7 +1388,7 @@ public class MainActivity extends AppCompatActivity implements
         for (int i = 1; i < 71; i++) {
             String cObj = "c" + (i) + "new";
             int resIDmt = getResources().getIdentifier(cObj, "id", getPackageName());
-            casObj[i] = findViewById(resIDmt);
+            casObj[i] = activityMainBinding.getRoot().findViewById(resIDmt);
             casObj[i].setTextSize(utilities.NUM_SIZE);
             if ((i - 1) == NUM_COLUMNAS || (i - 1) == NUM_COLUMNAS + NUM_COLUMNAS_BASE || (i - 1) == NUM_COLUMNAS + NUM_COLUMNAS_BASE * 2 || (i - 1) == NUM_COLUMNAS + NUM_COLUMNAS_BASE * 3 || (i - 1) == NUM_COLUMNAS + NUM_COLUMNAS_BASE * 4 || (i - 1) == NUM_COLUMNAS + NUM_COLUMNAS_BASE * 5 || (i - 1) == NUM_COLUMNAS + NUM_COLUMNAS_BASE * 6 || (i - 1) == NUM_COLUMNAS + NUM_COLUMNAS_BASE * 7 || (i - 1) == NUM_COLUMNAS + NUM_COLUMNAS_BASE * 8 || (i - 1) == NUM_COLUMNAS + NUM_COLUMNAS_BASE * 9) {
                 casObj[i].setOnClickListener(null);
@@ -1608,7 +1603,7 @@ public class MainActivity extends AppCompatActivity implements
     } //Actualiza los view de la partida.
 
     public void gameOverOff() {
-
+        Toast.makeText(getBaseContext(), "Game over", Toast.LENGTH_SHORT).show();
         hideLeaderboard();
         imgFondoGameOver.setAlpha(0f);
         txtPuntaje.setTextColor(BLACK);
@@ -1675,7 +1670,7 @@ public class MainActivity extends AppCompatActivity implements
             txtBestGame.setAlpha(0f);
 
             txtAreYouSure.setAlpha(0f);
-            txtYes.setAlpha(0f);
+            activityMainBinding.yes.setAlpha(0f);
             txtNo.setAlpha(0f);
 
             imgFondoGameOver.setAlpha(0f);
@@ -1684,7 +1679,7 @@ public class MainActivity extends AppCompatActivity implements
             txtContinue.setEnabled(false);
             txtResetButtonGameOver.setAlpha(0.0f);
             txtResetButtonGameOver.setEnabled(false);
-            txtYes.setEnabled(false);
+            activityMainBinding.yes.setEnabled(false);
             txtNo.setEnabled(false);
 
             rlButtonMenu.setAlpha(ALPHA_BASE);
@@ -1719,9 +1714,9 @@ public class MainActivity extends AppCompatActivity implements
 
             imgFondoGameOver.bringToFront();
             txtAreYouSure.bringToFront();
-            txtYes.bringToFront();
+            activityMainBinding.yes.bringToFront();
             txtNo.bringToFront();
-            txtYes.setEnabled(true);
+            activityMainBinding.yes.setEnabled(true);
             txtNo.setEnabled(true);
 
             ObjectAnimator fadeInGame = ObjectAnimator.ofFloat(imgFondoGameOver, "alpha", 0.3f);
@@ -1730,7 +1725,7 @@ public class MainActivity extends AppCompatActivity implements
             ObjectAnimator fadeIn = ObjectAnimator.ofFloat(txtAreYouSure, "alpha", 1.0f);
             fadeIn.setDuration(500);
 
-            ObjectAnimator fadeInYes = ObjectAnimator.ofFloat(txtYes, "alpha", 1.0f);
+            ObjectAnimator fadeInYes = ObjectAnimator.ofFloat(activityMainBinding.yes, "alpha", 1.0f);
             fadeInYes.setDuration(500);
 
             ObjectAnimator fadeInNo = ObjectAnimator.ofFloat(txtNo, "alpha", 1.0f);
@@ -1744,11 +1739,11 @@ public class MainActivity extends AppCompatActivity implements
             txtAreYouSure.setTextColor(BLUE);
             txtAreYouSure.setText(R.string.restart);
             txtAreYouSure.setTextSize(45);
-            txtYes.setTextSize(45);
+            activityMainBinding.yes.setTextSize(45);
             txtNo.setTextSize(45);
-            txtYes.setTextColor(WHITE);
+            activityMainBinding.yes.setTextColor(WHITE);
             txtNo.setTextColor(WHITE);
-            txtYes.setText(R.string.yes);
+            activityMainBinding.yes.setText(R.string.yes);
             txtNo.setText(R.string.no);
 
             txtPuntaje.setTextColor(WHITE);
@@ -1780,9 +1775,9 @@ public class MainActivity extends AppCompatActivity implements
 
             imgFondoGameOver.bringToFront();
             txtAreYouSure.bringToFront();
-            txtYes.bringToFront();
+            activityMainBinding.yes.bringToFront();
             txtNo.bringToFront();
-            txtYes.setEnabled(true);
+            activityMainBinding.yes.setEnabled(true);
             txtNo.setEnabled(true);
 
             ObjectAnimator fadeInGame = ObjectAnimator.ofFloat(imgFondoGameOver, "alpha", 0.6f);
@@ -1791,7 +1786,7 @@ public class MainActivity extends AppCompatActivity implements
             ObjectAnimator fadeIn = ObjectAnimator.ofFloat(txtAreYouSure, "alpha", 1.0f);
             fadeIn.setDuration(500);
 
-            ObjectAnimator fadeInYes = ObjectAnimator.ofFloat(txtYes, "alpha", 1.0f);
+            ObjectAnimator fadeInYes = ObjectAnimator.ofFloat(activityMainBinding.yes, "alpha", 1.0f);
             fadeInYes.setDuration(500);
 
             ObjectAnimator fadeInNo = ObjectAnimator.ofFloat(txtNo, "alpha", 1.0f);
@@ -1805,11 +1800,11 @@ public class MainActivity extends AppCompatActivity implements
             txtAreYouSure.setText("the tutorial will restart the game");
             txtAreYouSure.setTextColor(BLUE);
             txtAreYouSure.setTextSize(40);
-            txtYes.setTextSize(30);
+            activityMainBinding.yes.setTextSize(30);
             txtNo.setTextSize(30);
-            txtYes.setTextColor(LTGRAY);
+            activityMainBinding.yes.setTextColor(LTGRAY);
             txtNo.setTextColor(WHITE);
-            txtYes.setText("tutorial");
+            activityMainBinding.yes.setText("tutorial");
             txtNo.setText("  play  ");
 
             startWithTutorial = true;
@@ -1956,14 +1951,14 @@ public class MainActivity extends AppCompatActivity implements
 
         piso[pisoDesaparece].setLayerType(View.LAYER_TYPE_HARDWARE, null);
         piso[pisoDesaparece2].setLayerType(View.LAYER_TYPE_HARDWARE, null);
-        txtTutorial.setTextSize(30);
-        txtTutorial.setY(mapPosicion[9] + (utilities.MODULO_Y / 3) * 2);
-        txtTutorial.setTranslationX(1200);
-        txtTutorial.setScaleY(1);
-        txtTutorial.setScaleX(1);
-        txtTutorial.bringToFront();
-        txtTutorial.setAlpha(1f);
-        txtTutorial.setTextColor(BLACK);
+        activityMainBinding.goTo100.setTextSize(30);
+        activityMainBinding.goTo100.setY(mapPosicion[9] + (utilities.MODULO_Y / 3) * 2);
+        activityMainBinding.goTo100.setTranslationX(1200);
+        activityMainBinding.goTo100.setScaleY(1);
+        activityMainBinding.goTo100.setScaleX(1);
+        activityMainBinding.goTo100.bringToFront();
+        activityMainBinding.goTo100.setAlpha(1f);
+        activityMainBinding.goTo100.setTextColor(BLACK);
 
 
         ObjectAnimator moveX = ObjectAnimator.ofFloat(piso[pisoDesaparece], "translationX", -1200);
@@ -1975,7 +1970,7 @@ public class MainActivity extends AppCompatActivity implements
         moveX2.setStartDelay(ANIMATION_VELOCITY / 4);
         moveX2.setInterpolator(new AnticipateOvershootInterpolator());
 
-        ObjectAnimator moveTitle = ObjectAnimator.ofFloat(txtTutorial, "translationX", 0);
+        ObjectAnimator moveTitle = ObjectAnimator.ofFloat(activityMainBinding.goTo100, "translationX", 0);
         moveTitle.setDuration(ANIMATION_VELOCITY * 2);
         moveTitle.setInterpolator(new OvershootInterpolator());
 
@@ -2031,7 +2026,7 @@ public class MainActivity extends AppCompatActivity implements
 
         txtBestGame.setEnabled(false);
         txtNo.setEnabled(false);
-        txtYes.setEnabled(false);
+        activityMainBinding.yes.setEnabled(false);
 
         txtBestGame.setTextColor(BLUE);
         if (strGameOver == "Best Score") {
@@ -2104,7 +2099,7 @@ public class MainActivity extends AppCompatActivity implements
 
         if (startWithTutorial == true) {
 
-            txtYes.setAlpha(0f);
+            activityMainBinding.yes.setAlpha(0f);
             txtNo.setAlpha(0f);
             txtAreYouSure.setAlpha(0f);
 
@@ -2128,7 +2123,7 @@ public class MainActivity extends AppCompatActivity implements
             soundPlayer.playSoundReset(this);
 
             txtAreYouSure.setAlpha(0f);
-            txtYes.setAlpha(0f);
+            activityMainBinding.yes.setAlpha(0f);
             txtNo.setAlpha(0f);
             txtPuntaje.setText("");
             txtMax.setText("");
@@ -2579,9 +2574,9 @@ public class MainActivity extends AppCompatActivity implements
 
         if (gameManager.user.livesUses == 0) {
             isClassic = true;
-            txtTutorial.setText(R.string.survival);
+            activityMainBinding.goTo100.setText(R.string.survival);
         } else {
-            txtTutorial.setText(R.string.chill);
+            activityMainBinding.goTo100.setText(R.string.chill);
             leaderBoardMode = "globalLB";
         }
         final boolean isClassicFinal = isClassic;
@@ -2698,9 +2693,9 @@ public class MainActivity extends AppCompatActivity implements
             typeBubble = "maxBubbleClassic";
             typeScore = "maxScoreClassic";
             isClassic = true;
-            txtTutorial.setText(R.string.survival);
+            activityMainBinding.goTo100.setText(R.string.survival);
         } else {
-            txtTutorial.setText(R.string.chill);
+            activityMainBinding.goTo100.setText(R.string.chill);
         }
         final boolean isClassicFinal = isClassic;
 
@@ -5403,13 +5398,13 @@ public class MainActivity extends AppCompatActivity implements
     public void tutorialBonusSwipe() {
 
         if (firstTutorial != 7) {
-            txtTutorial.setY(mapPosicion[7]);
-            txtTutorial.setScaleX(1);
-            txtTutorial.setScaleY(1);
-            txtTutorial.setTextSize((utilities.TUTORIAL_TEXT_SIZE / 4) * 3);
-            txtTutorial.setText(getString(R.string.bonus_swipe2));
-            txtTutorial.setAlpha(1f);
-            txtTutorial.bringToFront();
+            activityMainBinding.goTo100.setY(mapPosicion[7]);
+            activityMainBinding.goTo100.setScaleX(1);
+            activityMainBinding.goTo100.setScaleY(1);
+            activityMainBinding.goTo100.setTextSize((utilities.TUTORIAL_TEXT_SIZE / 4) * 3);
+            activityMainBinding.goTo100.setText(getString(R.string.bonus_swipe2));
+            activityMainBinding.goTo100.setAlpha(1f);
+            activityMainBinding.goTo100.bringToFront();
         }
         playability(false);
 
@@ -5500,7 +5495,7 @@ public class MainActivity extends AppCompatActivity implements
             public void onAnimationEnd(Animator animation) {
 
                 if (firstTutorial != 7) {
-                    txtTutorial.setAlpha(0f);
+                    activityMainBinding.goTo100.setAlpha(0f);
                     tutorialPosibilitiesShow(false);
                     fadeOutShades();
                     playability(true);
@@ -5515,11 +5510,11 @@ public class MainActivity extends AppCompatActivity implements
 
     public void tutorialBonusSwipeAuto(boolean isFirstTutorial) {
 
-        txtTutorial.setY(mapPosicion[7]);
-        txtTutorial.setTextSize((utilities.TUTORIAL_TEXT_SIZE / 4) * 3);
-        txtTutorial.setText(getString(R.string.bonus_swipe2));
-        txtTutorial.setAlpha(1f);
-        txtTutorial.bringToFront();
+        activityMainBinding.goTo100.setY(mapPosicion[7]);
+        activityMainBinding.goTo100.setTextSize((utilities.TUTORIAL_TEXT_SIZE / 4) * 3);
+        activityMainBinding.goTo100.setText(getString(R.string.bonus_swipe2));
+        activityMainBinding.goTo100.setAlpha(1f);
+        activityMainBinding.goTo100.bringToFront();
 
         animacionShade1(0, 4);
         animacionShade2(6, 15);
@@ -5589,7 +5584,7 @@ public class MainActivity extends AppCompatActivity implements
                                 });
                                 txtMaxBubbleThis.setAlpha(0f);
                                 fadeOutShades();
-                                txtTutorial.setAlpha(0f);
+                                activityMainBinding.goTo100.setAlpha(0f);
                                 playability(true);
                                 imgFondoBN.setAlpha(0f);
 
@@ -5668,11 +5663,11 @@ public class MainActivity extends AppCompatActivity implements
 
     public void tutorialPlus() {
 
-        txtTutorial.setY(mapPosicion[7]);
-        txtTutorial.setTextSize((utilities.TUTORIAL_TEXT_SIZE / 4) * 3);
-        txtTutorial.setText(getString(R.string.bonus_plus));
-        txtTutorial.setAlpha(1f);
-        txtTutorial.bringToFront();
+        activityMainBinding.goTo100.setY(mapPosicion[7]);
+        activityMainBinding.goTo100.setTextSize((utilities.TUTORIAL_TEXT_SIZE / 4) * 3);
+        activityMainBinding.goTo100.setText(getString(R.string.bonus_plus));
+        activityMainBinding.goTo100.setAlpha(1f);
+        activityMainBinding.goTo100.bringToFront();
 
         imgSwipeDownTutorial.setLayerType(View.LAYER_TYPE_HARDWARE, null);
         imgSwipeUpTutorial.setLayerType(View.LAYER_TYPE_HARDWARE, null);
@@ -5725,7 +5720,7 @@ public class MainActivity extends AppCompatActivity implements
                 imgSwipeDownTutorial.setLayerType(View.LAYER_TYPE_NONE, null);
                 imgSwipeUpTutorial.setLayerType(View.LAYER_TYPE_NONE, null);
                 imgFondoBN.setLayerType(View.LAYER_TYPE_NONE, null);
-                txtTutorial.setAlpha(0f);
+                activityMainBinding.goTo100.setAlpha(0f);
                 fadeOutShades();
                 playability(true);
                 tutorialPosibilitiesShow(false);
@@ -5736,11 +5731,11 @@ public class MainActivity extends AppCompatActivity implements
 
     public void tutorialPlusAuto(boolean isFirstTutorial) {
 
-        txtTutorial.setY(mapPosicion[7]);
-        txtTutorial.setTextSize((utilities.TUTORIAL_TEXT_SIZE / 4) * 3);
-        txtTutorial.setText(getString(R.string.bonus_plus));
-        txtTutorial.setAlpha(1f);
-        txtTutorial.bringToFront();
+        activityMainBinding.goTo100.setY(mapPosicion[7]);
+        activityMainBinding.goTo100.setTextSize((utilities.TUTORIAL_TEXT_SIZE / 4) * 3);
+        activityMainBinding.goTo100.setText(getString(R.string.bonus_plus));
+        activityMainBinding.goTo100.setAlpha(1f);
+        activityMainBinding.goTo100.bringToFront();
 
         imgSwipeDownTutorial.setLayerType(View.LAYER_TYPE_HARDWARE, null);
         imgSwipeUpTutorial.setLayerType(View.LAYER_TYPE_HARDWARE, null);
@@ -5831,7 +5826,7 @@ public class MainActivity extends AppCompatActivity implements
 
                                                         imgSwipeDownTutorial.setLayerType(View.LAYER_TYPE_NONE, null);
                                                         imgFondoBN.setLayerType(View.LAYER_TYPE_NONE, null);
-                                                        txtTutorial.setAlpha(0f);
+                                                        activityMainBinding.goTo100.setAlpha(0f);
                                                         fadeOutShades();
                                                         playability(true);
                                                         accionPiso = 0;
@@ -5878,11 +5873,11 @@ public class MainActivity extends AppCompatActivity implements
 
     private void tutorialExchange(){
 
-        txtTutorial.setY(mapPosicion[7]);
-        txtTutorial.setTextSize((utilities.TUTORIAL_TEXT_SIZE / 4) * 3);
-        txtTutorial.setText(getString(R.string.bonus_exchange_0));
-        txtTutorial.setAlpha(1f);
-        txtTutorial.bringToFront();
+        activityMainBinding.goTo100.setY(mapPosicion[7]);
+        activityMainBinding.goTo100.setTextSize((utilities.TUTORIAL_TEXT_SIZE / 4) * 3);
+        activityMainBinding.goTo100.setText(getString(R.string.bonus_exchange_0));
+        activityMainBinding.goTo100.setAlpha(1f);
+        activityMainBinding.goTo100.bringToFront();
 
         imgTapTutorial1.setLayerType(View.LAYER_TYPE_HARDWARE, null);
 
@@ -5936,7 +5931,7 @@ public class MainActivity extends AppCompatActivity implements
                     public void onAnimationEnd(Animator animation) {
                         imgTapTutorial1.setLayerType(View.LAYER_TYPE_NONE, null);
                         imgFondoBN.setLayerType(View.LAYER_TYPE_NONE, null);
-                        txtTutorial.setAlpha(0f);
+                        activityMainBinding.goTo100.setAlpha(0f);
                         fadeOutShades();
                         playability(true);
                         tutorialPosibilitiesShow(false);
@@ -5950,11 +5945,11 @@ public class MainActivity extends AppCompatActivity implements
 
     private void tutorialExchangeAuto(boolean isFirstTutorial) {
 
-        txtTutorial.setY(mapPosicion[7]);
-        txtTutorial.setTextSize((utilities.TUTORIAL_TEXT_SIZE / 4) * 3);
-        txtTutorial.setText(getString(R.string.bonus_exchange_1));
-        txtTutorial.setAlpha(1f);
-        txtTutorial.bringToFront();
+        activityMainBinding.goTo100.setY(mapPosicion[7]);
+        activityMainBinding.goTo100.setTextSize((utilities.TUTORIAL_TEXT_SIZE / 4) * 3);
+        activityMainBinding.goTo100.setText(getString(R.string.bonus_exchange_1));
+        activityMainBinding.goTo100.setAlpha(1f);
+        activityMainBinding.goTo100.bringToFront();
 
         imgTapTutorial1.setLayerType(View.LAYER_TYPE_HARDWARE, null);
 
@@ -6020,7 +6015,7 @@ public class MainActivity extends AppCompatActivity implements
                                     }
                                 }
 
-                                txtTutorial.setText(getString(R.string.bonus_exchange_2));
+                                activityMainBinding.goTo100.setText(getString(R.string.bonus_exchange_2));
                                 imgTapTutorial1.setY(mapPosicion[5] + MODULO_Y / 4);
                                 imgTapTutorial1.setX(columnaX[0] - moduloX);
                                 accionPiso = 3;
@@ -6049,7 +6044,7 @@ public class MainActivity extends AppCompatActivity implements
                                             @Override
                                             public void run() {
 
-                                                txtTutorial.setText(getString(R.string.bonus_exchange_3));
+                                                activityMainBinding.goTo100.setText(getString(R.string.bonus_exchange_3));
                                                 exchangeBubble(3, 0, true);
 
                                                 final Handler handler = new Handler();
@@ -6059,7 +6054,7 @@ public class MainActivity extends AppCompatActivity implements
 
                                                         imgTapTutorial1.setLayerType(View.LAYER_TYPE_NONE, null);
                                                         imgFondoBN.setLayerType(View.LAYER_TYPE_NONE, null);
-                                                        txtTutorial.setAlpha(0f);
+                                                        activityMainBinding.goTo100.setAlpha(0f);
                                                         fadeOutShades();
                                                         playability(true);
                                                         accionPiso = 0;
@@ -6160,27 +6155,27 @@ public class MainActivity extends AppCompatActivity implements
 
     public void tutorialTextAnimate() {
 
-        //txtTutorial.setY(mapPosicion[7]);
-        txtTutorial.bringToFront();
-        txtTutorial.setAlpha(1f);
-        txtTutorial.setTextColor(BLUE);
+        //activityMainBinding.goTo100.setY(mapPosicion[7]);
+        activityMainBinding.goTo100.bringToFront();
+        activityMainBinding.goTo100.setAlpha(1f);
+        activityMainBinding.goTo100.setTextColor(BLUE);
 
-        txtTutorial.setLayerType(View.LAYER_TYPE_HARDWARE, null);
+        activityMainBinding.goTo100.setLayerType(View.LAYER_TYPE_HARDWARE, null);
 
 
-        ObjectAnimator fadeOut = ObjectAnimator.ofFloat(txtTutorial, "alpha", 0f);
+        ObjectAnimator fadeOut = ObjectAnimator.ofFloat(activityMainBinding.goTo100, "alpha", 0f);
         fadeOut.setInterpolator(new DecelerateInterpolator());
         fadeOut.setDuration(ANIMATION_VELOCITY * 3);
         fadeOut.setStartDelay(ANIMATION_VELOCITY * 5);
 
-        ObjectAnimator moveUp = ObjectAnimator.ofFloat(txtTutorial, "Y", mapPosicion[1]);
+        ObjectAnimator moveUp = ObjectAnimator.ofFloat(activityMainBinding.goTo100, "Y", mapPosicion[1]);
         moveUp.setInterpolator(new AccelerateDecelerateInterpolator());
         moveUp.setDuration(ANIMATION_VELOCITY * 8);
 
         fadeOut.addListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
-                txtTutorial.setLayerType(View.LAYER_TYPE_NONE, null);
+                activityMainBinding.goTo100.setLayerType(View.LAYER_TYPE_NONE, null);
             }
         });
 
@@ -6348,7 +6343,7 @@ public class MainActivity extends AppCompatActivity implements
 
         imgShade1.bringToFront();
         txtRulesButton.bringToFront();
-        txtTutorial.bringToFront();
+        activityMainBinding.goTo100.bringToFront();
         txtMaxBubbleThis.bringToFront();
         txtBonusSwipe.bringToFront();
         txtBonusSwipe.bringToFront();
@@ -6357,22 +6352,22 @@ public class MainActivity extends AppCompatActivity implements
 
     private void animacionShade2(int pos, int height) {
 
-        imgShade2.setAlpha(0f);
-        imgShade2.setY(utilities.MODULO_Y * pos);
-        imgShade2.setMinimumWidth(utilities.WIDTHSCREEN);
-        imgShade2.setMaxWidth(utilities.WIDTHSCREEN);
-        imgShade2.setMinimumHeight((int) utilities.MODULO_Y * height);
-        imgShade2.setMaxHeight((int) utilities.MODULO_Y * height);
+        activityMainBinding.shadeMiddle.setAlpha(0f);
+        activityMainBinding.shadeMiddle.setY(utilities.MODULO_Y * pos);
+        activityMainBinding.shadeMiddle.setMinimumWidth(utilities.WIDTHSCREEN);
+        activityMainBinding.shadeMiddle.setMaxWidth(utilities.WIDTHSCREEN);
+        activityMainBinding.shadeMiddle.setMinimumHeight((int) utilities.MODULO_Y * height);
+        activityMainBinding.shadeMiddle.setMaxHeight((int) utilities.MODULO_Y * height);
 
-        ObjectAnimator fadeIn = ObjectAnimator.ofFloat(imgShade2, "alpha", 0.4f);
+        ObjectAnimator fadeIn = ObjectAnimator.ofFloat(activityMainBinding.shadeMiddle, "alpha", 0.4f);
         fadeIn.setInterpolator(new AccelerateInterpolator());
         fadeIn.setDuration(ANIMATION_VELOCITY * 2);
         fadeIn.start();
 
-        imgShade2.bringToFront();
+        activityMainBinding.shadeMiddle.bringToFront();
         txtRulesButton.bringToFront();
         txtRulesButton.bringToFront();
-        txtTutorial.bringToFront();
+        activityMainBinding.goTo100.bringToFront();
         txtMaxBubbleThis.bringToFront();
         txtBonusSwipe.bringToFront();
         txtBonusPlus.bringToFront();
@@ -6381,20 +6376,20 @@ public class MainActivity extends AppCompatActivity implements
 
     private void fadeOutShades() {
         imgShade1.setAlpha(0f);
-        imgShade2.setAlpha(0f);
+        activityMainBinding.shadeMiddle.setAlpha(0f);
     }
 
     private void animateTextTutorial(float mapPosicion, float textSize, String strTutorial) {
 
         if (mapPosicion != 0) {
-            txtTutorial.setY(mapPosicion);
+            activityMainBinding.goTo100.setY(mapPosicion);
         }
         if (textSize != 0) {
-            txtTutorial.setTextSize(textSize);
+            activityMainBinding.goTo100.setTextSize(textSize);
         }
-        txtTutorial.setText(strTutorial);
-        txtTutorial.bringToFront();
-        txtTutorial.setAlpha(1f);
+        activityMainBinding.goTo100.setText(strTutorial);
+        activityMainBinding.goTo100.bringToFront();
+        activityMainBinding.goTo100.setAlpha(1f);
 
     }
 
@@ -6446,7 +6441,7 @@ public class MainActivity extends AppCompatActivity implements
                 txtRulesButton.setY(mapPosicion[3] + utilities.MODULO_Y / 2);
                 txtRulesButton.bringToFront();
 
-                ObjectAnimator fadeIn = ObjectAnimator.ofFloat(txtTutorial, "alpha", 1f);
+                ObjectAnimator fadeIn = ObjectAnimator.ofFloat(activityMainBinding.goTo100, "alpha", 1f);
                 fadeIn.setInterpolator(new AccelerateInterpolator());
                 fadeIn.setDuration(ANIMATION_VELOCITY * 3);
 
@@ -6463,7 +6458,7 @@ public class MainActivity extends AppCompatActivity implements
                     @Override
                     public void onAnimationEnd(Animator animation) {
                         txtRulesButton.setEnabled(true);
-                        txtTutorial.setLayerType(View.LAYER_TYPE_NONE, null);
+                        activityMainBinding.goTo100.setLayerType(View.LAYER_TYPE_NONE, null);
                         txtRulesButton.setLayerType(View.LAYER_TYPE_NONE, null);
                     }
                 });
@@ -6753,7 +6748,7 @@ public class MainActivity extends AppCompatActivity implements
         }, ANIMATION_VELOCITY * 4);
 
         animateTextTutorial(0, ((utilities.TUTORIAL_TEXT_SIZE / 4) * 3), getString(R.string.bonus_swipe));
-        txtTutorial.setText(getString(R.string.bonus_swipe));
+        activityMainBinding.goTo100.setText(getString(R.string.bonus_swipe));
         txtRulesButton.setEnabled(false);
         txtRulesButton.setAlpha(0f);
         txtMaxBubbleThis.setAlpha(1f);
@@ -6822,11 +6817,11 @@ public class MainActivity extends AppCompatActivity implements
         imgSwipeRightTutorial.setAlpha(0f);
         imgSound.setAlpha(ALPHA_BASE);
         imgResetButton.setAlpha(ALPHA_BASE);
-        txtTutorial.setY(mapPosicion[4]);
-        txtTutorial.setTextSize(utilities.TUTORIAL_TEXT_SIZE);
-        txtTutorial.setText(R.string.go);
+        activityMainBinding.goTo100.setY(mapPosicion[4]);
+        activityMainBinding.goTo100.setTextSize(utilities.TUTORIAL_TEXT_SIZE);
+        activityMainBinding.goTo100.setText(R.string.go);
         txtMaxBubbleThis.setLayerType(View.LAYER_TYPE_HARDWARE, null);
-        txtTutorial.setLayerType(View.LAYER_TYPE_HARDWARE, null);
+        activityMainBinding.goTo100.setLayerType(View.LAYER_TYPE_HARDWARE, null);
         casObjAccion[9].setAlpha(0f);
         casObjAccion[9].setBackgroundResource(R.drawable.ic_bubble_dont);
         casObjAccion[10].setBackgroundResource(R.drawable.ic_bubble_dont);
@@ -6862,7 +6857,7 @@ public class MainActivity extends AppCompatActivity implements
             }
         }, ANIMATION_VELOCITY);
 
-        ObjectAnimator movY = ObjectAnimator.ofFloat(txtTutorial, "y", mapPosicion[7]);
+        ObjectAnimator movY = ObjectAnimator.ofFloat(activityMainBinding.goTo100, "y", mapPosicion[7]);
         movY.setDuration(ANIMATION_VELOCITY * 7);
         movY.setInterpolator(new AccelerateInterpolator());
         movY.start();
@@ -6872,16 +6867,16 @@ public class MainActivity extends AppCompatActivity implements
             @Override
             public void run() {
 
-                ObjectAnimator textScaleX = ObjectAnimator.ofFloat(txtTutorial, "scaleX", 50);
+                ObjectAnimator textScaleX = ObjectAnimator.ofFloat(activityMainBinding.goTo100, "scaleX", 50);
                 textScaleX.setDuration(ANIMATION_VELOCITY);
                 textScaleX.setInterpolator(new AccelerateInterpolator());
 
-                ObjectAnimator textScaleY = ObjectAnimator.ofFloat(txtTutorial, "scaleY", 0.05f);
+                ObjectAnimator textScaleY = ObjectAnimator.ofFloat(activityMainBinding.goTo100, "scaleY", 0.05f);
                 textScaleY.setDuration(ANIMATION_VELOCITY / 2);
                 textScaleY.setStartDelay(ANIMATION_VELOCITY / 2);
                 textScaleY.setInterpolator(new AccelerateInterpolator());
 
-                ObjectAnimator fadeOut = ObjectAnimator.ofFloat(txtTutorial, "alpha", 0);
+                ObjectAnimator fadeOut = ObjectAnimator.ofFloat(activityMainBinding.goTo100, "alpha", 0);
                 fadeOut.setInterpolator(new AccelerateInterpolator());
                 fadeOut.setDuration(ANIMATION_VELOCITY);
 
@@ -6899,17 +6894,17 @@ public class MainActivity extends AppCompatActivity implements
                     public void onAnimationEnd(Animator animation) {
                         txtMax.setAlpha(ALPHA_BASE);
                         txtPuntaje.setAlpha(ALPHA_BASE);
-                        txtTutorial.setLayerType(View.LAYER_TYPE_NONE, null);
-                        txtTutorial.setScaleX(1);
-                        txtTutorial.setScaleY(1);
+                        activityMainBinding.goTo100.setLayerType(View.LAYER_TYPE_NONE, null);
+                        activityMainBinding.goTo100.setScaleX(1);
+                        activityMainBinding.goTo100.setScaleY(1);
                     }
                 });
 
                 animatorSet.addListener(new AnimatorListenerAdapter() {
                     @Override
                     public void onAnimationEnd(Animator animation) {
-                        txtTutorial.setScaleX(1);
-                        txtTutorial.setScaleY(1);
+                        activityMainBinding.goTo100.setScaleX(1);
+                        activityMainBinding.goTo100.setScaleY(1);
                         txtMaxBubbleThis.setLayerType(View.LAYER_TYPE_NONE, null);
                     }
                 });

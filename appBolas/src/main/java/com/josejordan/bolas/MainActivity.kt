@@ -9,10 +9,11 @@ import android.view.View
 import android.view.WindowInsets
 import android.view.WindowInsetsController
 import android.widget.Button
-import android.widget.ImageButton
 import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.FirebaseAuth
 import kotlin.system.exitProcess
 
 
@@ -20,7 +21,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var gameView: MyGameView
     private lateinit var exitButton: Button
-    private lateinit var pauseButton: ImageButton
+    //private lateinit var pauseButton: ImageButton
     private var isPaused = false
     lateinit var highScoreTextView: TextView
 
@@ -48,7 +49,7 @@ class MainActivity : AppCompatActivity() {
         gameView = findViewById(R.id.my_game_view)
         gameView.requestFocus()
         exitButton = findViewById(R.id.exitButton)
-        pauseButton = findViewById(R.id.pauseButton)
+        //pauseButton = findViewById(R.id.pauseButton)
         highScoreTextView = findViewById(R.id.highScoreTextView)
 
         val prefs = getSharedPreferences(MY_GAME_PREFS, Context.MODE_PRIVATE)
@@ -120,7 +121,7 @@ class MainActivity : AppCompatActivity() {
 
 */
 
-        pauseButton.setOnClickListener {
+        /*pauseButton.setOnClickListener {
             if (gameView.getGameState() == MyGameView.GameState.Playing) {
                 gameView.setGameState(MyGameView.GameState.Paused).also {
                     gameView.pauseMediaPlayer()
@@ -135,7 +136,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
             updateExitButtonVisibility()
-        }
+        }*/
         gameView.onGameOver = {
             runOnUiThread {
                 updateExitButtonVisibility()
@@ -161,11 +162,58 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun updateExitButtonVisibility() {
-        if (gameView.getGameState() == MyGameView.GameState.GameOver || gameView.getGameState() == MyGameView.GameState.Paused) {
+        if (gameView.getGameState() == MyGameView.GameState.GameOver) {
+            val mAuth = FirebaseAuth.getInstance()
+            val currentUser = mAuth.currentUser
+            if (currentUser != null) {
+                registrarPuntaje(
+                    currentUser.uid,
+                    gameView.getScore()
+                )
+            } else {
+                registrarPuntaje("none",
+                    gameView.getScore())
+            }
+        } else if (gameView.getGameState() == MyGameView.GameState.Paused) {
             exitButton.visibility = View.VISIBLE
         } else {
             exitButton.visibility = View.GONE
         }
+
+    }
+
+    fun registrarPuntaje(userId: String, puntaje: Int) {
+        // Obtén la instancia de Firestore
+        val db: com.google.firebase.firestore.FirebaseFirestore =
+            com.google.firebase.firestore.FirebaseFirestore.getInstance()
+
+        // Crea un mapa con los datos que deseas almacenar
+        val puntajeData: MutableMap<String, Any> = HashMap()
+        puntajeData["userId"] = userId
+        puntajeData["puntaje"] = puntaje
+        puntajeData["juego"] = "JUEGO 3"
+
+        // Genera una referencia única para el documento
+        val puntajeRef: com.google.firebase.firestore.DocumentReference =
+            db.collection("puntaje").document()
+
+        // Agrega los datos a Firestore
+        puntajeRef.set(puntajeData, com.google.firebase.firestore.SetOptions.merge())
+            .addOnCompleteListener { p0 ->
+                if (p0.isSuccessful()) {
+                    // La operación se completó con éxito
+                    // Puedes realizar acciones adicionales aquí si es necesario
+                    //Application_Base.getInstance().getCurrentActivity().finish();
+                    finishAffinity()
+                    exitProcess(0) // This will close the app and all its activities
+                } else {
+                    // Ocurrió un error al escribir en Firestore
+                    val e: Exception? = p0.getException()
+                    if (e != null) {
+                        e.printStackTrace()
+                    }
+                }
+            }
     }
 
     override fun onPause() {

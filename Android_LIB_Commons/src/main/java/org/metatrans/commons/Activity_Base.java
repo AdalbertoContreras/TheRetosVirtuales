@@ -18,12 +18,11 @@ import android.os.Bundle;
 import android.view.Display;
 import android.view.View;
 
-
 public abstract class Activity_Base extends Activity {
 	
 	
 	private int icon_size;
-	
+	private static final String COLLECTION_PUNTAJE = "puntaje";
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -297,4 +296,6 @@ public abstract class Activity_Base extends Activity {
 		
 		return super.onCreateDialog(id);
 	}
+
+
 }

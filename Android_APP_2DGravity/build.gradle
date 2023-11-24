@@ -30,7 +30,9 @@ android {
 }
 
 dependencies {
-
+    implementation("com.google.firebase:firebase-firestore:24.9.0")
+    implementation("com.google.firebase:firebase-auth:22.3.0")
+    implementation("com.google.firebase:firebase-firestore")
     implementation project(":Android_LIB_Commons")
     implementation project(":Android_LIB_CommonsAds")
     implementation project(":Android_LIB_Commons2D")

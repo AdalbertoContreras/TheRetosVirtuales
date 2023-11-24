@@ -143,7 +143,14 @@ public class ConfigurationUtils_Base {
 		
 		return result;
 	}
-	
+
+	public IConfigurationEntry levelUno() {
+		if (getAll().length > 0) {
+			IConfigurationEntry nextIndex = getAll()[0];
+			return  nextIndex;
+		}
+		return null;
+	}
 	
 	public int getNextConfigID(int id) {
 		

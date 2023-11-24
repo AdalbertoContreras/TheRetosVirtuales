@@ -38,7 +38,6 @@ import android.widget.CompoundButton;
 
 public abstract class Application_Base extends Application {
 	
-	
 	private static final String[] KEYWORDS = new String[] {"games"};
 
 	private static Application_Base singleton;
@@ -185,6 +184,7 @@ public abstract class Application_Base extends Application {
 
 	
 	public UserSettings_Base getUserSettings() {
+
 
 		//System.out.println("Application_Base.getUserSettings: called");
 
@@ -340,7 +340,6 @@ public abstract class Application_Base extends Application {
 		System.out.println("Application_Base.recreateUserData");
 
 		UserData_Base user_data = createUserDataObject();
-
 		StorageUtils.writeStore(this, UserData_Base.FILE_NAME_USER_DATA, user_data);
 
 		user_data = (UserData_Base) StorageUtils.readStorage(this, UserData_Base.FILE_NAME_USER_DATA);

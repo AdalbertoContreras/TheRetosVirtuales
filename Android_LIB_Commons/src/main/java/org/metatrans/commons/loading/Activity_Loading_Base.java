@@ -351,7 +351,6 @@ public abstract class Activity_Loading_Base extends Activity_Base {
 						openInterstitial();
 						
 						dialog.dismiss();
-						finish();
 					}
 				});
 		

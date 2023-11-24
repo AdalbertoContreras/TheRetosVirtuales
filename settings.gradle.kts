@@ -21,3 +21,5 @@ include(":Android_APP_2DGravity")
 include(":appgravity")
 include(":Android_LIB_Commons2D")
 include(":Android_LIB_Commons")
+include(":app100Bubbles")
+

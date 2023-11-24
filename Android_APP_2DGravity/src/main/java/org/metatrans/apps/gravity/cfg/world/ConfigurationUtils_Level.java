@@ -24,8 +24,8 @@ public class ConfigurationUtils_Level extends ConfigurationUtils_Base {
 	
 	
 	public static void createInstance(Context context) {
-		
-		IConfigurationEntry[] cfgs_levels = new IConfigurationEntry[14];
+		//configura el numero de niveles
+		IConfigurationEntry[] cfgs_levels = new IConfigurationEntry[3];
 		
 		int[] size_xy 	= ScreenUtils.getScreenSize(context);
 		float speed 	= Math.min(size_xy[0], size_xy[1]) / 50;

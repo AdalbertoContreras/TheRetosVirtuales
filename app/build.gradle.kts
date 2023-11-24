@@ -49,6 +49,7 @@ dependencies {
     implementation(project(mapOf("path" to ":appgravity")))
     implementation(project(mapOf("path" to ":Android_LIB_Commons2D")))
     implementation(project(mapOf("path" to ":Android_LIB_Commons")))
+    implementation(project(mapOf("path" to ":app100Bubbles")))
     implementation("com.google.firebase:firebase-firestore:24.9.0")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

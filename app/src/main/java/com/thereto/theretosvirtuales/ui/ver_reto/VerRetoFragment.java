@@ -69,6 +69,21 @@ public class VerRetoFragment extends Fragment {
                                     .addToBackStack(null)
                                     .commit();
                         });
+                        binding.participarTextView.setOnClickListener(v -> {
+                            switch (game.name_challeng) {
+                                case "juego 1":
+                                    Intent intent = new Intent(requireContext(), Activity_Main_Gravity.class);
+                                    intent.putExtra("clave", "valor");
+                                    startActivity(intent);
+                                    break;
+                                case "juego 2":
+                                    intent = new Intent(requireContext(), com.example.hundred.MainActivity.class);
+                                    intent.putExtra("clave", "valor");
+                                    startActivity(intent);
+                                    break;
+                            }
+
+                        });
                     } else {
                         // El documento no existe
                     }
@@ -78,15 +93,7 @@ public class VerRetoFragment extends Fragment {
     .addOnFailureListener ( e ->{}
             // Ocurrió un error al consultar el documento
     );
-        binding.participarTextView.setOnClickListener(v -> {
-            Intent intent = new Intent(requireContext(), Activity_Main_Gravity.class);
 
-            // Puedes pasar datos a la nueva actividad usando putExtra
-            intent.putExtra("clave", "valor");
-
-            // Iniciar la nueva actividad
-            startActivity(intent);
-        });
         return root;
     }
 

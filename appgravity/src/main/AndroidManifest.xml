@@ -60,7 +60,6 @@
             android:exported="false">
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 

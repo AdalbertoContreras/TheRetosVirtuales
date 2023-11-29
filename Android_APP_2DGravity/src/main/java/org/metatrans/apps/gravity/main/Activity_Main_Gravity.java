@@ -13,7 +13,8 @@ public class Activity_Main_Gravity extends Activity_Main_Base2D implements IActi
 	
 	@Override
 	protected View createMainView() {
-		return new View_Main_Gravity(this);
+		View_Main_Gravity viewMainGravity = new View_Main_Gravity(this);
+		return viewMainGravity;
 	}
 
 	

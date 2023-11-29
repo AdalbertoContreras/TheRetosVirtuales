@@ -1,6 +1,5 @@
 package com.thereto.theretosvirtuales;
 
-import android.app.DownloadManager;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -24,7 +23,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -194,7 +192,7 @@ public class Home extends AppCompatActivity  implements LogoutDialogListener, On
             if (user != null) {
                 // Name
                 String name = user.getDisplayName();
-                if (name.isEmpty()) {
+                if (name == null || name.isEmpty()) {
                     name = "---";
                 }
                 binding.userTextView.setText(name);

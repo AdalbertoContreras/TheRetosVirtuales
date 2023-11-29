@@ -201,16 +201,13 @@ public class Activity_Menu_Levels extends Activity_Base {
 				if (available) {
 				
 					AlertDialog.Builder adb = Alerts_Base.createAlertDialog_LoseGame(Activity_Menu_Levels.this,
-							
-							new DialogInterface.OnClickListener() {
-								
-								public void onClick(DialogInterface dialog, int which) {
-									
-									int newCfgID = getConfigurationLevels().getID(position);
-									changeMode(newCfgID);
-									
-									finish();
-								}
+
+							(dialog, which) -> {
+
+								int newCfgID = getConfigurationLevels().getID(position);
+								changeMode(newCfgID);
+
+								finish();
 							}
 					);
 		

@@ -5,10 +5,10 @@ import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.thereto.theretosvirtuales.R;
+import com.thereto.theretosvirtuales.interfas.DialogCallback;
 
 public class UsuarioRegistrado {
     private final Context context;

@@ -24,3 +24,5 @@ include(":Android_LIB_Commons")
 include(":app100Bubbles")
 include("::appBolas")
 
+include(":Vistas")
+include(":helpers")

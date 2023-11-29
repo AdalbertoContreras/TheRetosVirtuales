@@ -15,11 +15,13 @@
             <option value="$PROJECT_DIR$/Android_LIB_Commons" />
             <option value="$PROJECT_DIR$/Android_LIB_Commons2D" />
             <option value="$PROJECT_DIR$/Android_LIB_CommonsAds" />
+            <option value="$PROJECT_DIR$/Vistas" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/app/model" />
             <option value="$PROJECT_DIR$/app100Bubbles" />
             <option value="$PROJECT_DIR$/appBolas" />
             <option value="$PROJECT_DIR$/appgravity" />
+            <option value="$PROJECT_DIR$/helpers" />
           </set>
         </option>
       </GradleProjectSettings>

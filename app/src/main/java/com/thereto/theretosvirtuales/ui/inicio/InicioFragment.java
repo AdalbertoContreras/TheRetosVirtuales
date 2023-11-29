@@ -3,7 +3,6 @@ package com.thereto.theretosvirtuales.ui.inicio;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
-import android.graphics.drawable.LayerDrawable;
 import android.graphics.drawable.PictureDrawable;
 import android.net.Uri;
 import android.os.Bundle;
@@ -13,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
-import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -33,7 +31,6 @@ import com.thereto.theretosvirtuales.R;
 import com.thereto.theretosvirtuales.databinding.FragmentHomeBinding;
 import com.thereto.theretosvirtuales.helpers.Fecha;
 import com.thereto.theretosvirtuales.interfas.OnTaskCompleteListener;
-import com.thereto.theretosvirtuales.ui.eTickets.ETicketsFragment;
 import com.thereto.theretosvirtuales.ui.login.LoginFragment;
 import com.thereto.theretosvirtuales.ui.ver_reto.VerRetoFragment;
 
@@ -167,7 +164,7 @@ public class InicioFragment extends Fragment implements OnTaskCompleteListener {
                                 // Convierte cada documento en un objeto Ticket
                                 Game ticket = new Game();
 
-                                ticket.id = document.getId();
+                                ticket.documentId = document.getId();
                                 ticket.accumulated_tickets = document.getLong("accumulated_tickets").intValue();
                                 ticket.date_creation = document.getString("date_creation");
                                 ticket.date_limit = document.getString("date_limit");
@@ -262,7 +259,7 @@ public class InicioFragment extends Fragment implements OnTaskCompleteListener {
 
     private void verJuego(Game game) {
         Bundle bundle = new Bundle();
-        bundle.putString("id", game.id);
+        bundle.putString("id", game.documentId);
         VerRetoFragment verRetoFragment = new VerRetoFragment();
         verRetoFragment.setArguments(bundle);
         requireActivity().getSupportFragmentManager().beginTransaction()

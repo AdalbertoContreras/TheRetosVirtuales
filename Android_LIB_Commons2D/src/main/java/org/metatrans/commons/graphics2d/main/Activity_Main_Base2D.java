@@ -225,8 +225,8 @@ public abstract class Activity_Main_Base2D extends Activity_Base_Ads_Banner {
 		super.onBackPressed();
 
 	}
-	
-	
+
+
 	@Override
 	public void onConfigurationChanged(Configuration newConfig) {
 	    super.onConfigurationChanged(newConfig);
@@ -235,7 +235,6 @@ public abstract class Activity_Main_Base2D extends Activity_Base_Ads_Banner {
 	
 	
 	public IConfigurationColours getColoursCfg() {
-		IConfigurationColours coloursCfg = ConfigurationUtils_Colours.getConfigByID(((Application_Base)getApplication()).getUserSettings().uiColoursID);
-		return coloursCfg;
+		return ConfigurationUtils_Colours.getConfigByID(((Application_Base)getApplication()).getUserSettings().uiColoursID);
 	}
 }

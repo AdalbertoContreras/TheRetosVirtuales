@@ -16,20 +16,15 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.SignInMethodQueryResult;
 import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.thereto.model.Player;
 import com.thereto.theretosvirtuales.R;
-import com.thereto.theretosvirtuales.databinding.FragmentLoginBinding;
 import com.thereto.theretosvirtuales.databinding.FragmentRegistroBinding;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.thereto.theretosvirtuales.dialog.DialogCallback;
+import com.thereto.theretosvirtuales.interfas.DialogCallback;
 import com.thereto.theretosvirtuales.dialog.MensajeBienvenida;
 import com.thereto.theretosvirtuales.dialog.UsuarioRegistrado;
 
@@ -37,7 +32,6 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 
 public class RegistrarFragment extends Fragment {
 

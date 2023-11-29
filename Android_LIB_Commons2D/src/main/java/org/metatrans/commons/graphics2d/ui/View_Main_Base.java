@@ -48,11 +48,10 @@ public abstract class View_Main_Base extends View_Surface_Base {
 	private RectF rectf_top_center_star2;
 	private RectF rectf_top_center_star3;
 	
-	private IButtonArea button_pause;
+	//private IButtonArea button_pause;
 	private IButtonArea button_resume;
 	private IButtonArea button_replay;
-	private IButtonArea button_menu;
-	private IButtonArea button_new_small;
+	//private IButtonArea button_menu;
 	private IButtonArea button_new_center;
 	private IButtonArea button_next_level;
 	private IButtonArea textarea_top_center1_gameover;
@@ -78,7 +77,6 @@ public abstract class View_Main_Base extends View_Surface_Base {
 		rectf_main 					= new RectF();
 		rectf_button_pause			= new RectF();
 		rectf_button_menu			= new RectF();
-		rectf_button_new_small		= new RectF();
 		rectf_button_center 		= new RectF();
 		rectf_button_center_bottom 	= new RectF();
 		rectf_top_center 			= new RectF();
@@ -201,9 +199,9 @@ public abstract class View_Main_Base extends View_Surface_Base {
 		rectf_button_pause.right = rectf_button_pause.left + getWorld().getCellSize() - 2 * border;
 		rectf_button_pause.bottom = rectf_button_pause.top + getWorld().getCellSize() - 2 * border;
 		
-		button_pause = new ButtonAreaClick_Image(rectf_button_pause, bitmap_pause,
+		/*button_pause = new ButtonAreaClick_Image(rectf_button_pause, bitmap_pause,
 				getActivity().getColoursCfg().getColour_Square_ValidSelection(),
-				getActivity().getColoursCfg().getColour_Square_MarkingSelection(), true);
+				getActivity().getColoursCfg().getColour_Square_MarkingSelection(), true);*/
 		
 		button_resume = new ButtonAreaClick_Image(rectf_button_center, bitmap_play,
 				getActivity().getColoursCfg().getColour_Square_ValidSelection(),
@@ -218,19 +216,10 @@ public abstract class View_Main_Base extends View_Surface_Base {
 		rectf_button_menu.right = main_width - border;
 		rectf_button_menu.bottom = rectf_button_menu.top + getWorld().getCellSize() - 2 * border;
 		
-		button_menu = new ButtonAreaClick_Image(rectf_button_menu, bitmap_menu,
-				getActivity().getColoursCfg().getColour_Square_ValidSelection(),
-				getActivity().getColoursCfg().getColour_Square_MarkingSelection(), true);
+
+
 		
-		
-		rectf_button_new_small.left = rectf_button_menu.left - getWorld().getCellSize();
-		rectf_button_new_small.top = border;
-		rectf_button_new_small.right = rectf_button_menu.left - border;
-		rectf_button_new_small.bottom = rectf_button_new_small.top + getWorld().getCellSize() - 2 * border;
-		
-		button_new_small = new ButtonAreaClick_Image(rectf_button_new_small, bitmap_new,
-				getActivity().getColoursCfg().getColour_Square_ValidSelection(),
-				getActivity().getColoursCfg().getColour_Square_MarkingSelection(), true);
+
 	}
 	
 	
@@ -277,7 +266,7 @@ public abstract class View_Main_Base extends View_Surface_Base {
 		
 		super.onDraw(canvas);
 		
-		button_menu.draw(canvas);
+		//button_menu.draw(canvas);
 		
 		if (isLevelCompleted()) {
 			
@@ -315,10 +304,9 @@ public abstract class View_Main_Base extends View_Surface_Base {
 			if (Application_2D_Base.getInstance().getGameData().paused) {
 				button_resume.draw(canvas);
 			} else {
-				button_pause.draw(canvas);
+				//button_pause.draw(canvas);
 			}
-			
-			button_new_small.draw(canvas);
+
 			
 			//Clear
 			if (view_leaderboards != null) {
@@ -372,23 +360,18 @@ public abstract class View_Main_Base extends View_Surface_Base {
 			}
 		}
 		
-		
-		if (rectf_button_new_small.contains(x, y)) {
-			button_new_small.select();
-		} else {
-			button_new_small.deselect();
-		}
+
 		
 		if (rectf_button_menu.contains(x, y)) {
-			button_menu.select();
+			//button_menu.select();
 		} else {
-			button_menu.deselect();
+			//button_menu.deselect();
 		}
 		
 		if (rectf_button_pause.contains(x, y)) {
-			button_pause.select();
+			//button_pause.select();
 		} else {
-			button_pause.deselect();
+			//button_pause.deselect();
 		}
 		
 		if (rectf_button_center.contains(x, y)) {
@@ -419,22 +402,18 @@ public abstract class View_Main_Base extends View_Surface_Base {
 		}
 		
 		
-		if (rectf_button_new_small.contains(x, y)) {
-			button_new_small.select();
-		} else {
-			button_new_small.deselect();
-		}
+
 		
 		if (rectf_button_menu.contains(x, y)) {
-			button_menu.select();
+			//button_menu.select();
 		} else {
-			button_menu.deselect();
+			//button_menu.deselect();
 		}
 		
 		if (rectf_button_pause.contains(x, y)) {
-			button_pause.select();
+			//button_pause.select();
 		} else {
-			button_pause.deselect();
+			//button_pause.deselect();
 		}
 		
 		if (rectf_button_center.contains(x, y)) {
@@ -464,20 +443,19 @@ public abstract class View_Main_Base extends View_Surface_Base {
 			}
 		}
 		
-		
-		button_new_small.deselect();
-		button_menu.deselect();
+
+		//button_menu.deselect();
 		button_resume.deselect();
-		button_pause.deselect();
+		//button_pause.deselect();
 		button_new_center.deselect();
 		button_next_level.deselect();
-		
-		
-		if (rectf_button_menu.contains(x, y)) {
+
+
+		/*if (rectf_button_menu.contains(x, y)) {
 			//System.out.prin tln("MENU clicked");
 			Intent i = new Intent(getActivity(), getMainMenuClass());
 			getActivity().startActivity(i);
-		}
+		}*/
 		
 		
 		if (isLevelCompleted()) {
@@ -521,36 +499,7 @@ public abstract class View_Main_Base extends View_Surface_Base {
 			
 		} else {
 			
-			if (rectf_button_new_small.contains(x, y)) {
-				
-				final boolean paused_backup = Application_2D_Base.getInstance().getGameData().paused;
-				Application_2D_Base.getInstance().getGameData().paused = true;
-				
-				AlertDialog.Builder adb = Alerts_Base.createAlertDialog_LoseGame(getActivity(),
-						
-						new DialogInterface.OnClickListener() {
-							
-							public void onClick(DialogInterface dialog, int which) {
 
-								Application_2D_Base.getInstance().getGameData().paused = false;
-								
-								getActivity().startNewGame();
-								
-							}
-						},
-						
-						new DialogInterface.OnClickListener() {
-							
-							public void onClick(DialogInterface dialog, int which) {
-								
-								Application_2D_Base.getInstance().getGameData().paused = paused_backup;
-								
-							}
-						}
-				);
-	
-				adb.show();
-			}
 			
 			if (rectf_button_pause.contains(x, y)) {
 				Application_2D_Base.getInstance().getGameData().paused = true;

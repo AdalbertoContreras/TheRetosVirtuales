@@ -41,15 +41,22 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
 import androidx.vectordrawable.graphics.drawable.AnimatedVectorDrawableCompat;
+
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.analytics.FirebaseAnalytics;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.thereto.vistas.Puntaje;
+import com.theretos.helpers.DateHelpers;
 
 
 import java.text.DecimalFormat;
@@ -221,6 +228,7 @@ public class MainActivity extends AppCompatActivity implements
     int columnFirstExchange;
 
     boolean singleTapBonusImage = false;
+    boolean puntajeRegistrado = false;
     boolean longPress;
     boolean longPressChangeLevel;
     boolean longPressPlus;
@@ -304,7 +312,7 @@ public class MainActivity extends AppCompatActivity implements
         txtRulesButton = findViewById(R.id.rulesButton);
         imgSound = findViewById(R.id.Sound);
         imgResetButton = findViewById(R.id.Reset_button);
-
+        imgResetButton.setVisibility(View.GONE);
 
         txtRulesButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -486,15 +494,9 @@ public class MainActivity extends AppCompatActivity implements
 
         cambiarTipo();
 
-        checkFirstTime();
+        //checkFirstTime();
 
-        if (isTutorialRunning) {
-
-        } else if (!isFirstTime) {
-
-            consultarGame();
-
-        }
+        startNewGame(true);
 
         soundPlayer.createMediaPlayer(this);
 
@@ -1608,7 +1610,7 @@ public class MainActivity extends AppCompatActivity implements
     } //Actualiza los view de la partida.
 
     public void gameOverOff() {
-
+        Toast.makeText(getBaseContext(), "Game over", Toast.LENGTH_SHORT).show();
         hideLeaderboard();
         imgFondoGameOver.setAlpha(0f);
         txtPuntaje.setTextColor(BLACK);
@@ -1891,65 +1893,121 @@ public class MainActivity extends AppCompatActivity implements
     }
 
     private void animateGameOver(boolean firstCheck) {
+        if (firstCheck) {
+            Toast.makeText(getBaseContext(), "Game over", Toast.LENGTH_SHORT).show();
+            if (!puntajeRegistrado) {
+                puntajeRegistrado = true;
+                FirebaseAuth mAuth = FirebaseAuth.getInstance();
+                FirebaseUser currentUser = mAuth.getCurrentUser();
+                if (currentUser != null) {
+                    puntajeRegistrado = true;
+                    registrarPuntaje(currentUser.getUid(), gameManager.player.getScore());
+                } else {
+                    registrarPuntaje("none", gameManager.player.getScore());
+                }
+            }
 
-        if (isHighScore) {
-            getLeaderBoard();
-        } else if ( !firstCheck) {
-            getSavedLeaderBoard();
+        } else {
+            if (isHighScore) {
+                getLeaderBoard();
+            } else if ( !firstCheck) {
+                getSavedLeaderBoard();
+            }
+
+
+            final int pisoDesaparece = gameManager.getThirdRow();
+            final int pisoDesaparece2 = gameManager.getFourthRow();
+            playability(false);
+            calculateLiveCost();
+
+            final Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+
+                    txtResetButtonGameOver.setEnabled(true);
+
+                }
+            }, ENABLED_GAME_OVER_BUTTON);
+
+
+
+            txtContinue.setX(columnaX[3] - moduloX);
+            txtResetButtonGameOver.setX(columnaX[1]);
+
+            if (firstCheck == false) {
+
+                soundPlayer.playSoundGameOver(this);
+                int casRojo = casSeleccionado + NUM_COLUMNAS_BASE;
+
+                if (casRojo > 70) {
+                    casRojo = casRojo - 70;
+                }
+
+                final int casRed = casRojo;
+                //casObj[casRed].setBackgroundResource(R.drawable.ic_bubble_dont);
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        animateLeaderboardTransition(pisoDesaparece, pisoDesaparece2);
+                    }
+                }, 175);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        gameOverOn();
+                    }
+                }, ANIMATION_VELOCITY * 2);
+            } else if (firstCheck == true) {
+
+                animateLeaderboardTransition(pisoDesaparece, pisoDesaparece2);
+                gameOverOn();
+
+            }
         }
 
+    }
 
-        final int pisoDesaparece = gameManager.getThirdRow();
-        final int pisoDesaparece2 = gameManager.getFourthRow();
-        playability(false);
-        calculateLiveCost();
+    void registrarPuntaje(String userId, long puntaje) {
+        // Obtén la instancia de Firestore
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-        final Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
+        // Crea un mapa con los datos que deseas almacenar
+        Map<String, Object> puntajeData = new HashMap<>();
+        puntajeData.put("userId", userId);
+        puntajeData.put("score", puntaje);
+        puntajeData.put("game", "JUEGO 2");
+        puntajeData.put("dateCreated", DateHelpers.dateNow());
+
+        // Genera una referencia única para el documento
+        DocumentReference puntajeRef = db.collection("puntaje").document();
+        puntajeRegistrado = true;
+        // Agrega los datos a Firestore
+        puntajeRef.set(puntajeData).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
-            public void run() {
-
-                txtResetButtonGameOver.setEnabled(true);
-
-            }
-        }, ENABLED_GAME_OVER_BUTTON);
-
-
-
-        txtContinue.setX(columnaX[3] - moduloX);
-        txtResetButtonGameOver.setX(columnaX[1]);
-
-        if (firstCheck == false) {
-
-            soundPlayer.playSoundGameOver(this);
-            int casRojo = casSeleccionado + NUM_COLUMNAS_BASE;
-
-            if (casRojo > 70) {
-                casRojo = casRojo - 70;
-            }
-
-            final int casRed = casRojo;
-            //casObj[casRed].setBackgroundResource(R.drawable.ic_bubble_dont);
-
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    animateLeaderboardTransition(pisoDesaparece, pisoDesaparece2);
+            public void onComplete(Task<Void> task) {
+                if (task.isSuccessful()) {
+                    // La operación se completó con éxito
+                    // Puedes realizar acciones adicionales aquí si es necesario
+                    // Application_Base.getInstance().getCurrentActivity().finish();
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Puntaje.init(() -> {
+                                onBackPressed();
+                            }, puntaje).show(getFragmentManager(), "tag");
+                        }
+                    });
+                } else {
+                    // Ocurrió un error al escribir en Firestore
+                    Exception e = task.getException();
+                    if (e != null) {
+                        e.printStackTrace();
+                    }
                 }
-            }, 175);
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    gameOverOn();
-                }
-            }, ANIMATION_VELOCITY * 2);
-        } else if (firstCheck == true) {
-
-            animateLeaderboardTransition(pisoDesaparece, pisoDesaparece2);
-            gameOverOn();
-
-        }
-
+            }
+        });
     }
 
     private void animateLeaderboardTransition(final int pisoDesaparece, final int pisoDesaparece2) {
@@ -2101,20 +2159,21 @@ public class MainActivity extends AppCompatActivity implements
     }//Habilita el cartel de Game Over.
 
     public void startNewGame(boolean isResetGame) {
-
+        //inhabitat tutorial
+        startWithTutorial = false;
         if (startWithTutorial == true) {
 
             txtYes.setAlpha(0f);
             txtNo.setAlpha(0f);
             txtAreYouSure.setAlpha(0f);
 
-            consultarDbBest();
+            //consultarDbBest();
 
             gameOverOff();
 
         } else {
 
-            consultarDbBest();
+            //consultarDbBest();
 
             if (isResetGame) {
                 if (gameManager.user.getNewCredits() > 0) {
@@ -2384,7 +2443,7 @@ public class MainActivity extends AppCompatActivity implements
                             if (gameOver && !isFirstTime) {
                                 calculateLiveCost();
                                 getLeaderBoard();
-                                consultarDbBest();
+                                //consultarDbBest();
                                 animateGameOver(firstCheck);
                             }
                             getLocalDbBest();
@@ -3746,7 +3805,7 @@ public class MainActivity extends AppCompatActivity implements
                 isGameOver = true;
             } else {
                 calculateLiveCost();
-                consultarDbBest();
+                //consultarDbBest();
                 animateGameOver(isFirstCheck);
             }
         }
@@ -3830,6 +3889,15 @@ public class MainActivity extends AppCompatActivity implements
             txtNewCredits.setText(Long.toString(gameManager.user.newCredits));
 
         } else {
+            FirebaseAuth mAuth = FirebaseAuth.getInstance();
+            FirebaseUser currentUser = mAuth.getCurrentUser();
+            if (!puntajeRegistrado) {
+                if (currentUser != null) {
+                    registrarPuntaje(currentUser.getUid(), gameManager.player.getScore());
+                } else {
+                    registrarPuntaje("none", gameManager.player.getScore());
+                }
+            }
 
             txtResetButtonGameOver.setBackgroundResource(R.drawable.ic_reset_blanco);
             txtContinue.setText("Sing in");
@@ -5780,7 +5848,7 @@ public class MainActivity extends AppCompatActivity implements
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        plusAction(3, 1, 1, true);
+                        //plusAction(3, 1, 1, true);
 
                         final Handler handler = new Handler();
                         handler.postDelayed(new Runnable() {
@@ -5821,7 +5889,7 @@ public class MainActivity extends AppCompatActivity implements
                                         handler.postDelayed(new Runnable() {
                                             @Override
                                             public void run() {
-                                                plusAction(3, 1, -1, true);
+                                                //plusAction(3, 1, -1, true);
 
 
                                                 final Handler handler = new Handler();
@@ -7418,7 +7486,7 @@ public class MainActivity extends AppCompatActivity implements
 
             if (gameManager.player.getBonusPlus() > 0) {
 
-                plusAction(accionPiso, casilleroPlus, 1, false);
+                //plusAction(accionPiso, casilleroPlus, 1, false);
 
             } else {
 
@@ -7446,7 +7514,7 @@ public class MainActivity extends AppCompatActivity implements
 
             if (gameManager.player.getBonusPlus() > 0) {
 
-                plusAction(accionPiso, casilleroPlus, -1, false);
+                //plusAction(accionPiso, casilleroPlus, -1, false);
 
             } else {
 

@@ -1,0 +1,19 @@
+<resources>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="nav_header_vertical_spacing">8dp</dimen>
+    <dimen name="nav_header_height">176dp</dimen>
+    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="input_height">35dp</dimen>
+    <dimen name="button_height">40dp</dimen>
+    <dimen name="border_radius_value">12dp</dimen>
+    <dimen name="border_value">3dp</dimen>
+    <dimen name="input_login_height">45dp</dimen>
+    <dimen name="navigation_view_width">240dp</dimen>
+    <dimen name="textSm">12sp</dimen>
+    <dimen name="textMd">16sp</dimen>
+    <dimen name="textLg">20sp</dimen>
+    <dimen name="textXl">28sp</dimen>
+</resources>

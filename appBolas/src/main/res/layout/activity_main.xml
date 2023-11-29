@@ -5,7 +5,7 @@
     android:layout_height="match_parent">
 
     <com.josejordan.bolas.MyGameView
-        android:id="@+id/my_game_view"
+        android:id="@+id/miGameView"
         android:contentDescription="@string/game_screen"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/highScoreTextView"
+        android:id="@+id/puntajeAltoTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
@@ -31,7 +31,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
     <android.widget.Button
-        android:id="@+id/exitButton"
+        android:id="@+id/salirButton"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"

@@ -36,5 +36,8 @@ dependencies {
     implementation project(":Android_LIB_Commons")
     implementation project(":Android_LIB_CommonsAds")
     implementation project(":Android_LIB_Commons2D")
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation project(path: ':Vistas')
 
 }

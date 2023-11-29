@@ -1,6 +1,9 @@
 package org.metatrans.apps.gravity.app;
 
 
+import android.app.Activity;
+import android.content.Intent;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -8,6 +11,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
+import com.thereto.vistas.Puntaje;
 
 import org.metatrans.apps.gravity.achievements.AchievementsManager_Gravity;
 import org.metatrans.apps.gravity.cfg.world.ConfigurationUtils_Level;
@@ -63,8 +67,8 @@ public abstract class Application_Gravity extends Application_2D_Base {
 			getUserSettings().modeID = levelUno.getID();
 			Application_Base.getInstance().storeUserSettings();
 		}
-	}
 
+	}
 	
 	@Override
 	public void setNextLevel() {
@@ -73,12 +77,14 @@ public abstract class Application_Gravity extends Application_2D_Base {
 		if (getUserSettings().modeID ==3) {
 			FirebaseAuth mAuth = FirebaseAuth.getInstance();
 			FirebaseUser currentUser = mAuth.getCurrentUser();
+			GameData_Gravity result = new GameData_Gravity();
 			if (currentUser != null) {
 				GameData data = getGameData();
-				registrarPuntaje(currentUser.getUid(), getGameData().total_count_steps);
+
+				registrarPuntaje(currentUser.getUid(), result.total_count_objects);
 			} else {
 				GameData data = getGameData();
-				registrarPuntaje("none", getGameData().count_bullets);
+				registrarPuntaje("none", result.total_count_objects);
 			}
 		}
 		System.out.println("Next level: " + getUserSettings().modeID);
@@ -91,6 +97,7 @@ public abstract class Application_Gravity extends Application_2D_Base {
 		// Crea un mapa con los datos que deseas almacenar
 		Map<String, Object> puntajeData = new HashMap<>();
 		puntajeData.put("userId", userId);
+		puntajeData.put("puntaje", puntaje);
 		puntajeData.put("puntaje", puntaje);
 
 		// Genera una referencia única para el documento
@@ -105,7 +112,13 @@ public abstract class Application_Gravity extends Application_2D_Base {
 							// La operación se completó con éxito
 							// Puedes realizar acciones adicionales aquí si es necesario
 							//Application_Base.getInstance().getCurrentActivity().finish();
-							getInstance().getCurrentActivity().onBackPressed();
+							Puntaje.init(() -> {
+								Intent intent = new Intent(getInstance().getCurrentActivity(), getInstance().getCurrentActivity().getClass());
+								intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+								getInstance().getActivitiesStack().getActivitiesStack().forEach(Activity::finish);
+								getInstance().getCurrentActivity().finish();
+							}, (long) puntaje).show(getInstance().getCurrentActivity().getFragmentManager(), "tag");
+
 						} else {
 							// Ocurrió un error al escribir en Firestore
 							Exception e = task.getException();

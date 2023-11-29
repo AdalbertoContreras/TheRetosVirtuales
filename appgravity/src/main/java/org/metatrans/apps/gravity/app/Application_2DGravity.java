@@ -14,7 +14,6 @@ public class Application_2DGravity extends Application_Gravity {
 	public void onCreate() {
 
 		super.onCreate();
-
 		getAdsConfigurations().addProviderConfig(
 				IAdsProviders.ID_HOME_ADS,
 				new AdsConfiguration_Gravity()

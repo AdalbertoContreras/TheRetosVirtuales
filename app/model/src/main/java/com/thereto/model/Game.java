@@ -1,6 +1,7 @@
 package com.thereto.model;
 
 public class Game {
+    public String documentId = "";
     public String id = "";
     public String name_challeng = "";
     public int accumulated_tickets = 0;

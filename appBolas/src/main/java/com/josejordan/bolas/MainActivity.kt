@@ -12,8 +12,10 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
+import com.josejordan.bolas.databinding.ActivityMainBinding
+import com.thereto.vistas.Puntaje
+import com.theretos.helpers.DateHelpers
 import kotlin.system.exitProcess
 
 
@@ -24,10 +26,10 @@ class MainActivity : AppCompatActivity() {
     //private lateinit var pauseButton: ImageButton
     private var isPaused = false
     lateinit var highScoreTextView: TextView
-
+    lateinit var appCompatActivity: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        appCompatActivity = ActivityMainBinding.inflate(layoutInflater)
 
         //hide the status bar and navigation buttons
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
@@ -45,12 +47,11 @@ class MainActivity : AppCompatActivity() {
                     or View.SYSTEM_UI_FLAG_HIDE_NAVIGATION)
         }
 
-
-        gameView = findViewById(R.id.my_game_view)
+        gameView = appCompatActivity.root.findViewById(R.id.miGameView)
         gameView.requestFocus()
-        exitButton = findViewById(R.id.exitButton)
+        exitButton = appCompatActivity.salirButton
         //pauseButton = findViewById(R.id.pauseButton)
-        highScoreTextView = findViewById(R.id.highScoreTextView)
+        highScoreTextView = appCompatActivity.root.findViewById(R.id.puntajeAltoTextView)
 
         val prefs = getSharedPreferences(MY_GAME_PREFS, Context.MODE_PRIVATE)
         if (prefs.contains(HIGH_SCORE_KEY)) {
@@ -59,7 +60,6 @@ class MainActivity : AppCompatActivity() {
         } else {
             highScoreTextView.text = getString(R.string.high_score, 0)
         }
-
         gameView.setOnTouchListener { _, event ->
             if (!isPaused) {
                 if (event.action == MotionEvent.ACTION_DOWN) {
@@ -190,8 +190,9 @@ class MainActivity : AppCompatActivity() {
         // Crea un mapa con los datos que deseas almacenar
         val puntajeData: MutableMap<String, Any> = HashMap()
         puntajeData["userId"] = userId
-        puntajeData["puntaje"] = puntaje
-        puntajeData["juego"] = "JUEGO 3"
+        puntajeData["score"] = puntaje
+        puntajeData["game"] = "JUEGO 3"
+        puntajeData["dateCreated"] = DateHelpers.dateNow()
 
         // Genera una referencia única para el documento
         val puntajeRef: com.google.firebase.firestore.DocumentReference =
@@ -204,6 +205,8 @@ class MainActivity : AppCompatActivity() {
                     // La operación se completó con éxito
                     // Puedes realizar acciones adicionales aquí si es necesario
                     //Application_Base.getInstance().getCurrentActivity().finish();
+                    finishAffinity();
+                    System.exit(0); // Esto cerrará la aplicación y todas sus actividades
                     finishAffinity()
                     exitProcess(0) // This will close the app and all its activities
                 } else {
